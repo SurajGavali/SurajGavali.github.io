@@ -124,284 +124,57 @@
 
                 <article class="s-post entry format-standard">
 
-                    <div class="s-content__media">
-                        <div class="s-content__post-thumb">
-                            <img src="../os/stevejobs.jpg" 
-                                 srcset="../os/stevejobs.jpg 2100w, 
-                                         ../os/stevejobs.jpg 1050w, 
-                                         ../os/stevejobs.jpg 525w" sizes="(max-width: 2100px) 100vw, 2100px" style="width: 100%" alt="">
-                        </div>
-                    </div> <!-- end s-content__media -->
-
-                    <div class="s-content__primary">
-
-                        <h2 class="s-content__title s-content__title--post">Operating Systems(Part-1)</h2>
-
-                        <ul class="s-content__post-meta">
-                            <li class="date">January 9, 2021</li>
-                            <li class="cat">Credit OS-Book and Abhijit's sir PPT</li>
-                        </ul>
-
-                        <h2 class="s-content__title s-content__title--post">Before we begin let's do some revision of "Computer"</h2>
-                        <br><br>
-
-                        <h2 class="s-content__title s-content__title--post" style="color: red; font-size: 30px">CPU/Processor</h2>
-
-
-                        <p class="lead">
-                        There are many processors in market i3,i5,i7 etc. speed of the processor is measured in "Ghz". Basically the CPU/Processor is the Brain of a computer or machine. CPU runs "machine instructions". we can say that the CPU is actual computer.  </p> 
-
-                        <p style="text-align: center; color: red;">
-                            The instructions that the processor runs are stored in "Random Access Memory(RAM)"
-                        </p>
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/cpu.jpg" 
-                                     srcset="../os/cpu.jpg 2100w, 
-                                             ../os/cpu.jpg 1050w, 
-                                             ../os/cpu.jpg 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/motherboard.png" 
-                                     srcset="../os/motherboard.png 2100w, 
-                                             ../os/motherboard.png 1050w, 
-                                             ../os/motherboard.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <p class="lead" style="color: blue">
-                        We have just saw that the instructions that runs the CPU are stored in RAM. So to run the instructions they have to be first brought to the CPU/processor so how to they brought up to the CPU?.. that we we will Study in this Course  </p>
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/HD.jpg" 
-                                     srcset="../os/HD.jpg 2100w, 
-                                             ../os/HD.jpg 1050w, 
-                                             ../os/HD.jpg 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <p style="text-align: center; color: red;">
-                            Note that Hard Drive(HD) is a Mechanical divice so its slow. It is a magnetic divice. 
-                            Each disk is divided into tiny magnetic spots each representing 1 or 0. HD is persistant meaning data stays as it is on powering off.  
-                        </p>
-
-                        <h2 class="s-content__title s-content__title--post">Storage-Device Hierarchy</h2>
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/Storage-device hirerachy.png" 
-                                     srcset="../os/Storage-device hirerachy.png 2100w, 
-                                             ../os/Storage-device hirerachy.png 1050w, 
-                                             ../os/Storage-device hirerachy.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <p style="text-align: center; color: blue;">
-                            The above diagram shows "Storage-Device Hierarchy" of which we have seen Hard-Disk and Main memory(RAM).
-                            As we can see how much is the "faster" memory "lower" is the storage. (cache memory is stored on chip itself so its very fast)
-                        </p>
-
-                        <p style="text-align: center; color: red; font-size: 20px">
-                           This diagram is very important for the operating system because the way that the computer system are built, the way in which OS is build , The design of OS ,The particular choices of solutions that we make while designing an OS , lot of algorithms of an OS and data structures of a OS are actually driven by this sact of life that there exist a "Storage-Device Hierarchy".
-                        </p>
-
-                        <h2 class="s-content__title s-content__title--post">Computer Organization</h2>
-                        <p style="text-align: center; color: blue; font-size: 20px">
-                           Modern Computer System
-                        </p>
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/comporgz.png" 
-                                     srcset="../os/comporgz.png 2100w, 
-                                             ../os/comporgz.png 1050w, 
-                                             ../os/comporgz.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; color: red">IMPORTANT</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        1. Processor(CPU) transfers data between itself and main memory(RAM) only!.  </p> 
-
-                        <p class="lead" style="text-align: left;">
-                        2. No data transfer between CPU and Hard-Disk, CPU and Keyboard, CPU and Mouse etc.</p> 
-
-                        <p class="lead" style="text-align: left;">
-                        3. I/O devices transfer(How?) data to memory(RAM) and CPU instruction access data from the RAM.</p> 
-
-
-                        <h2 class="s-content__title s-content__title--post">How a modern computer system works?</h2>
-
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px">To understand more fully the operating system’s role, we next explore operating systems from two viewpoints:</h2>
 
                          <p class="lead" style="text-align: center;">
-                         First the data goes through the devices to memory then the CPU fetches the data from the memory and executes it!</p>
+                            1. User View
+                         </p>
+                         <p class="lead" style="text-align: center;">
+                            2.  System View
+                         </p> 
 
-                          <p class="lead" style="text-align: center;">
+                          <h2 class="s-content__title s-content__title--post" style="text-align: left;"> User View</h2>
 
-                            A typical instruction–execution cycle, as executed on a system with a von Neumann architecture, first fetches an instruction from memory and stores that instruction in the instruction register. The instruction is then decoded and may cause operands to be fetched from memory and stored in some internal register. After the instruction on the operands has been executed, the result may be stored back in memory.
+                         <p class="lead">
+                            For normal computer user the operating system is designed mostly for ease of use, with some attention paid to performance.
                          </p>
 
-                         
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/how.png" 
-                                     srcset="../os/how.png 2100w, 
-                                             ../os/how.png 1050w, 
-                                             ../os/how.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
+                         <p class="lead">
+                             In other cases, users sit at workstations connected to networks of other workstations and servers. These users have dedicated resources at their disposal, but they also share resources such as networking and servers,including file, compute, and print servers.
+                         </p>
 
-                        <h2 class="s-content__title s-content__title--post">What does the processor do?</h2>
+                         <p class="lead">
+                            Some computers have little or no user view. For example, embedded computers in home devices and automobiles may have numeric keypads and may turn indicator lights on or off to show status, but they and their operating systems are designed primarily to run without user intervention.
+                         </p>
+                         <h2 class="s-content__title s-content__title--post" style="text-align: left;"> System View</h2>
 
-                        <p class="lead" style="text-align: left;">
-                        From the moment it's turned on until it's turned off, the processor simply does the following things</p>
+                         <p class="lead">
+                            From the computer’s point of view, the operating system is the program most intimately involved with the hardware. we can view an operating system as a "resource allocator".
+                         </p>
 
-                        <p class="lead" style="text-align: left;">
-                        1. Fetch the instruction from the RAM(Memory)[Location is given by "Program Counter"(PC) register].</p>
+                         <p class="lead">
+                             A computer system has many resources that may be required to solve a problem: CPU time, memory space, file-storage space, I/O devices, and so on. The operating system acts as the manager of these resources.
+                         </p>
 
-                        <p class="lead" style="text-align: left;">
-                        2. Decodes the instruction and execute it while doing this may fetch some data from the RAM. </p>   
+                         <p class="lead">
+                            An operating system is a control program. A control program manages the execution of user programs to prevent errors and improper use of the computer. It is especially concerned with the operation and control of I/O devices.
+                         </p>
 
-                        <p class="lead" style="text-align: left;">
-                        3. While executing the instruction change/update the Program Counter. </p> 
-
-                        <p class="lead" style="text-align: left;">
-                        4. CPU runs this steps in INFINITE LOOP i.e. Fetch,decode, change program counter, repeat(GO to 1).</p> 
-
-                        <h2 class="s-content__title s-content__title--post">From above some immediate questions should comes in our mind</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        1. What's the initial value of PC when Computer starts?</p>
-
-                        <p class="lead" style="text-align: left; color: blue;">
-                        ---> It will be some/any number.</p>
-
-                        <p class="lead" style="text-align: left;">
-                        2.Who puts "this" value in PC?</p>
-
-                        <p class="lead" style="text-align: left; color: blue; float: left;">
-                        ---> Is it OS? No, The <p class="lead" style="color: red; float: left; margin-right: 5px; margin-left: 5px"> "Manufaturer Of CPU" </p> <p class="lead">decides this value.</p>
-
-                        <p class="lead" style="text-align: left;">
-                        3. What is there at the initial location given by PC?</p>
-
-                        <p class="lead" style="text-align: left; color: blue;">
-                        ---> </p>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; color: red">The critical questions you need to keep thinking about throughout this course are</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        1. Which code running on the processor?</p>
-                        <p class="lead" style="text-align: left;">
-                        2. Who wrote it?</p>
-                        <p class="lead" style="text-align: left;">
-                        3. Which code can run after it?</p>
-
-                        <p class="lead" style="text-align: left; color: blue;">
-                        Basically try to understand the flow of instructions that execute in the processor</p>
-
-                        <h2 class="s-content__title s-content__title--post">FEW IMPORTANT TERMS</h2>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">1. BIOS</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        The code "inbuilt"  into your Hardware by manufactuerer it runs "automatically" when you start the computer and keep looking for a "Boot-Loader" to be loaded in RAM and to be executed</p>
-
-                        <p class="lead" style="text-align: left; color: red">
-                        The Manufaturer stores this code where they keep "Program Counter(PG)"</p>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">2. Boot Loader</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        A program that exists on (typically sector-0 of) a secondary storage   </p>
-
-                        <p class="lead" style="text-align: left;">
-                        It is loaded by BIOS in RAM and passed over control to "GRUB". It's jo is to locate the code of an OS kernel, load it in RAM and pass contri over it</p>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">3. Kernel</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        The code that is loaded and given control by BIOS initially when computer boots. It takes control of hardware(How? will see...) </p>
-
-                        <p class="lead" style="text-align: left;">
-                        Creates an environment for "application" to execute and controls access to hardware by applications etc.</p>
-                        <br>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; color: red">Everything else is "Applications"</h2>
-
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">4. System Programs</h2>
-
-                        <p class="lead" style="text-align: left;">
-                        Applications that depends heavily on the kernel and processor(E.g. Compiler.linker,loader)</p>
-
-                        <p class="lead" style="text-align: left;">
-                        Other Applications such as GUI, Terminal, Libreoffice, Firefox, VLC,...,Your own programs from Data structures etc.</p>
-
-                        <h2 class="s-content__title s-content__title--post">Components Of a Computer System.</h2>
-
-                        <p class="lead" style="text-align: center;">
-                        A computer system can be divided roughly into four
-                        components: the hardware, the operating system, the application programs,
-                        and the users.</p>
-                        
-
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/components.png" 
-                                     srcset="../os/components.png 2100w, 
-                                             ../os/components.png 1050w, 
-                                             ../os/components.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
-
-                        <p class="lead" style="text-align: left;">
-                        The hardware—the central processing unit (CPU), the memory, and the
-                        input/output (I/O) devices—provides the basic computing resources for the
-                        system.</p>
-
-                        <p class="lead" style="text-align: left;">
-                        The application programs—such as word processors, spreadsheets,
-                        compilers, and Web browsers—define the ways in which these resources are
-                        used to solve users’ computing problems.</p>
-
-                        <p class="lead" style="text-align: left;">
-                        The operating system controls the
-                        hardware and coordinates its use among the various application programs for
-                        the various users. </p>
-
-                        <p class="lead" style="color: red">An operating system is
-                        similar to a government. Like a government, it performs no useful function by
-                        itself. It simply provides an environment within which other programs can do
-                        useful work.</p>
+                         <h2 class="s-content__title s-content__title--post" style="font-size: 30px">  Since bare hardware alone is not particularly easy to use, application programs are developed. These programs require certain common operations, such as those controlling the I/O devices. The common functions of controlling and allocating resources are then brought together into one piece of software: the operating system.</h2>
 
                          
 
-
-
-
-
-
-
-
-
-
-
- 
-
-
+                         
 
                         
 
 
+              
 
                         
 
+
+                        
                        <!--  <p>
                             <img src="images/sample-1050.jpg" 
                                  srcset="images/sample-2100.jpg 2100w, 
@@ -487,15 +260,18 @@
 
 
                         <div class="s-content__pagenav group">
+                             <div class="next-nav" style="text-align: left;">
+                                 <a href="os.html" rel="next">
+                                    Previous
+                                 </a>
+                             </div>
+
                              <div class="next-nav" style="text-align: right;">
-                                 <a href="os1.html" rel="next">
+                                 <a href="../comingsoon.html" rel="next">
                                     Next
                                  </a>
                              </div>
                          </div> <!-- end s-content__pagenav -->
-
-
-
                     </div> <!-- end s-content__primary -->
                 </article>
 

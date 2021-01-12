@@ -266,6 +266,35 @@
                         <p class="lead" style="text-align: left; color: blue;">
                         ---> It is OS! , How's that? will see!</p>
 
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Let's understand Boot process again!</h2>
+
+                        <p class="lead" style="text-align: left; color: orange;">
+                        1. BIOS runs "automatically" because at the initial value of PC(On power ON), the manufacturers have put in the BIOS code in ROM. now CPU is running BIOS code.</p>
+
+                        <p class="lead" style="text-align: left; color: orange;">
+                        2. BIOS looks up for boot loader(on the default boot device) and loads it in the RAM, and passes control over it. now CPU is running boot loader code. </p>
+
+                        <p class="lead" style="text-align: left; color: orange;">
+                        3. Boot loader gets boot options from human user, and loads the selected OS in memory and passes over to OS. now CPU is running OS code.</p>
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px;">Now we will see answer to our unanswered question.</h2>
+
+                        <h2 class="s-content__title s-content__title--post">How OS is there at pre-determined address? </h2>
+
+                        <p style="text-align: center; font-size: 25px; color: red">
+                            When OS starts running initially, it copies relevent parts of it's own code at all possible memory addresses that hardware interrupt can lead to!
+                        </p>
+
+                        <p style="text-align: center; font-size: 25px; color: blue">
+                            Now whenever there is hardware interrupt the PC will change to predetermined location and control will jump into OS code. generally, this is called as "taking control of Hardware"
+                        </p>
+
+
+
+
+
+
+
 
 
 

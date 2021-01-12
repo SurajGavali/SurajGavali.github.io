@@ -21,7 +21,7 @@
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
+    <script src="../js/modernizr.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -168,51 +168,114 @@
                             On a singleprocessor system, there is one main CPU capable of executing a general-purpose instruction set, including instructions from user processes. 
                          </p>
 
+                         <p class="lead">
+                            Almost all singleprocessor systems have other special-purpose processors as well. All of these special-purpose processors run a limited instruction set and do not run user processes. 
+                         </p>
 
-                         
+                         <p class="lead" style="color: red">
+                           If there is only one general-purpose CPU, then the system is a single-processor system.
+                         </p>
 
-                         
+                         <h2 class="s-content__title s-content__title--post" style="text-align: left;"> Multiprocessor Systems</h2>
 
-                        
+                         <p class="lead">
+                            Within the past several years, multiprocessor systems (also known as parallel systems or multicore systems) have begun to dominate the landscape of computing.
+                         </p>
 
+                         <p class="lead">
+                            Such systems have two or more processors in close communication, sharing the computer bus and sometimes the clock, memory, and peripheral devices. Multiprocessor systems first appeared prominently appeared in servers and have since migrated to desktop and laptop systems. 
+                         </p>
 
-              
+                         <h2 class="s-content__title s-content__title--post"> Symmetric multiprocessing architecture</h2><br>
 
-                        
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb">
+                                <img src="../os/multi1.png" 
+                                     srcset="../os/multi1.png 2100w, 
+                                             ../os/multi1.png 1050w, 
+                                             ../os/multi1.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
 
-
-                        
-                       <!--  <p>
-                            <img src="images/sample-1050.jpg" 
-                                 srcset="images/sample-2100.jpg 2100w, 
-                                         images/sample-1050.jpg 1050w, 
-                                         images/sample-525.jpg 525w" sizes="(max-width: 2100px) 100vw, 2100px" alt="">
-                        </p> -->
-
-                        <!-- <p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
+                        <p class="lead" align="center">
+                            In Symmetric multiprocessing architecture each processor performs all tasks within the operating system. SMP means that all processors are peers; no boss–worker relationship exists between processors.
                         </p>
 
-                        <h2>Large Heading</h2>
+                        <p style="font-style: block; font-size: 30px; text-align: center">
+                            A recent trend in CPU design is to include multiple computing cores on a single chip. Such multiprocessor systems are termed multicore.
+                        </p>
 
-                        <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus <a href="http://#">omnis voluptas assumenda est</a> id quod maxime placeat facere possimus, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et.</p>
+                        <h2 class="s-content__title s-content__title--post">A dual-core design with two cores placed on the same chip.</h2>
 
-                        <blockquote>
-                            <p>
-                            For God so loved the world, that he gave his only Son, that whoever believes in 
-                            him should not perish but have eternal life. For God did not send his Son into 
-                            the world to condemn the world, but in order that the world might be 
-                            saved through him.
-                            </p>
-                            <cite>John 3:16-17 ESV</cite>
-                        </blockquote> -->
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb">
+                                <img src="../os/multi2.png" 
+                                     srcset="../os/multi2.png 2100w, 
+                                             ../os/multi2.png 1050w, 
+                                             ../os/multi2.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
 
-                        <!-- <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed..</p>
+                        <p class="lead" align="center">
+                             These can be more efficient than multiple chips with single cores because on-chip communication is faster than between-chip communication. In addition, one chip with multiple cores uses significantly less power than multiple single-core chips.
+                        </p>
 
-                        <h3>Smaller Heading</h3>
+                        <p class="lead" align="center" style="color: red;">
+                             It is important to note that while multicore systems are multiprocessor systems, not all multiprocessor systems are multicore
+                        </p>
 
-                        <p>Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                        <h2 class="s-content__title s-content__title--post">Hardware Interrupts</h2>
 
-                        <p>Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p> -->
+                        <p style="font-style: block; font-size: 25px; text-align: center; color: red">
+                            Please note that pressing any key is not a Hardware Interrupt it is just a Mechanical Action.
+                        </p>
+
+                        <ul style="font-size: 25px">
+                            <li>Hardware devices(Keyboard, mouse, Hard-Disk, etc.) can raise "Hardware Interrupts"
+                                <!-- <ul>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                </ul> -->
+                            </li>
+                            <li>Basically Hardware Interrupts means creating an electrical signal on some connection to CPU(/Bus)</li>
+                            <li>This is notified to CPU(in Hardware)</li>
+                        </ul>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Now CPU's normal execution is interrupted! </h2>
+
+                        <ul style="font-size: 25px">
+                            <li>CPU will not continue doing the fetch, decode, execute, change PC cycle!
+                                <!-- <ul>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                    <li>Lorem ipsum dolor sit amet.</li>
+                                </ul> -->
+                            </li> <br>
+                            <li>What happens then?
+                                 <ul>
+                                    <li>On hardware interrupt, the PC changes to a location pre determined by CPU manufaturers!</li>
+                                    <li>Now CPU resumes normal execution.</li>
+                                </ul> 
+                            </li>
+                        </ul>
+
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Now question arises is that what is there at this pre-determined address?</h2>
+
+                        <p class="lead" style="text-align: left; color: blue;">
+                        ---> It is OS! , How's that? will see!</p>
+
+
+
+
+                         
+
+                         
+                          
+
+                         
+                          
                         
 <!-- <pre><code class="language-css">
     code {
@@ -592,9 +655,9 @@
 
    <!-- Java Script
    ================================================== --> 
-   <script src="js/jquery-3.2.1.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
 
 </body>
 

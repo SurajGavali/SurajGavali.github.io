@@ -337,7 +337,7 @@
                                     <li>How does OS choose which application program to run next?</li>
                                     <li>Where do the application programs come from? How do they start running ?</li>
                                 </ul> 
-                           </li>
+                            </li>
                 </ul>
 
                 <h2 class="s-content__title s-content__title--post">Multiprogramming</h2>
@@ -420,12 +420,123 @@
                 </p>
 
                 <p class="lead" >
-                    3. If the bit is in kernel mode Both the normal and privileges instructions can be executed
+                    4. If the bit is in kernel mode Both the normal and privileges instructions can be executed
                 </p>
 
                 <p class="lead" style="color: red">
-                    4. If the CPU is “made” to execute privileged instruction when the mode bit is in “User mode” It results in a particular hardware interrupt(What should happen on a hardware interrupt now?, answer for this is above :)
+                    5. If the CPU is “made” to execute privileged instruction when the mode bit is in “User mode” It results in a particular hardware interrupt(What should happen on a hardware interrupt now?, answer for this is above :)
                 </p>
+
+             
+                <ul>
+                    <li>The opearting system code runs in kernel mode. How? Will see!</li>
+                    <li>The application code runs in user mode How? will see!</li>
+                    <li>So application code can not run privileged hardware instructions.</li>
+                    <li>Transition from user mode to kernel mode and vice-versa is done with Special instruction called “software interrupt” instructions.(E.g. INT instruction on x86)</li>
+                </ul> 
+
+                <h2 class="s-content__title s-content__title--post">Software interrupt instruction</h2>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">The INT on x86 processors does two things :</h2>
+
+                <p class="lead" >
+                    1. Changes mode from user mode to kernel mode in CPU.
+                </p>
+
+                <p class="lead" >
+                    2. Jumps to a pre-defined location! Basically changes PC to  pre-defined value.(Now you now that what is there at this pre-defined value, obiviously OS :))
+                </p>
+
+                <p class="lead" style="color: red">
+                    Now question is arises that who runs this INT instruction(Your application will run this!)
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">What’s the use of these type of instructions?</h2>
+
+                <ul>
+                    
+                    <li> An application code running INT 0x80 on x86 will now cause
+                    <ul>
+                        <li>Change of mode</li>
+                        <li>Jump into OS code</li>
+                    </ul>
+                </li>
+                </ul>
+
+                <ul>
+                    <li>This is effectively a request by application code to OS to do a particular task!</li>
+                    <li>E.g. read from keyboard or write to screen.</li>
+                    <li>OS providing hardware services to applications!</li>
+                    <li>A proper argument to INT 0x80 specified in a proper register indicates different possible request</li>
+                </ul>
+
+                <div class="s-content__media">
+                    <div class="s-content__post-thumb"> 
+                        <img src="../os/user_to_kernel.png" 
+                                srcset="../os/user_to_kernel.png 2100w, 
+                                        ../os/user_to_kernel.png 1050w, 
+                                        ../os/user_to_kernel.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                    </div>
+                </div> <!-- end s-content__media -->
+
+                <p class="lead" >
+                    In the above diagram when there is user process is executing, On CPU there is only user program is running nothing else is running on the CPU.
+                </p>
+
+                <p class="lead" >
+                    Whenever the user program does the system call(here consider INT 80 instruction!) , its a software interrupt and mode of the CPU is changes from "user mode" to "kernel mode".
+                </p>
+                <p class="lead" >
+                    The particular OS code that runs in kernel mode is called as system call!
+                </p>
+
+                <p class="lead" >
+                    Now in kernel mode when system call does INRET instruction it changes mode-bit to 1 and enters into a user mode.
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">How does application code run INT instruction?</h2>
+
+                <p class="lead" >
+                    C library functions like printf(), scanf() which do I/O requests contain the INT instruction!
+                </p>
+                <p class="lead" >
+                    Control flow : Application code -> printf -> INT -> OS  code -> IRET -> back to printf code -> back to application code
+
+                </p>
+
+                <div class="s-content__media">
+                    <div class="s-content__post-thumb"> 
+                        <img src="../os/program.png" 
+                                srcset="../os/program.png 2100w, 
+                                        ../os/program.png 1050w, 
+                                        ../os/program.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                    </div>
+                </div> <!-- end s-content__media -->
+
+                <h2 class="s-content__title s-content__title--post" style="font-size: 30px;color: blue">The OS code is sitting in memory and runs intermittantly when a "Software" or "Hardware" interrupt occurs</h2>
+                <br>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">Now let's see how multi-tasking actually happens</h2>
+
+                <ul>
+                    <li>Multi-tasking is enabled using "Timer interrupt"(Setting timer register is a privileged instruction)</li>
+                    <li>OS sets timer interrupt and “passes control” over to some application code. Now only application code running on CPU !</li>
+                    <li>When time allocated to process is over, the timer interrupt occurs and control jumps back to OS (hardware interrupt mechanism)</li>
+                    <li>The OS code that runs here (the ISR) is called  “scheduler”</li>
+                    <li>OS can now schedule another program</li>
+                </ul>
+
+                <div class="s-content__media">
+                    <div class="s-content__post-thumb"> 
+                        <img src="../os/process.png" 
+                                srcset="../os/process.png 2100w, 
+                                        ../os/process.png 1050w, 
+                                        ../os/process.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                    </div>
+                </div> <!-- end s-content__media -->
+
+
+               
 
 
                 

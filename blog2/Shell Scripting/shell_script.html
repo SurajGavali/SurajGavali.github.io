@@ -173,25 +173,54 @@
                 <h2 class="s-content__title s-content__title--post" style="font-size: 25px">Some key concepts</h2>
 
                 <ul style="font-size: 25px">
-                            <li>Files don't open themselves!
+                            <li style="color: red">Files don't open themselves!
                                 <ul>
                                     <li style="color: blue">Always some application/program "open()" a file</li>
-                                    
+                                    <li style="color: blue">A file is displayed by the program which opens it. Each program has it's own way of handling files.</li>
                                 </ul> 
                             </li> <br>
-                            <li>Files don't display themselves 
-                                 <ul>
-                                    <li style="color: blue">A file is displayed by the program which opens it. Each program has it's own way of handling files.</li>
-                                    <!-- <li>Now CPU resumes normal execution.</li> -->
-                                </ul> 
-                            </li>
 
                             <li style="color: red">Programs don't run themselves
                                  <ul>
                                     <li style="color: blue">Running a program or clicking on a program is equivalent to requesting to OS to "RUN" it. The OS runs program!</li>
                                     <!-- <li>Now CPU resumes normal execution.</li> -->
+
+                                    <li style="color: blue">Users (humans) request OS to run programs, using Graphical or Command line interface and programs open files
+                                    </li>
                                 </ul> 
                             </li>
+
+                            <li style="color: red">A command
+                                 <ul>
+                                    <li style="color: blue">Name of an executable file</li>
+                                    <li style="color: blue">For example: 'ls' is actually “/bin/ls”</li>
+                                    <li style="color: blue">Command takes arguments
+                                        <ul>
+                                            <li style="color: blue">E.g. ls  /tmp/</li>
+                                        </ul>
+                                    </li>
+
+                                    <li style="color: blue">Command takes options
+                                        <ul>
+                                            <li style="color: blue">E.g. ls -a</li>
+                                        </ul>
+                                    </li>
+
+                                    <li style="color: blue">Command can take both arguments and options
+                                        <ul>
+                                            <li style="color: blue">E.g.  ls -a /tmp/</li>
+                                        </ul>
+                                    </li>
+
+                                    <li style="color: blue">Options and arguments are basically argv[] of the main() of that program</li>
+
+                                    
+
+                                    
+                                </ul> 
+                            </li>
+
+                            
 
                             <li style="color: red">The Shell
                                  <ul>

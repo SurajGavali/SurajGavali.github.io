@@ -320,8 +320,127 @@
                 <h2 class="s-content__title s-content__title--post">To know operating system more clearly you need to handy with the Shell Scripting!</h2>
 
                 <a href="../Shell Scripting/shell_script.html"><p style="text-align: center; font-size: 25px; color: red">
-                            If you already know about shell scripting then you are good to go! if not click here to learn about it.
-                        </p></a>
+                            If you already know about shell scripting then you are good to go! if not click here to learn about it.</p>
+
+                </a>
+
+                <h2 class="s-content__title s-content__title--post">What is happening during your normal use of a desktop?</h2>
+
+                <ul style="font-size: 25px; margin-left: 75px;">
+                            <li>Normal use means after the OS has been loaded and Desktop environment is running</li>
+                            <li>The OS and different application programs keep executing on the CPU alternatively (more about this later) and The CPU is time-shared between different applications and OS itself!</li>
+
+                            <li style="color: red;font-size: 25px;">Qustions to be answered later on
+                                 <ul>
+                                    <li>How is this done?</li>
+                                    <li>How does OS control the time allocation to each?</li>
+                                    <li>How does OS choose which application program to run next?</li>
+                                    <li>Where do the application programs come from? How do they start running ?</li>
+                                </ul> 
+                           </li>
+                </ul>
+
+                <h2 class="s-content__title s-content__title--post">Multiprogramming</h2>
+
+                <p class="lead" style="text-align: center;">
+                    A system where multiple processes(!) exist at the same time in the RAM(But only one runs at a time!)
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px"> Program</h2>
+
+                <p class="lead">
+                    Just a binary (machine code) file lying on the hard drive. E.g. /bin/ls  and remember Does not do anything its own!(Executable file)
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px"> Process</h2>
+
+                <p class="lead">
+                    It is a program that is executing
+                </p>
+
+                <p class="lead">
+                   A program must exist in "RAM" before ir executes!
+                </p>
+                <p class="lead">
+                   One program can run as multiple processes.(It means that suppose, you open "vi editor" and in new tab u open one more vi editor).
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px"> Multi-tasking</h2>
+
+                <p class="lead">
+                    Time sharing between multiple processes in a multi-programming system.(The OS enables this!)
+                </p>
+
+                <p class="lead">
+                    Point to be noted is if system is multiprogramming then it is possible that it will not be an multitasking! but if system is multitasking then the it has to be multiprogramming!
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="font-size: 23px">Some requirements Multi-tasking</h2>
+
+                <p class="lead" style="text-align: center;">
+                    Two processes should not be able to steal time of each other.
+                </p>
+                <p class="lead" style="text-align: center;">
+                    Two processes should not be able to see data/code of each other.
+                </p>
+                <p class="lead" style="text-align: center;">
+                    Two processes should not be able to modify data/code of each other.
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="color: red;">The important question is - Is the OS “always” “running” “in the background”?
+                </h2>
+
+                <h2 class="s-content__title s-content__title--post" style="color: blue;">Absolutely No!</h2>
+                <br><br>
+
+                <h2 class="s-content__title s-content__title--post">Now Let’s understand What kind of Hardware, OS interplay makes Multitasking possible</h2>
+                <br>
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">There are two types of CPU instructions</h2>
+
+                <p class="lead" >
+                    1. Normal instructions like MOV, JMP, ADD etc.
+                </p>
+
+                <p class="lead" >
+                    2. Privileged instructions these are normally related to hardware devices. for example, IN, OUT(write to I/O memory locations). INTR(software interrupt)
+                </p>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">There are two modes of CPU operation</h2>
+
+                <p class="lead" >
+                    1. CPUs have a mode bit (can be 0 or 1)
+                </p>
+
+                <p class="lead" >
+                    2. The two values of the mode bit are called: User mode and Kernel mode
+                </p>
+
+                <p class="lead" >
+                    3. If the bit is in user mode Only the normal instructions can be executed
+                </p>
+
+                <p class="lead" >
+                    3. If the bit is in kernel mode Both the normal and privileges instructions can be executed
+                </p>
+
+                <p class="lead" style="color: red">
+                    4. If the CPU is “made” to execute privileged instruction when the mode bit is in “User mode” It results in a particular hardware interrupt(What should happen on a hardware interrupt now?, answer for this is above :)
+                </p>
+
+
+                
+
+
+
+
+
+
+                
+
+
+
+
+
 
 
 

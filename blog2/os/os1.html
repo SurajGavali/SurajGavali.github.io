@@ -291,7 +291,7 @@
 
                         <br>
 
-                        <h2 class="s-content__title s-content__title--post">LAB-1 Triple Boot System</h2>
+                        <h2 class="s-content__title s-content__title--post">LAB-1 : Triple Boot System</h2>
 
                         <article class="brick entry format-standard animate-this">
  
@@ -535,37 +535,39 @@
                     </div>
                 </div> <!-- end s-content__media -->
 
+                <h2 class="s-content__title s-content__title--post">LAB-2 : Conformance test</h2>
 
-               
+                <p class="lead" style="text-align: center;" >
+                    Done to check whether a software conforms to expected behaviour.
+                </p>
 
+                <p class="lead" style="text-align: center;" >
+                    conformance testing of the system calls that is done by calling the different system call functions (e.g. write(), read(), open(), etc.) and checking if they do the desired job.
+                </p>
 
-                
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">Conformance testing of an OS:</h2>
 
+                <p class="lead" style="text-align: left;">
+                    OS provides "system calls" to an applications. E.g. printf(), scanf(), etc. results in an System call.
+                </p>
 
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">For example:</h2>
 
+                 <p class="lead" style="text-align: left;">
+                    1. By executing "int 0x80" instructions, 2. By specifying different arguments in register(e.g. EAX) the "int 0x80" may jump to different locations. Each of these then acts as a different System call.
+                </p>
 
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: blue;">OS system calls are normally made available to programmers using c-library.</h2>
 
+                <p class="lead" style="text-align: left;">
+                    programmers normally don't write "int 0x80" like instructions. programmers normally call functions like printf(), scanf().
+                </p>
 
-                
+                <p class="lead" style="text-align: left; color: red;">
+                    The printf() is actually a wrapper function on top of the write() funtion call, write() function call is actually the synonym in C of operating system's "write" system call. 
+                </p>
 
-
-
-
-
-
-
-
-
-                
-
-
-                       <!--  <h2 class="s-content__title s-content__title--post">Conformance test</h2>
-
-                        <iframe width="840" height="315"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY" style="width: 100%; height: 630px">
-                        </iframe> -->
-        
-                        
+                <iframe style="width: 100%; height: 500px" src="https://www.youtube.com/embed/elfWHv7RwV4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <!-- <pre><code class="language-css">
     code {
         font-size: 1.4rem;

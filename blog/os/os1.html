@@ -23,6 +23,7 @@
     ================================================== -->
     <script src="../js/modernizr.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
 
     <!-- favicons
     ================================================== -->
@@ -577,17 +578,304 @@
 
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc4e82LNRFRF9THBd7wGcqPJ42jLCqYKC4oYVd4wHIFro_ujw/viewform?embedded=true"  style="width: 100%; height: 500px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-                <!-- <?prettify linenums=1?>
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">copy.c</h2>
+
+                <p class="lead" style="text-align: left;">
+                     This is a C-program and it just Creates a copy of an existing file.
+                </p>
+
+                <?prettify linenums=1?>
 
                 <pre class="prettyprint" style="overflow: scroll; height: 500px">
-                    //include(stdio.h)
-                    int main(){
-                        int a;
-                        printf("hello world");
-                        scanf("%d",&a);
-                        return 0;     
+                    #include "stdio.h" 
+                    #include "stdlib.h" // For exit() 
+                      
+                    int main(int argc, char* argv[]) 
+                    { 
+                        FILE *original_file, *copy_file; 
+                        char c;
+                        
+                        // Open file for reading 
+                        original_file = fopen(argv[1], "r"); 
+                        if (original_file == NULL) 
+                        { 
+                            exit(1); 
+                        } 
+                      
+                        // Open another file for writing 
+                        copy_file = fopen(argv[2], "w"); 
+                        if (copy_file == NULL) 
+                        { 
+                            exit(1); 
+                        } 
+                      
+                        // Read contents from file 
+                        c = fgetc(original_file); 
+                        while (c != EOF) 
+                        { 
+                            fputc(c, copy_file); 
+                            c = fgetc(original_file); 
+                        }  
+                      
+                        fclose(original_file); 
+                        fclose(copy_file); 
+                        return 0; 
                     }
-                </pre> -->
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">read510.c</h2>
+
+                <p class="lead" style="text-align: left;">
+                     This is a C-program and it Opens an existing file for read-write, read it's byte number 5 to 10.
+                </p>
+
+                <?prettify linenums=1?>
+
+                <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #include "stdio.h"
+                    #include "sys/types.h"
+                    #include "sys/stat.h"
+
+                    int main(int argc, char *argv[]){
+                        FILE *fp;
+                        char data[7];
+                        fp = fopen(argv[1], "r");
+                        if(fp != NULL){
+                            fseek(fp,4,SEEK_SET);
+                            fread(data, sizeof(char), 5 , fp);
+                            printf("%s", data);
+                        }
+                        else
+                        {
+                            printf("error\n");
+                            return -1;
+                        }
+                        fclose(fp);
+                        return 0;
+                    }
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">rename.c</h2>
+
+                <p class="lead" style="text-align: left;">
+                     This program Renames an existing file and the link () system call.
+                </p>
+
+                <?prettify linenums=1?>
+
+                <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #include "stdio.h"
+                    #include "sys/types.h"
+                    #include "sys/stat.h"
+                    #include"unistd.h"
+
+                    int main(int argc, char *argv[]){
+                        if( !link(argv[1], argv[2])){
+                            return 1;
+                        }
+                        return 0;
+                    }
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">write100byte.c</h2>
+
+                 <p class="lead" style="text-align: left;">
+                     This program opens an existing file for both reading and writing, and writes 100 bytes of data into it.
+                </p>
+
+                <?prettify linenums=1?>
+
+                 <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #include "stdio.h"
+                    #include "sys/types.h"
+                    #include "sys/stat.h"
+
+                    int main(int argc, char *argv[]){
+                        FILE *f1;
+                        char data[102] = "khgva_iyc_iygWK_kuvea_kgva_hbvaeh_jkbavk_vakhb_ahb_avugb_vkhb_avhkjbvKUHB_HKVAH_avoha_aejvh";
+                        
+                        f1 = fopen(argv[1], "w+");
+                        if(f1 != NULL){
+                            fwrite(data, sizeof(char), 100 , f1);
+                            return 1;
+                        } 
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">write10end.c</h2>
+
+                <p class="lead" style="text-align: left;">
+                     This program opens an existing file for both reading and writing, and writes 10 bytes of data at the end of the file.
+                </p>
+
+                <?prettify linenums=1?>
+
+                 <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #include "stdio.h"
+                    #include "sys/types.h"
+                    #include "sys/stat.h"
+
+                    int main(int argc, char *argv[]){
+                        FILE *fp;
+                        char data[10] = "surajgaval";
+                        printf("%s", data);
+                        fp = fopen(argv[1], "a+");
+                        if(fp != NULL){
+                            fwrite(data, sizeof(char), 10, fp);
+                            fclose(fp);
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        } 
+                    }
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">write_data.c</h2>
+
+                <p class="lead" style="text-align: left;">
+                     writes 100bytes of data from file1 to file2.
+                </p>
+
+                <?prettify linenums=1?>
+
+                 <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #include "stdio.h"
+                    #include "sys/types.h"
+                    #include "sys/stat.h"
+
+                    int main(int argc, char *argv[]){
+                        FILE *f1, *f2;
+                        char data[102];
+                        
+                        f1 = fopen(argv[1], "r");
+                        if(f1 != NULL){
+                            fread(data, sizeof(char), 100 , f1);
+                            f2 = fopen(argv[2], "w");
+                            if(f2 != NULL){
+                                fwrite(data, sizeof(char), 100, f2);
+                                fclose(f2);
+                                return 1;
+                            }
+                            else{
+                                fclose(f2);
+                                return -1;
+                            }
+                            
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                </pre>
+
+                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px">test.sh</h2>
+
+                <?prettify linenums=1?>
+
+                 <pre class="prettyprint" style="overflow: scroll; height: 500px">
+                    #!/bin/bash
+
+                    #writing 100 bytes to file
+                    touch /tmp/file1.txt
+                    chmod 644 /tmp/file1.txt
+                    cc w100byte.c -o w100byte
+                    ./w100byte data.txt
+                    chmod 644 ./data.txt
+                    cc write_data.c -o write_data 
+                    ./write_data data.txt /tmp/file1.txt
+                    if [ $? -eq 1 ]
+                    then
+                        if cmp -s "./data.txt" "/tmp/file1.txt";
+                        then
+                            echo "read100 pass"
+                        else
+                            echo "read100 failed"
+                        fi
+                    else
+                        echo "write_data.c Failed" 
+                    fi
+
+                    #test read510
+
+                    cc read510.c -o read510
+                    readData=$(./read510 data.txt)
+                    echo $readData > readed5bytes.txt
+                    awk '{print substr($1, 5, 5)}' data.txt > bytesfromdata.txt
+                    diff readed5bytes.txt bytesfromdata.txt
+                    if [ $? -eq 0 ]
+                    then
+                    echo "read510 pass"
+                    else
+                    echo "read510 failed"
+                    fi
+                    rm bytesfromdata.txt
+                    rm readed5bytes.txt
+
+
+                    #test for append 10 bytes
+
+                    cc write10end.c -o write10end
+                    appendedData=$(./write10end a.txt)
+                    echo $appendedData > appendeddata.txt
+                    {
+                        readlast10=$(tail -c 10)
+                    } < a.txt
+                    echo $readlast10 > readeddata.txt
+
+                    diff appendeddata.txt readeddata.txt
+                    if [ $? -eq 0 ]
+                    then 
+                    echo "write10end pass"
+                    else
+                    echo "write10end failed"
+                    fi
+                    rm appendeddata.txt
+                    rm readeddata.txt
+
+                    #test for copy
+                    touch /tmp/copyoffile.txt
+                    chmod 644 /tmp/copyoffile.txt
+                    cc copy.c -o copy
+                    ./copy existingfile.txt /tmp/copyoffile.txt
+                    if [ $? -eq 0 ]
+                        then
+                        diff existingfile.txt /tmp/copyoffile.txt
+                            if [ $? -eq 0 ]
+                            then
+                                echo "copy pass"
+                            else
+                                echo "copy failed"
+                            fi
+                    else
+                        echo "copy.c Failed"
+                    fi
+
+                    #test for rename
+                    cc rename.c -o rename
+                    ./rename existingfile.txt renamedfile.txt
+                    if [ $? -eq 1 ]
+                    then
+                        diff existingfile.txt renamedfile.txt
+                            if [ $? -eq 0 ]
+                            then
+                                rm existingfile.txt
+                                echo "rename pass"
+                            else
+                                echo "rename failed"
+                            fi
+                    else
+                        echo "rename.c Failed"
+                    fi
+                </pre>
+
+                
                             
                         <!-- <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.</p>
 

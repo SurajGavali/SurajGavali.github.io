@@ -134,7 +134,7 @@
 
                     <h2 class="s-content__title s-content__title--post" style="font-size: 30px;text-align: left">Step-1 :  Installing qemu</h2>
 
-                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;">
+                    <div style="height: 100px; background-color: black; padding: 15px; overflow:scroll">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">$ sudo apt install qemu</p>
                     </div>
 
@@ -142,7 +142,7 @@
 
                     <h2 class="s-content__title s-content__title--post" style="font-size: 30px;text-align: left">Step-2 :   Installing xv6</h2>
 
-                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;">
+                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;overflow:scroll">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">$ git clone git://github.com/mit-pdos/xv6-public.git</p>
                     </div>
 
@@ -150,7 +150,7 @@
 
                     <h2 class="s-content__title s-content__title--post" style="font-size: 30px;text-align: left">Step-3 :   Compiling xv6</h2>
 
-                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;">
+                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;overflow:scroll">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">$ make</p>
                     </div>
 
@@ -158,13 +158,13 @@
 
                     <h2 class="s-content__title s-content__title--post" style="font-size: 30px;text-align: left">Step-4 :    Compile and run the emulator qemu</h2>
 
-                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;">
+                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;overflow:scroll">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">$ make qemu</p>
                     </div>
 
                     <br> <p class="lead" style="text-align: left; color: red">while running above command if you get an following error!</p>
 
-                    <div style="width: 100%; height: 100px; background-color: black; ">
+                    <div style="width: 100%; height: 100px; background-color: black; overflow:scroll">
                         <p class="lead" style="text-align: left; color: white"> Error: Couldn't find a working QEMU executable. </p>
                         <p class="lead" style="text-align: left; color: white">Is the directory containing the qemu binary in your PATH or have you tried setting the QEMU variable in Makefile?</p>
                     </div>
@@ -172,13 +172,13 @@
 
                     <h2 class="s-content__title s-content__title--post" style="font-size: 30px;text-align: left">Simply run following command : </h2>
 
-                    <div style="width: 100%; height: 150px; background-color: black; padding: 15px;">
+                    <div style="width: 100%; height: 150px; background-color: black; padding: 15px;overflow:scroll">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">sudo apt-get install ipxe-qemu ipxe-qemu-256k-compat-efi-roms qemu-block-extra:amd64 qemu-kvm qemu-system-common qemu-system-data qemu-system-gui:amd64 qemu-system-x86 qemu-utils</p>
                     </div>
                     <br>
                     <p class="lead" style="text-align: left; color: red">The emulator will start but it will echo on the terminal too. Better to run it with the following frag (preferred):</p>
 
-                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;">
+                    <div style="width: 100%; height: 70px; background-color: black; padding: 15px;overflow:scroll;overflow-y: none">
                         <p class="lead" style="font-size: 30px;text-align: left; color: white">$ make qemu-nox</p>
                     </div>
                    

@@ -125,28 +125,97 @@
 
                 <article class="s-post entry format-standard">
 
-                        <h2 class="s-content__title s-content__title--post">Reading XV6 code</h2>
 
-                        <h2 class="s-content__title s-content__title--post" style="text-align: left;">About</h2>
 
-                        <p class="lead">
-                            Unix like Operating System, Multitasking, Single user, This OS is on x86 processor, Supports some system calls, small code 7-10K lines, Meant for learning OS concepts.
-                        </p>
-                        <br>
-                        <h2 class="s-content__title s-content__title--post">XV6 follows monolithic kernel approach</h2>
-                        <br>
-                        <div class="s-content__media">
-                            <div class="s-content__post-thumb">
-                                <img src="../os/XV6_approuch.png" 
-                                     srcset="../os/XV6_approuch.png 2100w, 
-                                             ../os/XV6_approuch.png 1050w, 
-                                             ../os/XV6_approuch.png 525w" style="width: 100%; margin-left: 0px" alt="">
-                            </div>
-                        </div> <!-- end s-content__media -->
+                    <h2 class="s-content__title s-content__title--post">System Programming</h2>
+                    <br>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px;color: blue;">What are compiler, assembler, linker & loader and C-library?</h2>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">C-library</h2>
+
+                    <p class="lead">A compilation of some of the most frequently needed functions for c programs</p>
+                    <p class="lead">Whenever we say C-library it is an machine/object code file containing the machine code of all these function</p>
+
+                    <p class="lead" style="color: red">Where does the C-library o your computer?</p>
+                    <p class="lead" style="color: blue">---> /usr/lib/x86_64-linux-gnu-/libc-2.31.so</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Compiler</h2>
+                    <p class="lead">It is a application program which converts one programming language to another most typically compliers convert high level language like C,C++ etc. to machine code language. E.g. GCC located at --> /usr/bin/gcc</p>
+
+                    <p class="lead">Example : gcc main.c -o main  --> here main.c is the c-code and main is object/machine code file.</p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Assembler</h2>
+                    <p class="lead">It is a application program that converts assembly code to machine code. assembly code is a human readable machine code language. E.g. x86 assembly.  $ as something.s something</p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Compilation process using GCC for a C-program</h2>
+
+
+                    <p class="lead">gcc is just an another program(you can write it!). it takes C language file as input and does following things</p>
+
+                    <p class="lead">0. Pre-processing : "#" directives get pre-processed. </p>
+
+                    <p class="lead">E.g. #define MAX 10 (The preprocessor will replace all occurrences of "MAX" with "10" note that its a one zero not ten)</p>
+
+                    <p class="lead">e.g. #include<stdio.h> --> the contents of stdio.h will be copy pasted in this location. where is this file? /usr/include/stdio.h</p>
+                    <p class="lead" style="color: red">If you run $ gcc -E main.c ---> this will run the pre-processor stage and stop. </p>
+
+                    <p class="lead">1. Tokenization - split the files into tokens caled as lexical analysis</p>
+                    <p class="lead">2. Symantic analysis - arranging the tokens into logical order according to grammer of the language and also identifying if there is wrong order. this is where you get most of your syntax errors</p>
+
+                    <p class="lead">3. Converts the C-code(Tokenised and symmantically organised sequence of tokens) intoo assembly language.</p>
+                    <p class="lead" style="color: red">If you want to see output of this stage then run $ gcc -S main.c</p>
+                    <p class="lead">4. Invoke the assembler to convert assembly to machine language.(minus the linked code) , gcc -c main.c</p>
+                    <p class="lead">5. invoke the linker to link the C-library and other libraries(if needed) with the machine code</p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Linking process</h2>
+                    <p class="lead">Before linking if you see the machine code of any c code file there will not be any code of called function it will just have call to that specific function.</p>
+
+                    <p class="lead">when you run $gcc a.c b.c d.c -o try, then the machine code of try will have the code of called function link to that function.</p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">What is ELF</h2>
+                    <p class="lead">Its full form is Executable and Linkable format.</p>
+                    <p class="lead">When you run $ ./try , essentially there will be fork() and exec("./try","..")</p>
+                    <p class="lead">So the OS has to open the file "./try" and understand it. So each OS will demand it's own object code file format. For example Windows supports "exe" format, while Linux supports "ELF" format.</p>
+                    <p class="lead">ELF is used not only for executable(complete machine code) programs, but also for partially compiled files e.g. main.o and library files like libc.so.6 </p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Loader</h2>
+                    <p class="lead">Is a "code" that loads the machine code from file to memory. E.g "exec" is loader(means loader is basically code of exec)</p>
+                    <p class="lead">Loader is part of OS.</p>
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Cross compilation</h2>
+                    <p class="lead">Using a compiler on one platform(OS + processor) to generate machine code for another platform(target)</p>
+                    <p class="lead">generally compilers by default will generate machine code for another platform on which they execute.</p>
+                    <p class="lead">gcc is a good compiler can be used for cross-compilation.</p>
+                    <p class="lead">Ex. you can run gcc + x86 to generate an executable file for ARM + some OS.</p>
+                    <p class="lead">Cross compilation is needed if compiler does not exist on the "target" platform.</p>
+
+                    <p class="lead" style="color: red">Compilers,linkers, assemblers etc. are system program because their behaviour and output depends on the system(system + OSs) </p>
+
+
+                    <h2 h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Static and dynamic linking</h2>
+
+                    <p class="lead">Static linking : The linker combines the machine code of all functions, into the executable. hence the executable has the large size.</p>
+                    <p class="lead">Dynamic linking : The linker does not combines the code of all functions, typically the library functions into the executable it inserts "stub" code instead.</p>
+                    <p class="lead" style="color: red"> When the program starts running, at that time, the "stub" code will help the loader to locate the code of the library, and load it. thats why the size of a executable is small. and it provides the flexibility to change the library code without changing the executable.</p>
+                    <p class="lead">Default is "Dynamic"</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Static and Dynamic loading</h2>
+                    <p class="lead">This is job of a loader</p>
+                    <p class="lead">If the entire program is loaded in memory at "exec" time then its static loading</p>
+                    <p class="lead">if a particular function is loaded in memory when it's called, than its called as dyanamic loading</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left;font-size: 30px;color: grey;">Now there arises 4 possibilities of Linking + Loading</h2>
+                    <p class="lead">1. Static Linking + Static Loading</p>
+                    <p class="lead">2. Static Linking + Dynamic Loading</p>
+                    <p class="lead">3. Dynamic Linking + Static Loading</p>
+                    <p class="lead">4. Dynamic Linking + Dynamic Loading</p>
+
+                        
 
                         <div class="s-content__pagenav group">
                              <div class="next-nav" style="text-align: left;">
-                                 <a href="os1.html" rel="next">
+                                 <a href="Interrupts.html" rel="next">
                                     Previous
                                  </a>
                              </div>

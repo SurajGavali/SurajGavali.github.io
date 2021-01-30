@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Central Tendancy and Dispersion</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <div class="s-header__search">
+                    
+                <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="Search">
+                </form>
+
+                <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+
+            </div> <!-- end search wrap --> 
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+                    
+                    
+                    
+                </article>
+
+                <article class="s-post entry format-standard">
+                    <h2 class="s-content__title s-content__title--post">Central Tendancy and Dispersion</h2>
+                    <br>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Measures of Central Tendency</h2>
+
+                    <p class="lead">• Measures of central tendency yield information about “particular places or locations in a group of numbers.” </p>
+                    <p class="lead">• A single number to describe the characteristics of a set of data.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Summary statistics</h2>
+
+                    <div style="float: left;margin-right: 200px;">
+                        
+                        <p class="lead" style="color: blue">• Central tendency or measures of location</p>
+                    <p class="lead">– Arithmetic mean</p>
+                    <p class="lead">– Weighted mean</p>
+                    <p class="lead">– Median</p>
+                    <p class="lead">– Percentile</p>
+                    </div>
+                    
+                    <div>
+                        <p class="lead" style="color: blue">• Dispersion</p>
+                    <p class="lead">– Skewness</p>
+                    <p class="lead">– Kurtosis</p>
+                    <p class="lead">– Range</p>
+                    <p class="lead">– Interquartile range</p>
+                    <p class="lead">– Variance</p>
+                    <p class="lead">– Standard score</p>
+                    <p class="lead">– Coefficient of variation</p>
+
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Arithmetic Mean</h2>
+
+                    <p class="lead">• Commonly called ‘the mean’</p>
+                    <p class="lead">• It is the average of a group of numbers</p>
+                    <p class="lead">• Applicable for interval and ratio data</p>
+                    <p class="lead">• Not applicable for nominal or ordinal data</p>
+                    <p class="lead">• Affected by each value in the data set, including extreme values</p>
+                    <p class="lead">• Computed by summing all values in the data set and dividing the sum by the number of values in the data set</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (107).png" 
+                                    srcset="../Data analytics with python/Screenshot (107).png 2100w, 
+                                            ../Data analytics with python/Screenshot (107).png 1050w, 
+                                            ../Data analytics with python/Screenshot (107).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Mean of Grouped Data</h2>
+
+                    <p class="lead">• Weighted average of class midpoints</p>
+                    <p class="lead">• Class frequencies are the weights</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (108).png" 
+                                    srcset="../Data analytics with python/Screenshot (108).png 2100w, 
+                                            ../Data analytics with python/Screenshot (108).png 1050w, 
+                                            ../Data analytics with python/Screenshot (108).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (109).png" 
+                                    srcset="../Data analytics with python/Screenshot (109).png 2100w, 
+                                            ../Data analytics with python/Screenshot (109).png 1050w, 
+                                            ../Data analytics with python/Screenshot (109).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Weighted Average</h2>
+
+                    <p class="lead">• Sometimes we wish to average numbers, but we want to assign more importance, or weight, to some of the numbers.</p>
+                    <p class="lead">• The average you need is the weighted average.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Formula</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (110).png" 
+                                    srcset="../Data analytics with python/Screenshot (110).png 2100w, 
+                                            ../Data analytics with python/Screenshot (110).png 1050w, 
+                                            ../Data analytics with python/Screenshot (110).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Example</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (111).png" 
+                                    srcset="../Data analytics with python/Screenshot (111).png 2100w, 
+                                            ../Data analytics with python/Screenshot (111).png 1050w, 
+                                            ../Data analytics with python/Screenshot (111).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Median</h2>
+
+                    <p class="lead">• Middle value in an ordered array of numbers</p>
+                    <p class="lead">• Applicable for ordinal, interval, and ratio data</p>
+                    <p class="lead">• Not applicable for nominal data</p>
+                    <p class="lead">• Unaffected by extremely large and extremely small values</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Computational Procedure</h2>
+
+                    
+                    <p class="lead" style="color: blue">• First Procedure</p>
+                    <p class="lead">– Arrange the observations in an ordered array</p>
+                    <p class="lead">– If there is an odd number of terms, the median is the middle term of the ordered array</p>
+                    <p class="lead">– If there is an even number of terms, the median is the average of the middle two terms</p>
+
+                    
+
+                    <p class="lead" style="color: blue">• Second Procedure</p>
+                    <p class="lead">– The median’s position in an ordered array is given by (n+1)/2.</p>
+ 
+                   
+
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Example with an Odd Number of Terms</h2>
+
+                     <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (112).png" 
+                                    srcset="../Data analytics with python/Screenshot (112).png 2100w, 
+                                            ../Data analytics with python/Screenshot (112).png 1050w, 
+                                            ../Data analytics with python/Screenshot (112).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Example with an Even Number of Terms</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (113).png" 
+                                    srcset="../Data analytics with python/Screenshot (113).png 2100w, 
+                                            ../Data analytics with python/Screenshot (113).png 1050w, 
+                                            ../Data analytics with python/Screenshot (113).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Median of Grouped Data</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (114).png" 
+                                    srcset="../Data analytics with python/Screenshot (114).png 2100w, 
+                                            ../Data analytics with python/Screenshot (114).png 1050w, 
+                                            ../Data analytics with python/Screenshot (114).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: left;font-size: 30px">Example</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (115).png" 
+                                    srcset="../Data analytics with python/Screenshot (115).png 2100w, 
+                                            ../Data analytics with python/Screenshot (115).png 1050w, 
+                                            ../Data analytics with python/Screenshot (115).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Mode</h2>
+
+                    <p class="lead">• The most frequently occurring value in a data set</p>
+                    <p class="lead">• Applicable to all levels of data measurement (nominal, ordinal, interval, and ratio)</p>
+                    <p class="lead">• Bimodal -- Data sets that have two modes</p>
+                    <p class="lead">• Multimodal -- Data sets that contain more than two modes</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (116).png" 
+                                    srcset="../Data analytics with python/Screenshot (116).png 2100w, 
+                                            ../Data analytics with python/Screenshot (116).png 1050w, 
+                                            ../Data analytics with python/Screenshot (116).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (117).png" 
+                                    srcset="../Data analytics with python/Screenshot (117).png 2100w, 
+                                            ../Data analytics with python/Screenshot (117).png 1050w, 
+                                            ../Data analytics with python/Screenshot (117).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Percentiles</h2>
+
+                    <p class="lead">• Measures of central tendency that divide a group of data into 100 parts</p>
+                    <p class="lead">• Example: 90th percentile indicates that at most 90% of the data lie below it, and at least 10% of the data lie above it</p>
+                    <p class="lead">• The median and the 50th percentile have the same value</p>
+                    <p class="lead">• Applicable for ordinal, interval, and ratio data</p>
+                    <p class="lead">• Not applicable for nominal data</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Computational Procedure</h2>
+
+                    <p class="lead">• Organize the data into an ascending ordered array</p>
+                    <p class="lead">• Calculate the p th percentile location: i = (P/100)(n)</p>
+                    <p class="lead">• Determine the percentile’s location and its value.</p>
+                    <p class="lead">• If i is a whole number, the percentile is the average of the values at the i and (i+1) positions</p>
+                    <p class="lead">• If i is not a whole number, the percentile is at the (i+1) position in the ordered array</p>
+
+                     <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (118).png" 
+                                    srcset="../Data analytics with python/Screenshot (118).png 2100w, 
+                                            ../Data analytics with python/Screenshot (118).png 1050w, 
+                                            ../Data analytics with python/Screenshot (118).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Dispersion</h2>
+
+                    <p class="lead">• Measures of variability describe the spread or the dispersion of a set of data</p>
+                    <p class="lead">• Reliability of measure of central tendency</p>
+                    <p class="lead">• To compare dispersion of various samples</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Variability</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (230).png" 
+                                    srcset="../Data analytics with python/Screenshot (230).png 2100w, 
+                                            ../Data analytics with python/Screenshot (230).png 1050w, 
+                                            ../Data analytics with python/Screenshot (230).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Measures of Variability or dispersion</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (231).png" 
+                                    srcset="../Data analytics with python/Screenshot (231).png 2100w, 
+                                            ../Data analytics with python/Screenshot (231).png 1050w, 
+                                            ../Data analytics with python/Screenshot (231).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Range – ungrouped data</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (232).png" 
+                                    srcset="../Data analytics with python/Screenshot (232).png 2100w, 
+                                            ../Data analytics with python/Screenshot (232).png 1050w, 
+                                            ../Data analytics with python/Screenshot (232).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Quartiles</h2>
+
+                    <p class="lead">• Measures of central tendency that divide a group of data into four subgroups</p>
+                    <p class="lead">• Q1 : 25% of the data set is below the first quartile</p>
+                    <p class="lead">• Q2 : 50% of the data set is below the second quartile</p>
+                    <p class="lead">• Q3 : 75% of the data set is below the third quartile</p>
+                    <p class="lead">• Q1 is equal to the 25th percentile</p>
+                    <p class="lead">• Q2 is located at 50th percentile and equals the median</p>
+                    <p class="lead">• Q3 is equal to the 75th percentile</p>
+
+                    <p class="lead">• Quartile values are not necessarily members of the data set</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (233).png" 
+                                    srcset="../Data analytics with python/Screenshot (233).png 2100w, 
+                                            ../Data analytics with python/Screenshot (233).png 1050w, 
+                                            ../Data analytics with python/Screenshot (233).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (119).png" 
+                                    srcset="../Data analytics with python/Screenshot (119).png 2100w, 
+                                            ../Data analytics with python/Screenshot (119).png 1050w, 
+                                            ../Data analytics with python/Screenshot (119).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (120).png" 
+                                    srcset="../Data analytics with python/Screenshot (120).png 2100w, 
+                                            ../Data analytics with python/Screenshot (120).png 1050w, 
+                                            ../Data analytics with python/Screenshot (120).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Deviation from the Mean</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (121).png" 
+                                    srcset="../Data analytics with python/Screenshot (121).png 2100w, 
+                                            ../Data analytics with python/Screenshot (121).png 1050w, 
+                                            ../Data analytics with python/Screenshot (121).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Mean Absolute Deviation</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (122).png" 
+                                    srcset="../Data analytics with python/Screenshot (122).png 2100w, 
+                                            ../Data analytics with python/Screenshot (122).png 1050w, 
+                                            ../Data analytics with python/Screenshot (122).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Population Variance</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (123).png" 
+                                    srcset="../Data analytics with python/Screenshot (123).png 2100w, 
+                                            ../Data analytics with python/Screenshot (123).png 1050w, 
+                                            ../Data analytics with python/Screenshot (123).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Population Standard Deviation</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (124).png" 
+                                    srcset="../Data analytics with python/Screenshot (124).png 2100w, 
+                                            ../Data analytics with python/Screenshot (124).png 1050w, 
+                                            ../Data analytics with python/Screenshot (124).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Sample Variance</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (125).png" 
+                                    srcset="../Data analytics with python/Screenshot (125).png 2100w, 
+                                            ../Data analytics with python/Screenshot (125).png 1050w, 
+                                            ../Data analytics with python/Screenshot (125).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                     <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Sample Standard Deviation</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (126).png" 
+                                    srcset="../Data analytics with python/Screenshot (126).png 2100w, 
+                                            ../Data analytics with python/Screenshot (126).png 1050w, 
+                                            ../Data analytics with python/Screenshot (126).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px"> Uses of Standard Deviation</h2>
+
+                    <p class="lead">• Indicator of financial risk</p>
+                    <p class="lead">• Quality Control</p>
+                    <p class="lead">– construction of quality control charts</p>
+                    <p class="lead">– process capability studies</p>
+                    <p class="lead">• Comparing populations</p>
+                    <p class="lead">– household incomes in two cities</p>
+                    <p class="lead">– employee absenteeism at two plants</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="color: grey; text-align: center;font-size: 30px">Standard Deviation as an Indicator of Financial Risk</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="../Data analytics with python/Screenshot (234).png" 
+                                    srcset="../Data analytics with python/Screenshot (234).png 2100w, 
+                                            ../Data analytics with python/Screenshot (234).png 1050w, 
+                                            ../Data analytics with python/Screenshot (234).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                   
+
+
+
+
+
+
+
+                               
+                                        
+                </article>
+
+
+
+            </div>  
+        </div>                
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Operating Systems</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+
+
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <!-- <div class="s-header__search"> -->
+                    
+                <!-- <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off" id="search">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="submit" id="submit_form" onclick="checkInput()">
+                </form> -->
+
+                <!-- <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a> -->
+
+            <!-- </div>  --><!-- end search wrap --> 
+
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+
+                    <h2 class="s-content__title s-content__title--post">Bootloader code in xv6</h2>
+                    <p class="lead" style="color: blue; text-align: center; font-size: 25px;">lets understand again what does exactly bootloader do!</p>
+                    <p class="lead">1. Bootloader itself is loaded by the BIOS at a fixed loaction in memory and BIOS makes it run.</p>
+                    <p class="lead">2. why is it at fixed loaction?</p>
+                    <p class="lead" style="color: blue;">• Because the BIOS code is written by the CPU manufaturer.
+                        (BIOS code itself is located at fixed loaction)</p>
+
+                    <p class="lead" style="color: red;">The BIOS code look for bootloader code on the boot device in sector 0 ,when it has copy paste it in memory that has to 
+                        be a fix location(these loactions are normally documented in manuals given by CPU manufaturer)</p>
+                        
+                    <p class="lead" style="color: blue; text-align: center; font-size: 25px;">Our job as OS programmer is to write the bootloader code.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Bootloader pick up code of OS from known location and loads it in memory and makes the OS run.</h2>
+                   
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px;color: coral; text-align: left;">XV6 "bootloader code" is in "bootasm.S" and "bootmain.c"(let us see makefile)</h2>
+                    <p class="lead" style="text-align: left;color: darkred;">Makefile</p>
+
+                    <p class="lead">From here the kernel is getting built...</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="1.png" 
+                                    srcset="1.png 2100w, 
+                                            1.png 1050w, 
+                                            1.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">Line number "93" : builds disk image of XV6 </p>
+
+                    <p class="lead" style="color: blue;">• In this the first "dd" command : "if" for "input file" and "of" for output file,
+                        it simply reads zeros  from /dev/zero file (which is the infinite source of zeros), writes 10000 blocks into xv6.img file
+                        (each block is typically 512 byte)</p>
+
+                    <p class="lead" style="color: blue;">• "dd if=bootblock of=xv6.img conv=notrunc" in this reads from bootblock file and write into 
+                        initial part of xv6.img file without truncating.</p>
+
+                    <p class="lead" style="color: blue;">• "dd if=kernel of=xv6.img seek=1 conv=notrunc" in this reading from kernel file and 
+                        writing into xv6.img skiping 1 block i.e. is after 512bytes, without truncating</p>
+
+                    <p class="lead" style="color: darkred;">so overall this part of code simply concatenates "bootblock cod0e" and 
+                        "kernel code", followed by zeros....</p>
+
+                    <p class="lead" style="color: dimgray;">Now let us move to line number 103</p>
+
+                    <p class="lead" style="text-align: left;"> We can see that bootblock is consisting of "bootasm.S" "bootmain.c"</p>
+
+                    <p class="lead" style="color: blue;">• line number 104 and 105 indicating that "bootmain.c" and "bootasm.S" is compiled using cc and obtains 
+                        "bootmain.o" and "bootasm.o" file respectively...</p>
+                    
+                    <p class="lead" style="color: blue;">• now after this linker comes into a picture i.e. "LD command" and it links bootmain.o and bootasm.o file 
+                        and creates bootblock.o file...</p>
+
+                    <p class="lead" style="color: red;">In this command the interesting input to the linker is "-Ttext 0x7C00" this telling to the linker that you create the 
+                        object code file but int the object code file you write "-Ttext 0x7C00" that when this code is loaded in the memory
+                        the code should get loaded at this location in memory this address is documented by processor manufaturer telling that 
+                        we will entertain bootloader code at this location (7C00)</p>
+                    
+                    <p class="lead" style="color: dimgray;">Now let's skip the OBJDUMP line</p>
+
+
+                    <p class="lead" style="color: blue;">• The next line "$(OBJCOPY) -S -O binary -j .text bootblock.o bootblock" this is just
+                        copying bootblock.o as bootblock which is used at line number 93 in code...</p>
+
+                    <p class="lead" style="text-align: left;color: rgb(82, 1, 1);">So now what we are supposed to do is that understand the code in 
+                        "bootasm.S bootmain.c" because these two files makes bootblock.</p>
+
+                    <p class="lead" style="color: red;">so let's see bootasm.S file...</p>
+                    
+                    <p class="lead" style="text-align: left;color: darkred;">bootasm.S</p>
+
+                    
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="2.png" 
+                                    srcset="2.png 2100w, 
+                                            2.png 1050w, 
+                                            2.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">So this is a bootloader code,</p>
+
+                    <p class="lead" style="color: blue;">Please note that whenver you see directives which begins with "." for example here 
+                        ".code16 .globl" these are basically the additional instructions to the assembler to assemble
+                        i.e. convert to machine code in a particular way.</p>
+
+
+                    <p class="lead">After that the "start" is just lable whenver there is call or jmp instruction
+                        the code will begin at this lable..</p>
+
+                    <p class="lead" style="color: blue;">So the first line to be assembled is "cli". which is going to "disable interrupts".(So that until your code 
+                        loads, all hardware interupts handler, no interrupts will occur)</p>
+
+                    <p class="lead" style="color: red;">While executing above piece of code,</p>
+
+                    <p class="lead">• The IP will have value 7C00 so instruction "cli" will at 7C00.</p>
+    
+                    <p class="lead">• And the next instruction i.e. "xorw  %ax,%ax" will be at "7C00 + 4" and so on...
+                            (IP gets incremented automatically)</p>
+    
+    
+                    <p class="lead">• "xorw    %ax,%ax"  this instruction will XOR the register with itself and makes 
+                            register zero(plz note that %ax is a 16-bit register)</p>
+    
+                    <p class="lead">• After that there are three instructions which makes all segment register zero..</p>
+    
+                    <p class="lead" style="color: blue;">What about code-segment?</p>
+                    <p class="lead">• The code seg must have been initialized by BIOS to have a particular value thats why code segemnt is not being 
+                            touched here..</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Processor starts in real mode</h2>
+
+                    
+                    <p class="lead">• It works like 16-bit 8088</p>
+
+                    <p class="lead">• Eight 16-bit generel purpose registers.</p>
+                    <p class="lead">• Segment registers %cs, %ds, %es and %ss (The additional bits necessary to genrate 
+                        20-bit memory address from 16-bit registers i.e. addr = seg*4 + addr)</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Relation between logical and physical address</h2>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="3.png" 
+                                    srcset="3.png 2100w, 
+                                            3.png 1050w, 
+                                            3.png 525w" style="width: 100%; margin-left: 0px" alt="figure B-1">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">• CPU is running particular instruction after that instruction is over CPU is going to send on the outside bus 
+                        which goes to the memory and address(the address from where the next instruction is going to fetch!)</p>
+
+                    <p class="lead">• IP points to the instruction address..</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Bootloader: address translation</h2>
+
+                    <p class="lead">• The x86 processor does two types of memory management viz. paging and segmentation(it is possible for OS
+                        programmer to enable either paging, segmentation or both together)</p>
+
+                    <p class="lead">• Right now we will just go with the fact that there is something called paging and segmentation in the "hardware"
+                        which to be configured by OS code therefore it has to to configured by bootloader (otherwise you can not execute 
+                        any code!)</p>
+                    <p class="lead">• xv6 configures the segmentation hardware to translate logical to linear addresses without change so that 
+                        they are always equal.(Segmenatation is practically off)</p>
+
+                    <p class="lead">• Once paging is enabled, the only interesting addresses mapping in the system will be linear to physical...</p>
+                    <p class="lead" style="text-align: left;color: darkred;">bootasm.S</p>
+                    
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="4.png" 
+                                    srcset="4.png 2100w, 
+                                            4.png 1050w, 
+                                            4.png 525w" style="width: 100%; margin-left: 0px" alt="figure B-1">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="text-align: left;color: red;">This piece of code exist in all bootloaders for some historical legacy purposes
+                        we know that Seg::off is a 16-bit calculation(segment itself is a 16-bit with this we can calculate 20-bits of memory
+                        i.e. 2^20(1MB) of memory),after 2^20 ,8086 wrapped addresses to zero.</p>
+
+                    <p class="lead" style="text-align: left;">• 80286 introduced 21st-bit of address. but older software required 20-bits only. BIOS disabled 21st bit and some 
+                        OS needed 21st bit so they enable it.</p>
+
+                    <p class="lead" style="text-align: left;">• So all the above piece of code is to enable the 21st bit..</p>
+
+                    <p class="lead" style="text-align: left;">• "inb     $0x64,%al" #write to port 0x64</p>
+
+                    <p class="lead" style="text-align: left;">• "0x60" is keyboard controller.</p>
+
+                    <p class="lead" style="text-align: left;">• 21st bit belong to keyboard controller.</p>
+
+                    <p class="lead" style="text-align: left;color: darkred;">bootasm.S</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="5.png" 
+                                    srcset="5.png 2100w, 
+                                            5.png 1050w, 
+                                            5.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="text-align: left;">Moving further, In this piece of code the first line is "lgdt gdtdesc" which means load gdt(global descriptor table(part of memory mangement unit))
+                        so with this line we going to load data(given by "gdtdesc") to gdt.</p>
+                    <p class="lead" style="text-align: left; color: blue;">When you scroll little down you find this "gdtdesc" which is refering to ".long gdt"
+                        right above you will find "gdt".</p>
+                    <p class="lead" style="text-align: left;color: darkred;">bootasm.S</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                        <img src="6.png" 
+                                srcset="6.png 2100w, 
+                                        6.png 1050w, 
+                                        6.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    <p class="lead" style="text-align: left;color: red;">What is it in this gdt?, It is an sequence of three numbers (Refer below image)</p>
+                    <p class="lead" style="text-align: left;">when you open "asm.h" file you will the definations of these numbers. refer the above image.</p>
+                    <p class="lead" style="text-align: left;color: darkred;">asm.h</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="7.png" 
+                                    srcset="7.png 2100w, 
+                                            7.png 1050w, 
+                                            7.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="text-align: left; color: red;">So with "lgdt gdtdesc" we are going to load above three numbers to "gdt"</p>
+
+                    <p class="lead" style="text-align: left; color: blue;">After "lgdt" there is 3 lines of code </p>
+
+                    <p class="lead" style="text-align: left;">• "movl    %cr0, %eax" , moves %cr0 register to register %eax.</p>
+                    <p class="lead" style="text-align: left;">• "orl     $CR0_PE, %eax" %eax is ored with "$CR0_PE". ($CR0_PE is a number) with this the particular bit is enabled in the %eax</p>
+                    <p class="lead" style="text-align: left;">• "movl    %eax, %cr0" enabled bit is moved back to the %cr0 reg.</p>
+                    
+                    <p class="lead" style="text-align: left; color: red;">With these four lines of code the processor changes from 16-bit mode 32-bit protected mode.
+                        (real mode to protected mode). </p>
+
+                    <p class="lead" style="text-align: left; color: blue;">The "real mode to protected mode" are totally unrelated to "user-mode and kernel-mode".
+                            (user-mode and kernel-mode are now exist in protected mode).</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Real mode vs Protected mode</h2>
+
+                    <p class="lead">• In real mode we can access 16-bit reg and in protected mode we can access 32-bit mode </p>
+                    <p class="lead">• Can accesss upto 2^32 memory</p>
+                    <p class="lead">• Can do arthmetic in 32 bits</p>
+                    <p class="lead">• The calculations of address which were happening using "seg*4+off" is no more going to happen </p>
+                    <p class="lead">• The value in the seg register is now used as index into segment descripter table.</p>
+                    
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Segments in protected mode</h2>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="8.png" 
+                                    srcset="8.png 2100w, 
+                                            8.png 1050w, 
+                                            8.png 525w" style="width: 100%; margin-left: 0px" alt="Segments in protected mode">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="text-align: left;">• "gdt" is an array of base,limit and flags.</p>
+                    <p class="lead" style="text-align: left;">• The way in which the memory addresses are calculated by processor is like this, 
+                        the value in the segments register is used as index in this gdt from there it will take base value and base value is added 
+                        to offset to finally calculate addresse that goes to the RAM. the base value in this array is "zero" and and limit is 4gb
+                        (so when you add zero to offset you will get offset itself). so we are doing memory management setup where in every address 
+                        issued by the CPU when it goes to memory management of CPU will basically remains the "same" because the segements are ineffevtive.</p>
+
+                    <p class="lead" style="text-align: left; color: red;">So what has happened till now?</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="9.png" 
+                                    srcset="9.png 2100w, 
+                                            9.png 1050w, 
+                                            9.png 525w" style="width: 100%; margin-left: 0px" alt="what?">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="color: blue;">lets see the further code...</p>
+                    <p class="lead" style="text-align: left;color: darkred;">bootasm.S</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="10.png" 
+                                    srcset="10.png 2100w, 
+                                            10.png 1050w, 
+                                            10.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">With the first instruction we are copying SEG_KDATA left shifted to 3.</p>
+                    <p class="lead" style="color: red;">what is SEG_KDATA?</p>
+                    <p class="lead">• In file "alltext" at line "0715" you will find the declaration of this macro!</p>
+                    <p class="lead" style="text-align: left;color: darkred;">alltext</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="11.png" 
+                                    srcset="11.png 2100w, 
+                                            11.png 1050w, 
+                                            11.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead" style="color: red;">so i.e. "2 'left shifted by' 3"!</p>
+                    <p class="lead">After this the next three lines simply copies this value to all segments.. as a result of these three lines 
+                        the ds,es and ss are pointed value 2..</p>
+
+                    <p class="lead">And we are setting %fs and %gs to zero which we are not using right now!</p>
+
+                    <p class="lead">By executing this "movl    $start, %esp" line we are copying "7C00" to reg %esp.. and after that 
+                        calling bootmain.(note that this will push the address of the whatever there is right after this call instruction ,
+                         on to the stack.. and jump to the "bootmain")</p>
+
+                    <p class="lead" style="color: red;">now we jump into the "bootmain.c"(remember that bootblock is concatination of bootmain.o and bootasm.o 
+                        that is bootmain.c is followed by bootasm.S)</p>
+
+                    <p class="lead" style="text-align: left;color: darkred;">bootmain.c</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="12.png" 
+                                    srcset="12.png 2100w, 
+                                            12.png 1050w, 
+                                            12.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">You will notice in this above piece of code "#include "elf.h"(gives structures to access elf 
+                        file format),"struct elfhdr *elf;"(elfhdr is one such structure).if you notice line number 25 the "elf" 
+                        pointer is pointing to 1 MEGA i.e. "0x10000".</p>
+
+                    <p class="lead" style="color:blue">Now there is function call of "readseg((uchar*)elf, 4096, 0);" function.</p>
+
+
+                    <p class="lead" style="text-align: left;color: darkred;">bootmain.c</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="13.png" 
+                                    srcset="13.png 2100w, 
+                                            13.png 1050w, 
+                                            13.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">You will notice that this function takes three arguments of which first one is "address in memory", 
+                        2nd one is count and 3rd one is offset.(So this function is reading from byte number zero upto 4096 bytes..)</p>
+
+                    <p class="lead">Basically this function is doing is running loop in terms of sector size where sector size is 512 unit size and calling "readsect(pa, offset);" 
+                    function. after doing some arthametic..</p>
+
+                    <p class="lead" style="text-align: left;color: darkred;">bootmain.c</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="14.png" 
+                                    srcset="14.png 2100w, 
+                                            14.png 1050w, 
+                                            14.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <p class="lead">• In this function the first call is to "waitdisk();".</p>
+                    <p class="lead">• After that there is call to "outb(0x1F2, 1);".</p>
+                    <p class="lead" style="color: red;">so what is "outb(0x1F2, 1);"?</p>
+                    <p class="lead" style="color:blue;">Open x86.h file you will find the defination this function..</p>
+                    <p class="lead" style="text-align: left;color: darkred;">x86.h</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="15.png" 
+                                    srcset="15.png 2100w, 
+                                            15.png 1050w, 
+                                            15.png 525w" style="width: 100%; margin-left: 0px" alt="outb">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    <p class="lead">This is a basically c-function which has assebly code called "out".we know that in and out are 
+                        io instructions they are used to write instruction into particaular location for the hardware controllers.
+                        they basically act as a bridge now between the software and hardware world. when you run in or out instr
+                         you are basically writing into the hardware controller and accessing the hardware devices.
+                        obiviously these are privillaged instructions.</p>
+
+                    <p class="lead" style="color: red;">By default we are running in the kernel mode now and running the out instruction.</p>
+
+
+                    <p class="lead">so all these outb calls doing is they are instructing the hardware controller to read from 
+                        the disk and make available data at particular memory location. at the end of all these io instructions 
+                        the data will be rade by the hard-disk controller from the physical hard-disk and put into memory..</p>
+
+                    <p class="lead" style="color: blue;">what has happend after these repeated calls of read sector function is that 
+                        we rade the 4096 bytes from byte number zero of the hard-disk and put into address 
+                        1MB(why 1 MB beacuse we have declared elf as 1 MB).</p>
+
+                    <p class="lead"> so 1 MB location in the memory will contain 4k data from the first 4k byets of the hard-disk
+                        and outof the 4k first 512 were the bootloader and the next code was kernel.</p>
+
+                    <p class="lead" style="color: red;">now in the bootmain function there is call to entry() function which 
+                        enters into kernel code now.</p>
+
+                    <p class="lead" style="text-align: left;color: darkred;"></p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="16.png" 
+                                    srcset="16.png 2100w, 
+                                            16.png 1050w, 
+                                            16.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    
+                    <p class="lead">**write from slides "bootmain()" and elf</p>
+                    <p class="lead">"image16(entry)"</p> 
+                    <p class="lead">// ls .dev/sda if you read this file it will give access to actual hard-disk!</p>    
+        
+                </article>
+                <article>
+                        <div class="s-content__pagenav group">
+                             <div class="next-nav" style="text-align: left;">
+                                 <a href="basics of x86 architecture.html" rel="next">
+                                    Previous
+                                 </a>
+                             </div>
+
+                             <div class="next-nav" style="text-align: right;">
+                                 <a href="../comingsoon.html" rel="next">
+                                    Next
+                                 </a>
+                             </div>
+                         </div> <!-- end s-content__pagenav -->
+
+                         <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+                    </div> <!-- end s-content__primary -->
+                </article>
+
+            </div> <!-- end column -->
+        </div> <!-- end row -->
+
+
+
+        <!-- comments
+        ================================================== -->
+       <!--  <div class="comments-wrap">
+
+            <div id="comments" class="row">
+                <div class="column">
+
+                    <h3>5 Comments</h3>
+ -->
+                    <!-- START commentlist -->
+                    <!-- <ol class="commentlist">
+
+                        <li class="depth-1 comment">
+
+                            <div class="comment__avatar">
+                                <img class="avatar" src="images/avatars/user-01.jpg" alt="" width="50" height="50">
+                            </div>
+
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <div class="comment__author">Itachi Uchiha</div>
+
+                                    <div class="comment__meta">
+                                        <div class="comment__time">Sept 05, 2020</div>
+                                        <div class="comment__reply">
+                                            <a class="comment-reply-link" href="#0">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comment__text">
+                                <p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
+                                facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>
+                                </div>
+
+                            </div>
+
+                        </li> --> <!-- end comment level 1 -->
+
+                        <!-- <li class="thread-alt depth-1 comment">
+
+                            <div class="comment__avatar">
+                                <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
+                            </div>
+
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <div class="comment__author">John Doe</div>
+
+                                    <div class="comment__meta">
+                                        <div class="comment__time">Sept 05, 2020</div>
+                                        <div class="comment__reply">
+                                            <a class="comment-reply-link" href="#0">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comment__text">
+                                <p>Sumo euismod dissentiunt ne sit, ad eos iudico qualisque adversarium, tota falli et mei. Esse euismod
+                                urbanitas ut sed, et duo scaevola pericula splendide. Primis veritus contentiones nec ad, nec et
+                                tantas semper delicatissimi.</p>
+                                </div>
+
+                            </div> -->
+
+                           <!--  <ul class="children">
+
+                                <li class="depth-2 comment">
+
+                                    <div class="comment__avatar">
+                                        <img class="avatar" src="images/avatars/user-03.jpg" alt="" width="50" height="50">
+                                    </div>
+
+                                    <div class="comment__content">
+
+                                        <div class="comment__info">
+                                            <div class="comment__author">Kakashi Hatake</div>
+
+                                            <div class="comment__meta">
+                                                <div class="comment__time">Sept, 05 2020</div>
+                                                <div class="comment__reply">
+                                                    <a class="comment-reply-link" href="#0">Reply</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="comment__text">
+                                            <p>Duis sed odio sit amet nibh vulputate
+                                            cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit amet nibh vulputate
+                                            cursus a sit amet mauris</p>
+                                        </div>
+
+                                    </div> -->
+
+                                    <!-- <ul class="children">
+
+                                        <li class="depth-3 comment">
+
+                                            <div class="comment__avatar">
+                                                <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
+                                            </div>
+
+                                            <div class="comment__content">
+
+                                                <div class="comment__info">
+                                                    <div class="comment__author">John Doe</div>
+
+                                                    <div class="comment__meta">
+                                                        <div class="comment__time">Sept 04, 2020</div>
+                                                        <div class="comment__reply">
+                                                            <a class="comment-reply-link" href="#0">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="comment__text">
+                                                <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est
+                                                etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
+                                                </div>
+
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+
+                        </li> --> <!-- end comment level 1 -->
+
+                        <!-- <li class="depth-1 comment">
+
+                            <div class="comment__avatar">
+                                <img class="avatar" src="images/avatars/user-02.jpg" alt="" width="50" height="50">
+                            </div>
+
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <div class="comment__author">Shikamaru Nara</div>
+
+                                    <div class="comment__meta">
+                                        <div class="comment__time">Sept 03, 2020</div>
+                                        <div class="comment__reply">
+                                            <a class="comment-reply-link" href="#0">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comment__text">
+                                <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</p>
+                                </div>
+
+                            </div>
+
+                        </li> -->  <!-- end comment level 1 -->
+
+                   <!--  </ol> -->
+                    <!-- END commentlist -->
+
+                <!-- </div>  --><!-- end col-full -->
+            <!-- </div>  --><!-- end comments -->
+
+
+           <!--  <div class="row comment-respond"> -->
+
+                <!-- START respond -->
+                <!-- <div id="respond" class="column">
+
+                    <h3>
+                    Add Comment 
+                    <span>Your email address will not be published.</span>
+                    </h3>
+
+                    <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                        <fieldset>
+
+                            <div class="form-field">
+                                <input name="cName" id="cName" class="h-full-width" placeholder="Your Name" value="" type="text">
+                            </div>
+
+                            <div class="form-field">
+                                <input name="cEmail" id="cEmail" class="h-full-width" placeholder="Your Email" value="" type="text">
+                            </div>
+
+                            <div class="form-field">
+                                <input name="cWebsite" id="cWebsite" class="h-full-width" placeholder="Website" value="" type="text">
+                            </div>
+
+                            <div class="message form-field">
+                                <textarea name="cMessage" id="cMessage" class="h-full-width" placeholder="Your Message"></textarea>
+                            </div>
+
+                            <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large h-full-width" value="Add Comment" type="submit">
+
+                        </fieldset>
+                    </form> --> <!-- end form -->
+
+               <!--  </div> -->
+                <!-- END respond-->
+
+            <!-- </div> --> <!-- end comment-respond -->
+
+        <!-- </div> --> <!-- end comments-wrap -->
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <!-- <div class="s-footer__main">
+
+            <div class="row"> -->
+
+                <!-- <div class="column large-4 medium-6 tab-12 s-footer__info">
+
+                    <h5>About Our Site</h5>
+
+                    <p>
+                    Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.
+                    </p>
+
+                </div> --> <!-- end s-footer__info -->
+
+                <!-- <div class="column large-2 medium-3 tab-6 s-footer__site-links">
+
+                    <h5>Site Links</h5>
+
+                    <ul>
+                        <li><a href="#0">About Us</a></li>
+                        <li><a href="#0">Blog</a></li>
+                        <li><a href="#0">FAQ</a></li>
+                        <li><a href="#0">Terms</a></li>
+                        <li><a href="#0">Privacy Policy</a></li>
+                    </ul>
+
+                </div> --> <!-- end s-footer__site-links -->  
+
+                <!-- <div class="column large-2 medium-3 tab-6 s-footer__social-links">
+
+                    <h5>Social</h5>
+
+                    <ul>
+                        <li><a href="#0">Twitter</a></li>
+                        <li><a href="#0">Facebook</a></li>
+                        <li><a href="#0">Dribbble</a></li>
+                        <li><a href="#0">Pinterest</a></li>
+                        <li><a href="#0">Instagram</a></li>
+                    </ul>
+
+                </div> --> <!-- end s-footer__social links --> 
+
+                <!-- <div class="column large-4 medium-12 s-footer__subscribe">
+
+                    <h5>Subscribe</h5>
+
+                    <p>Keep yourself updated. Subscribe to our newsletter.</p>
+
+                    <div class="subscribe-form">
+                
+                        <form id="mc-form" class="group" novalidate="true">
+
+                            <input type="email" value="" name="dEmail" class="email" id="mc-email" placeholder="Type &amp; press enter" required=""> 
+                
+                            <input type="submit" name="subscribe" >
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+                
+                        </form>
+
+                    </div> -->
+
+                <!-- </div> --> <!-- end s-footer__subscribe -->
+
+           <!--  </div> --> <!-- end row -->
+
+        <!-- </div> --> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+   <script src="../search bar/jquery.finder.js"></script>
+
+</body>
+
+</html>

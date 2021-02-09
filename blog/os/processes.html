@@ -123,33 +123,85 @@
     <section class="s-content s-content--single">
         <div class="row">
             <div class="column large-12">
+                <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
 
                 <article class="s-post entry format-standard">
                     
-                    <h2 class="s-content__title s-content__title--post">Index</h2>
+                    <h2 class="s-content__title s-content__title--post">Processes</h2>
                     
                 </article>
 
                 <article class="s-post entry format-standard" style="margin-left: 100px;">
                     
-                    <a href="introduction to os.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 1. Introduction</h2></a>
+                    <p class="lead">
 
-                    <a href="Interrupts.html"><h2 class="s-content__title s-content__title--post" style="text-align: left;color: grey;font-size: 30px;"> 2. Interrupts and conformance test</h2></a>
+                        we have said that process is a program in execution.
 
-                    <a href="system programming.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 3. System Programming</h2></a>
+                        so when was a process is executed it is going to consume CPU for the instructions of that 
+                        particular process running on the CPU because the process is executing and in order to execute 
+                        instructions on the CPU the instructions have to reside in the RAM so process will occupy 
+                        certain space in the RAM, space will be occupied not only for code but to global variables
+                        that is a data of the process, the local variables, and parameters that is going to be occupied on
+                        the stack of the process will be heap for the process some 
+                        memory will also be occupied by the shared libraries.(will see the concept of
+                        shared libraries in detail when we see memory management) 
 
-                    <a href="compiler and machine code generation.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 4. Compiler and Machine code generation</h2></a>
+                        A process is most typically created using fork and exec.
+                        --we have seen that fork() creates a duplicate process identical with caller process.
+                        (returns twice in parent and child)
 
-                    <a href="basics of x86 architecture.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 5. Basics of x86 architecture</h2></a>
+                        --and we saw that exec() superimpose the specified executable on the currently running
+                         process. so basically after exec() is over the original process which called exec() will vanish and 
+                         a new process will get institute in its place when we say a new process gets instituted I am not saying that a process
+                          id is going to change but basically the whole character of the process will change the code 
+                          itself will change the stack with change the Global data area will change and so on....
 
-                    <a href="bootloader code in xv6.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 6. Bootloader Code in XV6</h2></a>
+                        --exec() doesn't return if its succeid
+                        --because after exec() is over the calling process has converted itself into into another program,
+                         the program which was specified as argument to exec()
 
-                    <a href="processes.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 7.  Processes</h2></a>
+                         multi-programming is a system where multiple programs can reside in the Computer memory at the same time 
+                         and multitasking is necessarily multiprogramming but it also involves scheduling of the processes 
+                         one after another in a way that they share the CPU time.
 
-                    <a href="../comingsoon.html"><h2 class="s-content__title s-content__title--post" style="text-align: left; color: grey;font-size: 30px;"> 8. Context switch</h2></a>
-                    <!--context switch.html -->
+                         we have also discussed that multitasking is made possible with the help of a timer interrupt.
+
+                         the operating system will set a particular value in the timer register and pass on the control 
+                         to a process so the process will now start running and the process will execute on the CPU
+                         it will execute as long as the timer register is not decremented to zero with the every CPU cycle the timer 
+                         in register will keep decrementing by one and when it comes to the time it will be raised and as 
+                         a result of the timer interrupt which is the hardware interrupt we have seen that the control will jump to
+                          a predefined location at that predetermined location the operating system is already copied its code 
+                        and that code is called a scheduler in the case of a timer interrupt so scheduler which is 
+                        a part of the operating system will be invoked.
+
+
+
+
+
+
+                    </p>
+                    
                 </article>
 
+                <article>
+
+                    <div class="s-content__pagenav group">
+                        <div class="next-nav" style="text-align: left;">
+                            <a href="compiler and machine code generation.html" rel="next">
+                               Previous
+                            </a>
+                        </div>
+
+                        <div class="next-nav" style="text-align: right;">
+                            <a href="bootloader code in xv6.html" rel="next">
+                               Next
+                            </a>
+                        </div>
+                    </div> <!-- end s-content__pagenav -->
+
+                    <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+                </article>
 
 
             </div>  

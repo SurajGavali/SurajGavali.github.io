@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
 
-    <title>Unit-1 A&C</title>
+    <title>Time and space complexity(A&C)</title>
 
     <!--- basic page needs
     ================================================== -->
@@ -139,7 +139,7 @@
                     </p>
 
                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Count method to calculate time complexity</h2>
-                    <p class="lead">• introduce a new variable, count, into a program by identifying Program Step and 
+                    <p class="lead">• Introduce a new variable, count, into a program by identifying Program Step and 
                         by Increment the value of count by appropriate amount with respect to a statement in the 
                         original program executes.</p>
                    
@@ -202,7 +202,96 @@
                             </div>
                         </div>
 
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Table method to calculate time complexity</h2>
+                        <p class="lead" style="color: red;">Build a table in which we list the total number of steps contributed by each statement. 
+                            This table contents three columns.</p>
+                            <p class="lead" style="color: rgb(126, 46, 22);">• Steps per execution (s/e) : </p>
 
+                            <p class="lead">--> Contents count value by which count increases after execution of that statement.</p>
+
+                            <p class="lead" style="color: rgb(126, 46, 22);">• Frequency : </p>
+
+                            <p class="lead">--> Is the value indicating total number of times statement executes.</p>
+
+                            <p class="lead" style="color: rgb(126, 46, 22);">• Total steps : </p>
+
+                            <p class="lead">--> Can be obtained by combining s/e and frequency.</p>
+
+                            <p class="lead" style="color: red;">Total step count can be calculated by adding total steps contribution values.</p>
+                            <div class="s-content__media">
+                                <div class="s-content__post-thumb"> 
+                                    <img src="Screenshot (289).png" 
+                                            srcset="Screenshot (289).png 2100w, 
+                                                    Screenshot (289).png 1050w, 
+                                                    Screenshot (289).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                </div>
+                            </div>
+
+                            <div class="s-content__media">
+                                <div class="s-content__post-thumb"> 
+                                    <img src="Screenshot (290).png" 
+                                            srcset="Screenshot (290).png 2100w, 
+                                                    Screenshot (290).png 1050w, 
+                                                    Screenshot (290).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                </div>
+                            </div>
+
+                            <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Analyzing Algorithm</h2>
+                            <p class="lead" style="color: red;">Phases of Analysis</p>
+
+                            <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: rgb(126, 46, 22);">• Priori Analysis :</h2>
+                            <p class="lead">--> The bounds  of time are obtained by formalatinga function based on theroy.</p>
+
+                            <p class="lead">--> Independent  of programming languages and machine structures.  Ex, O-notation.</p>
+                            <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: rgb(126, 46, 22);">• Posteriori Analysis :</h2>
+                            <p class="lead">--> Depends  on programming language and machine structure.</p>
+                            <p class="lead">--> Time and space  is recorded  during execution.</p>
+                            <p class="lead">--> More is the number  of input more is the time taken.Ex. insertion sort</p>
+
+                            
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Asymptotic Notation(O,Ω,θ)</h2>
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Worst case(O) :</h2>
+                     <p class="lead">--> Provides an upper bound on running time</p>
+                     <p class="lead">--> An absolute guaranteethat the algorithm would not run longer, no matter what the inputs are</p>
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Best case(Ω) :</h2>
+                     <p class="lead">--> Provides a lower bound on running time</p>
+                     <p class="lead">--> Input is the one for which the algorithm runs the fastest</p>
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Average case(θ) :</h2>
+                     <p class="lead">--> Provides a predictionabout the running time</p>
+                     <p class="lead">--> Assumes that the input is random</p>
+                     <p class="lead" style="color: red;">Lower Bound <=  Running Time <=  Upper Bound</p>
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: blue;">How do we compare algorithms?</h2>
+                     <p class="lead">• Compare execution  times?</p>
+                     <p class="lead">--> Not good: times are specific to a particular  computer !!</p>
+
+                     <p class="lead">• Count the  number of statements  executed?</p>
+                     <p class="lead">--> Not good: number of statements vary with the programming language as well as the style of the individual programmer.
+                    </p>
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: red;">Ideal Solution</h2>
+                    <p class="lead">--> Express running time as a function of the input size n(i.e., f(n)).</p>
+                    <p class="lead">--> Compare different functions corresponding to running times.</p>
+                    <p class="lead">--> Such an analysis is independent of machine time, programming style, etc.
+                    </p>
+
+                    <p class="lead" style="color: red;">Example,</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (291).png" 
+                                    srcset="Screenshot (291).png 2100w, 
+                                            Screenshot (291).png 1050w, 
+                                            Screenshot (291).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <p class="lead" style="color: rgb(126, 46, 22);">• f(n)=O(g(n)) implies:  f(n) “≤” g(n) </p>
+                    <p class="lead" style="color: rgb(126, 46, 22);">• f(n)= Ω(g(n)) implies: f(n) “≥” g(n) </p>
+                    <p class="lead" style="color: rgb(126, 46, 22);">• f(n)= θ(g(n)) implies: f(n) “=” g(n)
+                    </p>
 
                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Space complexity</h2>
                     <p class="lead">Quantifies the amount of spaceor memory taken by an algorithm to run as a function of the length of the input.

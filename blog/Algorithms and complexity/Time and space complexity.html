@@ -248,24 +248,7 @@
                             <p class="lead">--> Time and space  is recorded  during execution.</p>
                             <p class="lead">--> More is the number  of input more is the time taken.Ex. insertion sort</p>
 
-                            
-
-                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Asymptotic Notation(O,Ω,θ)</h2>
-
-                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Worst case(O) :</h2>
-                     <p class="lead">--> Provides an upper bound on running time</p>
-                     <p class="lead">--> An absolute guaranteethat the algorithm would not run longer, no matter what the inputs are</p>
-
-                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Best case(Ω) :</h2>
-                     <p class="lead">--> Provides a lower bound on running time</p>
-                     <p class="lead">--> Input is the one for which the algorithm runs the fastest</p>
-
-                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Average case(θ) :</h2>
-                     <p class="lead">--> Provides a predictionabout the running time</p>
-                     <p class="lead">--> Assumes that the input is random</p>
-                     <p class="lead" style="color: red;">Lower Bound <=  Running Time <=  Upper Bound</p>
-
-                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: blue;">How do we compare algorithms?</h2>
+                            <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: blue;">How do we compare algorithms?</h2>
                      <p class="lead">• Compare execution  times?</p>
                      <p class="lead">--> Not good: times are specific to a particular  computer !!</p>
 
@@ -292,25 +275,115 @@
                     <p class="lead" style="color: rgb(126, 46, 22);">• f(n)= Ω(g(n)) implies: f(n) “≥” g(n) </p>
                     <p class="lead" style="color: rgb(126, 46, 22);">• f(n)= θ(g(n)) implies: f(n) “=” g(n)
                     </p>
+                            
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Asymptotic Notation(O,Ω,θ)</h2>
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Worst case(O) :</h2>
+                     <p class="lead">--> Provides an upper bound on running time</p>
+                     <p class="lead">--> An absolute guaranteethat the algorithm would not run longer, no matter what the inputs are</p>
+                     <p class="lead" style="color: rgb(126, 46, 22);">Example,</p>
+                     <p class="lead">--> We say fA(n)=30n+8is order n, or O (n)  It is, at most, roughly proportionalto n.</p>
+
+                     <p class="lead">--> fB(n)=n2+1 is order n^2, or O(n^2). It is, at most, roughly proportional to n^2.</p>
+                     <p class="lead">--> For constants the worst case time complexity is O(1).</p>
+
+                     <p class="lead" style="color: red;">O(n^2) function is faster-growing than any O(n) function.</p>
+
+                     <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (292).png" 
+                                    srcset="Screenshot (292).png 2100w, 
+                                            Screenshot (292).png 1050w, 
+                                            Screenshot (292).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <p class="lead" style="color: blue;">O(g(n)) = {f(n) : there exist positive constants c and n<sub>0</sub> such that 0 ≤ f(n) ≤ cg(n) for all n ≥ n<sub>0</sub> }</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (293).png" 
+                                    srcset="Screenshot (293).png 2100w, 
+                                            Screenshot (293).png 1050w, 
+                                            Screenshot (293).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead">g(n) is asymptotic upper bound for f(n).</p>
+                    <p class="lead" style="color: rgb(126, 46, 22);">Example,</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (294).png" 
+                                    srcset="Screenshot (294).png 2100w, 
+                                            Screenshot (294).png 1050w, 
+                                            Screenshot (294).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <p class="lead">O(N): is called linear time complexity.</p>
+                    <p class="lead">O(N^k): is called polynomial time complexity.</p>
+                    <p class="lead">• if k = 2, called as Quadratic time complexity.</p>
+                    <p class="lead">• if k = 3, called as Qubic time complexity.</p>
+
+                    <p class="lead">O(2^n): is called exponential time complexity.</p>
+
+
+
+
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Best case(Ω) :</h2>
+                     <p class="lead">--> Provides a lower bound on running time</p>
+                     <p class="lead">--> Input is the one for which the algorithm runs the fastest</p>
+                     <p class="lead">--> The function f (n) = Ω(g(n))  ( read as "f of n is said to be Omega of g of n")</p>
+                     <p class="lead" style="color: blue;">Ω(g(n)) = {f(n) : there exist positive constants c and n<sub>0</sub> such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n<sub>0</sub> }</p>
+                     <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (295).png" 
+                                    srcset="Screenshot (295).png 2100w, 
+                                            Screenshot (295).png 1050w, 
+                                            Screenshot (295).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead">g(n) is asymptotic lower bound for f(n).</p>
+
+
+
+                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Average case(θ) :</h2>
+                     <p class="lead">--> Provides a predictionabout the running time</p>
+                     <p class="lead">--> Assumes that the input is random</p>
+                     <p class="lead">--> The function f (n) = θ(g(n))  ( read as "f of n is said to be Theta of g of n")</p>
+                     <p class="lead" style="color: blue;">θ(g(n)) = {f(n) : there exist positive constants c<sub>1</sub>,c<sub>2</sub> and n<sub>0</sub> such that 0 ≤ c<sub>1</sub>g(n) ≤ f(n) ≤ c<sub>2</sub>g(n)for all n ≥ n<sub>0</sub> }</p>
+                     <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (296).png" 
+                                    srcset="Screenshot (296).png 2100w, 
+                                            Screenshot (296).png 1050w, 
+                                            Screenshot (296).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead">g(n) is asymptotic tight bound for f(n).</p>
+                     <p class="lead" style="color: red;">Lower Bound <=  Running Time <=  Upper Bound</p>
+
+                     
 
                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Space complexity</h2>
                     <p class="lead">Quantifies the amount of spaceor memory taken by an algorithm to run as a function of the length of the input.
                     </p>
                     
-                         
+                    
 
 
                 </article>
 
                 <div class="s-content__pagenav group">
                     <div class="next-nav" style="text-align: left;">
-                        <a href="menu.html" rel="next">
+                        <a href="introduction.html" rel="next">
                            Previous
                         </a>
                     </div>
 
                     <div class="next-nav" style="text-align: right;">
-                        <a href="../comingsoon.html" rel="next">
+                        <a href="insertion sort.html" rel="next">
                            Next
                         </a>
                     </div>

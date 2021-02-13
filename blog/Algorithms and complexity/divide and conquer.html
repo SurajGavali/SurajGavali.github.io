@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Time and space complexity(A&C)</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="../cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <div class="s-header__search">
+                    
+                <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="Search">
+                </form>
+
+                <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+
+            </div> <!-- end search wrap --> 
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+
+                    <a href="menu.html"><h2 class="s-content__title s-content__title--post"style="text-align: center; color: grey;font-size: 20px;">Go to index page</h2></a>
+                    
+                    <h2 class="s-content__title s-content__title--post">Divide and Conquer</h2>
+                    <br>
+                </article>
+
+                <article class="s-post entry format-standard">
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="divide and conquer.png" 
+                                    srcset="divide and conquer.png 2100w, 
+                                            divide and conquer.png 1050w, 
+                                            divide and conquer.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <p class="lead">This paradigm, divide-and-conquer, breaks a problem into subproblems that are similar 
+                        to the original problem, recursively solves the subproblems, and finally combines the 
+                        solutions to the subproblems to solve the original problem.</p>
+
+                    <p class="lead" style="color: deepskyblue;">You should think of a divide-and-conquer 
+                        algorithm as having three parts:</p>
+                    
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">1. Divide :</h2>
+
+                    <p class="lead" style="color: black;">Divide the problem into a number of subproblems 
+                        that are smaller instances of the same problem.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">2. Conquer :</h2>
+
+                    <p class="lead" style="color: black;">Conquer the problem into a number of subproblems 
+                            that are smaller instances of the same problem.</p>
+                            
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">3. Combine :</h2>
+
+                    <p class="lead" style="color: black;">Combine the problem into a number of subproblems 
+                                that are smaller instances of the same problem.</p>
+
+                    <p class="lead" style="color: blue;">Here's how to view one step, assuming that each divide step creates two subproblems 
+                        (though some divide-and-conquer algorithms create more than two):</p>
+                    
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="dandc.svg" 
+                                        srcset="dandc.svg 2100w, 
+                                        dandc.svg 1050w, 
+                                        dandc.svg 525w" style="width: 40%; margin-left: 325px;" alt="">
+                            </div>
+                        </div>
+
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 20px;">The following algorithms are
+                             based on "Divide and conquer" programming approuch :</h2>
+
+                             <p class="lead" style="color: black;">• Merge sort</p>
+                             <p class="lead" style="color: black;">• Quick sort</p>
+                             <p class="lead" style="color: black;">• Binary search</p>
+                             <p class="lead" style="color: black;">• Strassen's Matrix Multiplication</p>
+                             <p class="lead" style="color: black;">• Closet pair(point)</p>
+
+
+                             <h2 class="s-content__title s-content__title--post">Merge Sort</h2>
+                             <p class="lead" style="color: black;">➔ In merge sort, we break the given array midway, for example if the original 
+                                array had 6 elements, then merge sort will break it down into two subarrays with 3 elements each.</p>
+
+                                <p class="lead" style="color: black;">➔ But breaking the orignal array into 2 smaller subarrays is not helping us in sorting the array.
+                                </p>
+                                <p class="lead" style="color: black;">➔ So we will break these subarrays into even smaller subarrays, until we have multiple subarrays with single element in them. 
+                                    Now, the idea here is that an array with a single element is already sorted, so once we break the original array into subarrays which has only a single element, we have successfully broken down our problem into base problems.
+                                </p>
+                                <p class="lead" style="color: black;">➔ And then we have to merge all these sorted subarrays, step by step to form one single sorted array.</p>
+                                <p class="lead" style="color: black;">➔ Let's consider an array with values {38, 27, 43, 3, 9, 82, 10}</p>
+
+                                <p class="lead" style="color: black;">➔ Below, we have a pictorial representation of how merge sort will sort the given array.
+                                </p>
+
+                                <div class="s-content__media">
+                                    <div class="s-content__post-thumb"> 
+                                        <img src="merge sort.svg" 
+                                                srcset="merge sort.svg 2100w, 
+                                                merge sort.svg 1050w, 
+                                                merge sort.svg 525w" style="width: 100%;" alt="">
+                                    </div>
+                                </div>
+                                
+                                
+                                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Implementing Merge Sort Algorithm</h2>
+                                <p class="lead" style="color: deepskyblue;">Below we have a C program implementing merge sort algorithm.</p>
+
+                                <?prettify linenums=1?>
+                                <pre class="prettyprint" style="overflow-y: scroll; height: 500px;">
+        /*  
+        a[] is the array, p is starting index, that is 0, 
+        and r is the last index of array. 
+        */
+                                
+        #include <stdio.h>
+                                
+        // lets take a[5] = {32, 45, 67, 2, 7} as the array to be sorted.
+                                
+        // merge sort function
+        void mergeSort(int a[], int p, int r){
+
+            int q;
+            if(p < r){
+                q = (p + r) / 2;
+                mergeSort(a, p, q);
+                mergeSort(a, q+1, r);
+                merge(a, p, q, r);
+            }
+        }
+                                
+        // function to merge the subarrays
+        void merge(int a[], int p, int q, int r){
+
+            int b[5];   //same size of a[]
+            int i, j, k;
+            k = 0;
+            i = p;
+            j = q + 1;
+            while(i <= q && j <= r){
+                                        
+                if(a[i] < a[j]){
+                                            
+                    b[k++] = a[i++];    // same as b[k]=a[i]; k++; i++;
+                }
+                else{
+                                            
+                    b[k++] = a[j++];
+                }
+            }
+                                  
+            while(i <= q){
+                                        
+                b[k++] = a[i++];
+            }
+                                  
+            while(j <= r){
+                                    
+                b[k++] = a[j++];
+                                
+            }
+            for(i=r; i >= p; i--){
+                                        
+                a[i] = b[--k];  // copying back the sorted list to a[]
+            } 
+        }
+                                
+        // function to print the array
+        void printArray(int a[], int size){
+                                    
+            int i;
+            for (i=0; i < size; i++){
+                                        
+                printf("%d ", a[i]);
+            }
+            printf("\n");
+        }
+                                 
+        int main(){
+                                    
+            int arr[] = {32, 45, 67, 2, 7};
+            int len = sizeof(arr)/sizeof(arr[0]);
+                                 
+            printf("Given array: \n");
+            printArray(arr, len);
+                                    
+            // calling merge sort
+            mergeSort(arr, 0, len - 1);
+                                 
+            printf("\nSorted array: \n");
+            printArray(arr, len);
+            return 0;
+        }
+                                </pre>
+
+                                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Output :</h2>
+                                <p class="lead">Given array:</p>
+                                <p class="lead">32 45 67 2 7</p>
+                                <p class="lead">Sorted array:</p>
+                                <p class="lead">2 7 32 45 67</p>
+
+                                <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Calculating Time complexity of Merge Sort Algorithm</h2>
+
+                                <p class="lead">➔ T(n) = 2T(n/2) + c<sub>2</sub>n</p>
+                                <p class="lead">➔ T(n/2) = 2T(n/4) + c<sub>2</sub>(n/2)</p>
+                                <p class="lead">➔ T(n) = 4T(n/4) + 2c<sub>2</sub>(n/2)</p>
+                                <p class="lead">➔ T(n) = 8T(n/8) + 3c<sub>2</sub>(n/2)</p>
+                                <p class="lead" style="margin-left: 100px;"> . </p>
+                                <p class="lead" style="margin-left: 100px;"> . </p>
+                                <p class="lead">➔ T(n) = 2<sup>i</sup>T(n/2<sup>i</sup>) + i*c<sub>2</sub>(n/4)</p>
+                                <p class="lead">Assuming n = 2<sup>k</sup> expansion halts when we get T(1) on right 
+                                    side, this happens when i = k i.e. T(n) = 2<sup>k</sup>T(1) + kc<sub>2</sub>n</p>
+
+                                    <p class="lead">since, 2<sup>k</sup> = n , we know k = log(n); and T(1) = c<sub>1</sub> we get,</p>
+                                    <p class="lead" style="color: brown;">T(n) = c<sub>1</sub>n + c<sub>2</sub>(nlogn) thus the upper bound for merge sort is O(nlogn).</p>
+                                
+                                
+                </article>
+
+                
+
+                <div class="s-content__pagenav group">
+                    <div class="next-nav" style="text-align: left;">
+                        <a href="recurrence relations.html" rel="next">
+                           Previous
+                        </a>
+                    </div>
+
+                    <div class="next-nav" style="text-align: right;">
+                        <a href="../comingsoon.html" rel="next">
+                           Next
+                        </a>
+                    </div>
+           </div> <!-- end s-content__pagenav -->
+
+            </div>  
+        </div>                
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+
+</body>
+
+</html>

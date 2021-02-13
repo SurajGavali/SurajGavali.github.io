@@ -214,7 +214,34 @@
                             <p class="lead" style="color: red;">Hence the final solution is, 2*2<sup>n</sup> - 1*3<sup>n</sup>.
                             </p>
 
-                            
+                            <h2 class="s-content__title s-content__title--post">Master Theorem</h2>
+                            <p class="lead">➔ This method  is useful  to solve the  recurrences of the form, T(n) = aT(n/b) + f(n) where a ≥ 1 and b > 1.
+                            </p>
+                            <p class="lead">➔ This recurrence  describes  an algorithm that divides  a problem  of size n into a subproblems,  each of size n=b,  and solves them recursively.
+                            </p>
+
+                            <p class="lead" style="color: red;">Consider, 
+                            </p>
+                            <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">T(n) = aT(n/b) + θ(n<sup>k</sup>log<Sup>p</Sup>n)</h2>
+                            <p class="lead" style="color: blue;">for a ≥ 1, b > 1, k ≥ 0 and p is a real number,
+                            </p>
+
+                            <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">• Case 1 : if a > b<sup>k</sup>, then</h2>
+                            <p class="lead" style="color: deeppink;">➔ T(n) = θ(n<sup>log<sub>b</sub>a</sup>)</p>
+
+
+                             
+                             <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">• Case 2 : if a = b<sup>k</sup>, then</h2>
+                             <p class="lead" style="color: deeppink;">➔ a. if p > -1, then T(n) = θ(n<sup>log<sub>b</sub>a</sup> log<sup>p+1</sup>n)</p>
+                             <p class="lead" style="color: deeppink;">➔ b. if p = -1, then T(n) = θ(n<sup>log<sub>b</sub>a</sup> log(logn))</p>
+                             <p class="lead" style="color: deeppink;">➔ c. if p < -1, then T(n) = θ(n<sup>log<sub>b</sub>a</sup>)</p>
+
+                             <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">• Case 3 : if a < b<sup>k</sup>, then</h2>
+                             <p class="lead">
+                                <p class="lead" style="color: deeppink;">➔ a. if p ≥ 0, then T(n) = θ(n<sup>k</sup> log<sup>p</sup>n)</p>
+                                <p class="lead" style="color: deeppink;">➔ a. if p < -1, then T(n) = θ(n<sup>k</sup>)</p>
+
+                            </p>
                         </article>
 
                 <article class="s-post entry format-standard">

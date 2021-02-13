@@ -367,11 +367,68 @@
                      
 
                     <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Space complexity</h2>
-                    <p class="lead">Quantifies the amount of spaceor memory taken by an algorithm to run as a function of the length of the input.
-                    </p>
-                    
-                    
+                    <p class="lead" style="color: red;">The term Space Complexity is misused for Auxiliary Space at many places. Following are 
+                        the correct definitions of Auxiliary Space and Space Complexity.</p>
 
+                        <p class="lead" style="color: rgb(114, 57, 168);">Auxiliary Space is the extra space or temporary space used by an algorithm. </p>
+
+                        <p class="lead" style="color: rgb(60, 149, 221);">Space Complexity of an algorithm is total space taken by the algorithm with respect to the input size. 
+                            Space complexity includes both Auxiliary space and space used by input.  </p>
+
+                    <p class="lead">Space Complexity = Auxiliary Space + Input space</p>
+                    
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: grey;">Calculating the Space Complexity</h2>
+                    <p class="lead">For calculating the space complexity, we need to know the value of memory used by different type of datatype variables, which generally varies for different operating systems, 
+                        but the method for calculating the space complexity remains the same.</p>
+
+                    
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (298).png" 
+                                    srcset="Screenshot (298).png 2100w, 
+                                            Screenshot (298).png 1050w, 
+                                            Screenshot (298).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead" style="color: rgb(60, 149, 221);">Now let's learn how to compute space complexity by taking a few examples:
+                    </p>
+
+                    <?prettify linenums=1?>
+                    <pre class="prettyprint">
+                        {
+                            int z = a + b + c;
+                            return(z);
+                        }
+                    </pre>
+
+                    <p class="lead">In the above expression, variables a, b, c and z are all integer types, hence they 
+                        will take up 4 bytes each, so total memory requirement will be (4(4) + 4) = 20 bytes,
+                        this additional 4 bytes is for return value. And because this space requirement is fixed 
+                        for the above example, hence it is called Constant Space Complexity.</p>
+
+                    
+                        <?prettify linenums=1?>
+                        <pre class="prettyprint">
+                                // n is the length of array a[]
+                                int sum(int a[], int n)
+                                {
+                                    int x = 0;		// 4 bytes for x
+                                    for(int i = 0; i < n; i++)	// 4 bytes for i
+                                    {	
+                                        x  = x + a[i];		
+                                    }
+                                    return(x);
+                                }
+                        </pre>
+
+                        <p class="lead">➔ In the above code, 4*n bytes of space is required for the array a[] elements.</p>
+
+                        <p class="lead">➔ 4 bytes each for x, n, i and the return value.</p>
+                        <p class="lead" style="color: blue;">Hence the total memory requirement will be (4n + 12), which 
+                            is increasing linearly with the increase in the input value n, hence it is called 
+                            as Linear Space Complexity.</p>
+
+                        
 
                 </article>
 

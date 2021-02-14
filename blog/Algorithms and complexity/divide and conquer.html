@@ -186,8 +186,9 @@
                              <p class="lead" style="color: black;">• Strassen's Matrix Multiplication</p>
                              <p class="lead" style="color: black;">• Closet pair(point)</p>
 
-
+                             <div class="s-content__pagenav group"></div>
                              <h2 class="s-content__title s-content__title--post">Merge Sort</h2>
+                             <br>
                              
                              <p class="lead" style="color: black;">➔ In merge sort, we break the given array midway, for example if the original 
                                 array had 6 elements, then merge sort will break it down into two subarrays with 3 elements each.</p>
@@ -334,8 +335,9 @@
                                     <p class="lead" style="color: brown;">T(n) = c<sub>1</sub>n + c<sub>2</sub>(nlogn) thus the upper bound for merge sort is O(nlogn).</p>
                                 
                                 
-
+                                    <div class="s-content__pagenav group"></div>
                                     <h2 class="s-content__title s-content__title--post">Quick Sort</h2>
+                                    <br>
                                     <p class="lead">In the merge sort, we saw the divide step hardly does 
                                         anything. The combining step plays a real role to sort the list. But in quicksort,
                                          the real work happens in the divide step. We can say the combining step does 
@@ -724,7 +726,7 @@
             </mfrac>
           </math>. So we can write:</p>
 
-          <math xmlns="http://www.w3.org/1998/Math/MathML" style="">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" >
             <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
               <mtr>
                 <mtd>
@@ -953,6 +955,483 @@
         <mo stretchy="false">)</mo>
       </math>.</p>
       
+
+      <div class="s-content__pagenav group"></div>
+
+
+      <h2 class="s-content__title s-content__title--post">Strassen’s Matrix Multiplication</h2>
+<br>
+<p class="lead">first we will discuss the general method of matrix multiplication and later we will discuss Strassen’s matrix multiplication algorithm.</p>
+<p class="lead">Let us consider two matrices X and Y. We want to calculate the resultant matrix Z by multiplying X and Y.
+</p>
+
+<h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: black;">➔ Naïve Method</h2>
+<p class="lead">Here, we are calculating Z = X × Y. Using Naïve method, two matrices (X and Y) can be multiplied if the order of these matrices are p × q and q × r. 
+    Following is the algorithm.</p>
+    <?prettify linenums=1?>
+    <pre class="prettyprint">
+        Algorithm: Matrix-Multiplication (X, Y, Z) 
+        for i = 1 to p do 
+           for j = 1 to r do 
+              Z[i,j] := 0 
+              for k = 1 to q do 
+                 Z[i,j] := Z[i,j] + X[i,k] × Y[k,j] 
+    </pre>
+
+    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: black;">Complexity</h2>
+    <p class="lead">Here, we assume that integer operations take O(1) time. There are three for loops in this algorithm and one is nested in other. Hence, the algorithm takes O(n<sup>3</sup>) time to execute. 
+        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: black;">➔ Strassen’s Matrix Multiplication Algorithm</h2>
+        <p class="lead">Using Strassen’s Matrix multiplication algorithm, the time consumption is improved a little bit.</p>
+            <p class="lead">Strassen’s Matrix multiplication can be performed only on square matrices where n is a power of 2. Order of both of the matrices are n × n.</p>
+            
+            
+            <p class="lead">Divide matrices X and Y in 4 sub-matrices of size N/2 x N/2.
+            </p>
+<p class="lead">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>X</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>[</mo>
+          <mtable rowspacing="4pt" columnspacing="1em">
+            <mtr>
+              <mtd>
+                <mi>A</mi>
+              </mtd>
+              <mtd>
+                <mi>B</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>C</mi>
+              </mtd>
+              <mtd>
+                <mi>D</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>]</mo>
+        </mrow>
+      </math> and
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>Y</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>[</mo>
+          <mtable rowspacing="4pt" columnspacing="1em">
+            <mtr>
+              <mtd>
+                <mi>E</mi>
+              </mtd>
+              <mtd>
+                <mi>F</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>G</mi>
+              </mtd>
+              <mtd>
+                <mi>H</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>]</mo>
+        </mrow>
+      </math>
+</p>
+<p class="lead">Here, X and Y are square matrices of size (N)x(N)</p>         
+
+<p class="lead">A,B,C and D are submatrices of X of size (N/2)x(N/2)</p>         
+              
+<p class="lead">E,F,G and H are submatrices of Y of size (N/2)x(N/2)</p>         
+
+<p class="lead" style="color: blue;">Now compute the following : </p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>1</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <!-- <mo>&#x003A;</mo> -->
+    <mo>=</mo>
+    <mo stretchy="false">(</mo>
+    <mi>A</mi>
+    <mo>+</mo>
+    <mi>C</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>E</mi>
+    <mo>+</mo>
+    <mi>F</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>2</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <!-- <mo>&#x003A;</mo> -->
+    <mo>=</mo>
+    <mo stretchy="false">(</mo>
+    <mi>B</mi>
+    <mo>+</mo>
+    <mi>D</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>G</mi>
+    <mo>+</mo>
+    <mi>H</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>3</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <!-- <mo>&#x003A;</mo> -->
+    <mo>=</mo>
+    <mo stretchy="false">(</mo>
+    <mi>A</mi>
+    <mo>&#x2212;<!-- − --></mo>
+    <mi>D</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>E</mi>
+    <mo>+</mo>
+    <mi>H</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>4</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <!-- <mo>&#x003A;</mo> -->
+    <mo>=</mo>
+    <mi>A</mi>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>F</mi>
+    <mo>&#x2212;<!-- − --></mo>
+    <mi>H</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>5</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <mo stretchy="false">(</mo>
+    <mi>C</mi>
+    <mo>+</mo>
+    <mi>D</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>E</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>6</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <mo stretchy="false">(</mo>
+    <mi>A</mi>
+    <mo>+</mo>
+    <mi>B</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>H</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>7</mn>
+      </mrow>
+    </msub>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <mi>D</mi>
+    <mo>&#x00D7;<!-- × --></mo>
+    <mo stretchy="false">(</mo>
+    <mi>G</mi>
+    <mo>&#x2212;<!-- − --></mo>
+    <mi>E</mi>
+    <mo stretchy="false">)</mo>
+  </math>
+
+<p class="lead">Now let us consider resultant matrix Z as,</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>Z</mi>
+    <mo>=</mo>
+    <mrow>
+      <mo>[</mo>
+      <mtable rowspacing="4pt" columnspacing="1em">
+        <mtr>
+          <mtd>
+            <mi>I</mi>
+          </mtd>
+          <mtd>
+            <mi>J</mi>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mi>K</mi>
+          </mtd>
+          <mtd>
+            <mi>L</mi>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>]</mo>
+    </mrow>
+  </math>
+<br><br>
+  <p class="lead">where,</p>
+  
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <mi>I</mi>
+    <!-- <mspace width="mediummathspace" /> -->
+    <mo>=</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>2</mn>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>3</mn>
+      </mrow>
+    </msub>
+    <mo>&#x2212;<!-- − --></mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>6</mn>
+      </mrow>
+    </msub>
+    <mo>&#x2212;<!-- − --></mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>7</mn>
+      </mrow>
+    </msub>
+  </math>
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <mi>J</mi>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>4</mn>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>6</mn>
+      </mrow>
+    </msub>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <mi>K</mi>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>5</mn>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>7</mn>
+      </mrow>
+    </msub>
+  </math>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <mi>L</mi>
+    <mspace width="mediummathspace" />
+    <mo>=</mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>1</mn>
+      </mrow>
+    </msub>
+    <mo>&#x2212;<!-- − --></mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>3</mn>
+      </mrow>
+    </msub>
+    <mo>&#x2212;<!-- − --></mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>4</mn>
+      </mrow>
+    </msub>
+    <mo>&#x2212;<!-- − --></mo>
+    <msub>
+      <mi>M</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>5</mn>
+      </mrow>
+    </msub>
+  </math>
+  <p class="lead" style="color: red;"><a href="https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/">Easy way to remember Strassen’s Matrix Multiplication equations</a></p>
+  <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: black;">Time complexity</h2>
+  <br>
+  <p class="lead"><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>T</mi>
+    <mo stretchy="false">(</mo>
+    <mi>n</mi>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <mrow>
+      <mo>{</mo>
+      <mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+        <mtr>
+          <mtd>
+            <mi>c</mi>
+          </mtd>
+          <mtd>
+            <mi>i</mi>
+            <mi>f</mi>
+            <mspace width="mediummathspace" />
+            <mi>n</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mn>7</mn>
+            <mspace width="mediummathspace" />
+            <mi>x</mi>
+            <mspace width="mediummathspace" />
+            <mi>T</mi>
+            <mo stretchy="false">(</mo>
+            <mfrac>
+              <mi>n</mi>
+              <mn>2</mn>
+            </mfrac>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <mi>d</mi>
+            <mspace width="mediummathspace" />
+            <mi>x</mi>
+            <mspace width="mediummathspace" />
+            <msup>
+              <mi>n</mi>
+              <mn>2</mn>
+            </msup>
+          </mtd>
+          <mtd>
+            <mi>o</mi>
+            <mi>t</mi>
+            <mi>h</mi>
+            <mi>e</mi>
+            <mi>r</mi>
+            <mi>w</mi>
+            <mi>i</mi>
+            <mi>s</mi>
+            <mi>e</mi>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo fence="true" stretchy="true" symmetric="true"></mo>
+    </mrow>
+  </math> 
+   , where c and d are constants.</p>
+  
+   <p class="lead">From Master's Theorem, time complexity of above method is,
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>T</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>n</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>l</mi>
+            <mi>o</mi>
+            <mi>g</mi>
+            <mn>7</mn>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+      </math>
+      which is approximately 
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>n</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>2</mi>
+            <mi>.</mi>
+            <mi>8</mi>
+            <mi>0</mi>
+            <mi>7</mi>
+            <mi>4</mi>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+      </math>.
+   </p>
+   <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: black;">Implementation using Python</h2>
+
+   <script src="https://gist.github.com/SurajGavali/fd5edba19be6f4cc30903719041f9ee2.js"></script>
+
+   
         </article>
 
                 

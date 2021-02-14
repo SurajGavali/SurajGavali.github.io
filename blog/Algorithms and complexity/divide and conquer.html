@@ -333,7 +333,119 @@
                                     <p class="lead" style="color: brown;">T(n) = c<sub>1</sub>n + c<sub>2</sub>(nlogn) thus the upper bound for merge sort is O(nlogn).</p>
                                 
                                 
-                </article>
+
+                                    <h2 class="s-content__title s-content__title--post">Quick Sort</h2>
+                                    <p class="lead">In the merge sort, we saw the divide step hardly does 
+                                        anything. The combining step plays a real role to sort the list. But in quicksort,
+                                         the real work happens in the divide step. We can say the combining step does 
+                                         absolutely nothing.</p>
+                                         <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Divide :</h2>
+                                         <p class="lead">In this first step, we choose a "pivot. A pivot is any element from the array or subarray. 
+                                             In our discussion, we’ll always choose the rightmost element from a subarray as the pivot.</p>
+                                             <p class="lead">After choosing the pivot we’ll rearrange the elements such a way that, all the elements that 
+                                                are less than or equal to the pivot are to its left and the elements that are greater than 
+                                                the pivot to its right. This procedure is called partitioning.</p>
+                          <p class="lead" style="color: red;"> After partitioning the pivot is in its final position.</p>                   
+                          <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">How the partitioning works?</h2>
+                          <p class="lead">If the rightmost element is not chosen as the pivot, move it to the rightmost index. Now we start scanning the 
+                              elements from the first index in left and from the next left element of pivot in right.</p>
+                              <div class="s-content__media">
+                                <div class="s-content__post-thumb"> 
+                                    <img src="quicksort-1-1.png" 
+                                            srcset="quicksort-1-1.png 2100w, 
+                                            quicksort-1-1.png 1050w, 
+                                            quicksort-1-1.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                </div>
+                            </div>
+
+
+                            <p class="lead">From left we look for the element that is greater than the pivot and from right we look for the 
+                                element that is less than or equal to the pivot. When we find them, we swap the elements.</p>
+                        
+                                <div class="s-content__media">
+                                    <div class="s-content__post-thumb"> 
+                                        <img src="qs1-1.gif" 
+                                                srcset="qs1-1.gif 2100w, 
+                                                qs1-1.gif 1050w, 
+                                                qs1-1.gif 525w" style="width: 100%; margin-left: 0px" alt="">
+                                    </div>
+                                </div>
+                        
+                        
+                                <p class="lead">Now we keep continuing. If the index of the larger element than pivot ( say l ) 
+                                    is larger than the index of the smaller or equal element to pivot (say s) we stop. Now we swap the larger element ( at index l ) with the pivot.</p>
+                            
+                                    <div class="s-content__media">
+                                        <div class="s-content__post-thumb"> 
+                                            <img src="qs2.gif" 
+                                                    srcset="qs2.gif 2100w, 
+                                                    qs2.gif 1050w, 
+                                                    qs2.gif 525w" style="width: 100%; margin-left: 0px" alt="">
+                                        </div>
+                                    </div>
+
+
+                                    <p class="lead">Now we divide the array into two subarrays except the pivot. One 
+                                        subarray contains the left part of the pivot and another one contains the right part of the pivot. With this, the divide phase finishes for this array.</p>
+                                
+                                        <div class="s-content__media">
+                                            <div class="s-content__post-thumb"> 
+                                                <img src="quicksort-19.png" 
+                                                        srcset="quicksort-19.png 2100w, 
+                                                        quicksort-19.png 1050w, 
+                                                        quicksort-19.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                            </div>
+                                        </div>
+                                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Conquer :</h2>
+                                        <p class="lead">In this step, the subarrays will be recursively partitioned and sorted by fixing the position of the pivot of each subarray.</p>
+                                    
+                                        <div class="s-content__media">
+                                            <div class="s-content__post-thumb"> 
+                                                <img src="qs3.gif" 
+                                                        srcset="qs3.gif 2100w, 
+                                                        qs3.gif 1050w, 
+                                                        qs3.gif 525w" style="width: 100%; margin-left: 0px" alt="">
+                                            </div>
+                                        </div>
+
+
+
+                                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">• Combining :</h2>
+                                        <p class="lead" style="color: blue;">This step doesn’t play a significant role in quicksort. At the end of conquering step the array is already sorted.
+                                        </p>
+                                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">➔ The Quicksort Algorithm</h2>
+
+                                        <?prettify linenums=1?>
+                                        <pre class="prettyprint">
+        quickSort(A, low, high):
+            if low < high:
+                pivot_index := partition(A, low, high)
+                quickSort(A, low, pivot_index - 1)
+                quickSort(A, pivot_index + 1, high)
+            end if
+        end quickSort
+                                        </pre>
+
+                                        <?prettify linenums=1?>
+                                        <pre class="prettyprint">
+        partition(A, low, high):
+            pivot := A[high]
+            pivotIndex := low
+                for i := low to high:
+                    if A[i] < pivot:
+                        swap A[pivotIndex] with A[i]
+                        pivotIndex := pivotIndex + 1
+                    end if
+                end for
+            swap A[pivotIndex] with A[high]
+            return pivotIndex
+        end partition
+                                        </pre>
+
+
+                                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Implementation</h2>
+
+                            </article>
 
                 
 

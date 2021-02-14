@@ -24,6 +24,7 @@
     <script src="../js/modernizr.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
      <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -444,8 +445,515 @@
 
 
                                         <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Implementation</h2>
+                                        <script src="https://gist.github.com/SurajGavali/7aeb243d993214dc1d834a235f4717ff.js" style="height: 50%; overflow-y: scroll;"></script>
+                            
+                                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Complexity Analysis of Quicksort</h2>
+<p class="lead">In the case of quicksort, the combining step hardly does anything. So the time is O(1). In the divide step, the partitioning takes O(n) 
+    time like the merging takes in merge sort. So in quicksort the dividing and combining take O(n) time together.
+</p>
 
-                            </article>
+
+<p class="lead">In conquering step, Let’s consider a case when the pivot is always
+     the largest or smallest element and this is the worst case for quicksort.                         
+</p>
+<p class="lead">Each time the pivot will be at an end and will create an empty subarray and a (n−1) sized subarray for an array of size n.
+</p>
+
+
+<p class="lead" style="color: red;">For a constant c the time of recursion will be cn and c(n−1) for the arrays of size n and (n−1) respectively.
+</p>
+<p class="lead">Now the (n−1)sized array will create a (n−2) sized subarray and it will take c(n−2) time. This will go on until we reach the base case.
+ see below tree for more.</p>
+ <div class="s-content__media">
+    <div class="s-content__post-thumb"> 
+        <img src="q.png" 
+                srcset="q.png 2100w, 
+                q.png 1050w, 
+                q.png 525w" style="width: 100%; margin-left: 0px" alt="">
+    </div>
+</div>
+<h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 22px;">So the total time required is:</h2>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+      <mtr>
+        <mtd>
+          <mi>c</mi>
+          <mi>n</mi>
+          <mo>+</mo>
+          <mi>c</mi>
+          <mo stretchy="false">(</mo>
+          <mi>n</mi>
+          <mo>&#x2212;<!-- − --></mo>
+          <mn>1</mn>
+          <mo stretchy="false">)</mo>
+          <mo>+</mo>
+          <mi>c</mi>
+          <mo stretchy="false">(</mo>
+          <mi>n</mi>
+          <mo>&#x2212;<!-- − --></mo>
+          <mn>2</mn>
+          <mo stretchy="false">)</mo>
+          <mo>+</mo>
+          <mo>&#x2026;</mo>
+          <mo>+</mo>
+          <mn>3</mn>
+          <mi>c</mi>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mi>c</mi>
+        </mtd>
+        <mtd>
+          <mi></mi>
+          <mo>=</mo>
+          <mi>c</mi>
+          <mo fence="false" stretchy="false">{</mo>
+          <mi>n</mi>
+          <mo>+</mo>
+          <mo stretchy="false">(</mo>
+          <mi>n</mi>
+          <mo>&#x2212;<!-- − --></mo>
+          <mn>1</mn>
+          <mo stretchy="false">)</mo>
+          <mo>+</mo>
+          <mo stretchy="false">(</mo>
+          <mi>n</mi>
+          <mo>&#x2212;<!-- − --></mo>
+          <mn>2</mn>
+          <mo stretchy="false">)</mo>
+          <mo>+</mo>
+          <mo>&#x2026;</mo>
+          <mo>+</mo>
+          <mn>3</mn>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mo fence="false" stretchy="false">}</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd />
+        <mtd>
+          <mi></mi>
+          <mo>=</mo>
+          <mi>c</mi>
+          <mo stretchy="false">(</mo>
+          <mfrac>
+            <mrow>
+              <mi>n</mi>
+              <mo stretchy="false">(</mo>
+              <mi>n</mi>
+              <mo>+</mo>
+              <mn>1</mn>
+              <mo stretchy="false">)</mo>
+            </mrow>
+            <mn>2</mn>
+          </mfrac>
+          <mtext>&#xA0;</mtext>
+          <mo>&#x2013;</mo>
+          <mn>1</mn>
+          <mo stretchy="false">)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd />
+        <mtd>
+          <mi></mi>
+          <mo>=</mo>
+          <mi>c</mi>
+          <mo stretchy="false">(</mo>
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+          <msup>
+            <mi>n</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+          <mi>n</mi>
+          <mtext>&#xA0;</mtext>
+          <mo>&#x2013;</mo>
+          <mn>1</mn>
+          <mo stretchy="false">)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+  </math>
+
+  <p class="lead" style="color: blue;">So, in worst case the time complexity of quick sort is O(n<sup>2</sup>).
+</p>
+<p class="lead">For average case lets consider we get a 3-to-1 division. If the array is of n size, we get a subarray of size 3n/4 and another subarray of n/4. For simplicity we are considering the pivot is also in one of the subarrays.
+</p>
+<div class="s-content__media">
+    <div class="s-content__post-thumb"> 
+        <img src="avgcase.png" 
+                srcset="avgcase.png 2100w, 
+                avgcase.png 1050w, 
+                avgcase.png 525w" style="width: 100%; margin-left: 0px" alt="">
+    </div>
+</div>
+<p class="lead">The smaller subarrays (of size n/4) are on left. So on the left side of the tree, we get the base case 
+    (subarray of size 1) early; to be exact after 
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+          <mi>log</mi>
+          <mn>4</mn>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+      </math> levels. On the right side of the tree, 
+    we get the base case after 
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mfrac>
+              <mn>4</mn>
+              <mn>3</mn>
+            </mfrac>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+      </math> levels.</p>
+
+      <p class="lead">
+
+        For first 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>log</mi>
+              <mn>4</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+          </math> levels, each level has subarrays of total size 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>n</mi>
+          </math>. 
+        So, requires time is 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>c</mi>
+            <mi>n</mi>
+          </math> for each of these levels. For the levels that 
+        are after 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>log</mi>
+              <mn>4</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+          </math> levels have less than n elements totally. So the required 
+        time is less than 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>c</mi>
+            <mi>n</mi>
+          </math> or at most 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>c</mi>
+            <mi>n</mi>
+          </math>. So total time will be less than 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>c</mi>
+            <mi>n</mi>
+            <mo>&#x2217;<!-- ∗ --></mo>
+            <msub>
+              <mi>log</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>4</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>3</mn>
+              </mrow>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+          </math> 
+        and that is 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>O</mi>
+            <mo stretchy="false">(</mo>
+            <mi>n</mi>
+            <msub>
+              <mi>log</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>4</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>3</mn>
+              </mrow>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+            <mo stretchy="false">)</mo>
+          </math>.
+      </p>
+      <p class="lead">Now, we know that 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>log</mi>
+              <mi>a</mi>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+            <mo>=</mo>
+            <mfrac>
+              <mrow>
+                <msub>
+                  <mi>log</mi>
+                  <mi>b</mi>
+                </msub>
+                <mo>&#x2061;<!-- ⁡ --></mo>
+                <mi>n</mi>
+              </mrow>
+              <mrow>
+                <msub>
+                  <mi>log</mi>
+                  <mi>b</mi>
+                </msub>
+                <mo>&#x2061;<!-- ⁡ --></mo>
+                <mi>a</mi>
+              </mrow>
+            </mfrac>
+          </math>. So we can write:</p>
+
+          <math xmlns="http://www.w3.org/1998/Math/MathML" style="">
+            <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+              <mtr>
+                <mtd>
+                  <msub>
+                    <mi>log</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                      <mn>4</mn>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mo>/</mo>
+                      </mrow>
+                      <mn>3</mn>
+                    </mrow>
+                  </msub>
+                  <mo>&#x2061;<!-- ⁡ --></mo>
+                  <mi>n</mi>
+                </mtd>
+                <mtd>
+                  <mi></mi>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mrow>
+                      <msub>
+                        <mi>log</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2061;<!-- ⁡ --></mo>
+                      <mi>n</mi>
+                    </mrow>
+                    <mrow>
+                      <msub>
+                        <mi>log</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2061;<!-- ⁡ --></mo>
+                      <mfrac>
+                        <mn>4</mn>
+                        <mn>3</mn>
+                      </mfrac>
+                    </mrow>
+                  </mfrac>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd />
+                <mtd>
+                  <mi></mi>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                      <msub>
+                        <mi>log</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2061;<!-- ⁡ --></mo>
+                      <mfrac>
+                        <mn>4</mn>
+                        <mn>3</mn>
+                      </mfrac>
+                    </mrow>
+                  </mfrac>
+                  <mtext>&#xA0;</mtext>
+                  <mo>&#x2217;<!-- ∗ --></mo>
+                  <msub>
+                    <mi>log</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mo>&#x2061;<!-- ⁡ --></mo>
+                  <mi>n</mi>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd />
+                <mtd>
+                  <mi></mi>
+                  <mo>=</mo>
+                  <msub>
+                    <mi>c</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mo>&#x2217;<!-- ∗ --></mo>
+                  <msub>
+                    <mi>log</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mo>&#x2061;<!-- ⁡ --></mo>
+                  <mi>n</mi>
+                </mtd>
+              </mtr>
+            </mtable>
+          </math>
+          <br><br>
+          <p class="lead">In best case the subarrays will be divided into two equal sized subarray. So for a array of size <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>n</mi>
+          </math>
+           there will be two subarrays of size 
+           <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>n</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mo>/</mo>
+            </mrow>
+            <mn>2</mn>
+          </math>. This will continue for other levels also and each level will have <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>n</mi>
+          </math> elements in total. For for each level required time will be cn and there will be 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>log</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+          </math> levels. That indicates total time will be 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>c</mi>
+            <mi>n</mi>
+            <mo>&#x2217;<!-- ∗ --></mo>
+            <msub>
+              <mi>log</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+          </math>, thus 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>O</mi>
+            <mo stretchy="false">(</mo>
+            <mi>n</mi>
+            <msub>
+              <mi>log</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>n</mi>
+            <mo stretchy="false">)</mo>
+          </math>.
+        </p>
+<p class="lead">Here 
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+          <mi>c</mi>
+          <mn>1</mn>
+        </msub>
+        <mo>=</mo>
+        <mfrac>
+          <mn>1</mn>
+          <mrow>
+            <msub>
+              <mi>log</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mfrac>
+              <mn>4</mn>
+              <mn>3</mn>
+            </mfrac>
+          </mrow>
+        </mfrac>
+      </math>. So we can write on average case the running time is 
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </math>.</p>
+           
+      <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">• Time Complexities</h2>
+      <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: salmon;">➔ Worst case complexity: <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>n</mi>
+          <mn>2</mn>
+        </msup>
+        <mo stretchy="false">)</mo>
+      </math></h2>
+
+      <p class="lead">If the pivot is always the largest or the lowest value then the worst case occurs.</p>
+
+      <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: salmon;">➔ Best case complexity: <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <msub>
+          <mi>log</mi>
+          <mn>2</mn>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </math></h2>
+
+      <p class="lead">If the pivot is in the centre or near the centre of an array then the best case occurs.</p>
+
+      <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: salmon;">➔ Average case complexity: <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <msub>
+          <mi>log</mi>
+          <mn>2</mn>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </math></h2>
+      <p class="lead">In other cases, an average case occurs.</p>
+      <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">• Space complexity</h2>
+      <p class="lead">Space complexity is <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>log</mi>
+          <mn>2</mn>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </math>.</p>
+      
+        </article>
 
                 
 

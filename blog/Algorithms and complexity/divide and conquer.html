@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
 
-    <title>Time and space complexity(A&C)</title>
+    <title>Divide and Conquer(A&C)</title>
 
     <!--- basic page needs
     ================================================== -->
@@ -179,15 +179,21 @@
 
                         <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 20px;">The following algorithms are
                              based on "Divide and conquer" programming approuch :</h2>
+                            <a href="#merge_sort" style="color: red;"><p class="lead" style="color: black;">• Merge sort</p></a>
+                            <a href="#quick_sort" style="color: red;"><p class="lead" style="color: black;">• Quick sort</p></a>
+                            <a href="#binary_search" style="color: red;"><p class="lead" style="color: black;">• Binary search</p></a>
+                            <a href="#strassen's_matrix" style="color: red;"><p class="lead" style="color: black;">• Strassen's Matrix Multiplication</p></a>
+                            <a href="#closet_pair" style="color: red;"><p class="lead" style="color: black;">• Closet pair(point)</p></a>
+                            <a href="#convex_hull" style="color: red;"><p class="lead" style="color: black;">• Convex Hull</p></a>
 
-                             <p class="lead" style="color: black;">• Merge sort</p>
-                             <p class="lead" style="color: black;">• Quick sort</p>
-                             <p class="lead" style="color: black;">• Binary search</p>
-                             <p class="lead" style="color: black;">• Strassen's Matrix Multiplication</p>
-                             <p class="lead" style="color: black;">• Closet pair(point)</p>
+                             
+                             
+                             
+                             
+                             
 
                              <div class="s-content__pagenav group"></div>
-                             <h2 class="s-content__title s-content__title--post">Merge Sort</h2>
+                             <h2 class="s-content__title s-content__title--post" id="merge_sort">Merge Sort</h2>
                              <br>
                              
                              <p class="lead" style="color: black;">➔ In merge sort, we break the given array midway, for example if the original 
@@ -336,7 +342,7 @@
                                 
                                 
                                     <div class="s-content__pagenav group"></div>
-                                    <h2 class="s-content__title s-content__title--post">Quick Sort</h2>
+                                    <h2 class="s-content__title s-content__title--post" id="quick_sort">Quick Sort</h2>
                                     <br>
                                     <p class="lead">In the merge sort, we saw the divide step hardly does 
                                         anything. The combining step plays a real role to sort the list. But in quicksort,
@@ -956,16 +962,47 @@
         <mi>n</mi>
         <mo stretchy="false">)</mo>
       </math>.</p>
-      
+      <div class="s-content__pagenav group"></div>
+
+
+      <h2 class="s-content__title s-content__title--post" id="binary_search">Binary Search</h2>
+      <p class="lead">Binary Search is applied on the sorted array or list of large size. This is a fastest search algorithm with run-time complexity of Ο(log n).</p>
+      <p class="lead">This search algorithm works on the principle of divide and conquer. For this algorithm to work properly, the data collection should be in the sorted form.
+    </p>
+    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Implementing Binary Search Algorithm</h2>
+    <p class="lead">Following are the steps of implementation that we will be following:</p>
+    <p class="lead">1. Start with the middle element:</p>
+    <p class="lead">• If the target value is equal to the middle element of the array, then return the index of the middle element.</p>
+    <p class="lead">• If not, then compare the middle element with the target value,</p>
+    <p class="lead">➔ If the target value is greater than the number in the middle index, then pick the elements to the right of the middle index, and start with Step 1.</p>
+    <p class="lead">➔ If the target value is less than the number in the middle index, then pick the elements to the left of the middle index, and start with Step 1.</p>
+    <p class="lead">2. When a match is found, return the index of the element matched.</p>
+    <p class="lead">3. If no match is found, then return -1</p>
+    <div class="s-content__media">
+        <div class="s-content__post-thumb"> 
+            <img src="binary search.gif" 
+                    srcset="binary search.gif 2100w, 
+                    binary search.gif 1050w, 
+                    binary search.gif 525w" style="width: 100%; margin-left: 0px" alt="">
+        </div>
+    </div>
+    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">C code for Binary Search</h2>
+
+    <script src="https://gist.github.com/SurajGavali/82250ef269fb243f6cc7526db3b982ed.js"></script>
+    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Time Complexity</h2>
+    <p class="lead">The time complexity of Binary Search can be written as, T(n) = T(n/2) + c.</p>
+    <p class="lead">The above recurrence can be solved either using Recurrence Tree method or Master method. It falls in case II of Master Method and solution of the recurrence is θ(Logn).
+    </p>
 
       <div class="s-content__pagenav group"></div>
 
 
-      <h2 class="s-content__title s-content__title--post">Strassen’s Matrix Multiplication</h2>
+      <h2 class="s-content__title s-content__title--post" id="strassen's_matrix">Strassen’s Matrix Multiplication</h2>
 <br>
 <p class="lead">first we will discuss the general method of matrix multiplication and later we will discuss Strassen’s matrix multiplication algorithm.</p>
 <p class="lead">Let us consider two matrices X and Y. We want to calculate the resultant matrix Z by multiplying X and Y.
 </p>
+
 
 <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px; color: black;">➔ Naïve Method</h2>
 <p class="lead">Here, we are calculating Z = X × Y. Using Naïve method, two matrices (X and Y) can be multiplied if the order of these matrices are p × q and q × r. 
@@ -1434,7 +1471,7 @@
    <script src="https://gist.github.com/SurajGavali/fd5edba19be6f4cc30903719041f9ee2.js"></script>
 
    <div class="s-content__pagenav group"></div>
-                             <h2 class="s-content__title s-content__title--post">Min-Max Algorithm</h2>
+                             <h2 class="s-content__title s-content__title--post" id="min_max">Min-Max Algorithm</h2>
                              <h2 class="s-content__title s-content__title--post" style="color: red; font-size: 25px;">(Divide and Conquer Approach)</h2>
    
                              <p class="lead">The array is divided into two halves. Then using recursive approach maximum and minimum numbers in each halves are found. 
@@ -1639,6 +1676,22 @@
     Compared to Naïve method, in divide and conquer approach, the number of comparisons is less. However, using the asymptotic notation both of the approaches are represented by O(n).
 
 </p>
+
+<div class="s-content__pagenav group">
+</div>
+<h2 class="s-content__title s-content__title--post"id="closet_pair">Closet Pair</h2>
+<div class="s-content__pagenav group">
+</div>
+<h2 class="s-content__title s-content__title--post" id="convex_hull">Convex Hull</h2>
+<p class="lead">Given a set of points in the plane. the convex hull of the set is the smallest convex polygon that contains all the points of it.</p>
+<div class="s-content__media">
+    <div class="s-content__post-thumb"> 
+        <img src="convex hull.gif" 
+                srcset="convex hull.gif 2100w, 
+                convex hull.gif 1050w, 
+                convex hull.gif 525w" style="width: 100%; margin-left: 0px" alt="">
+    </div>
+</div>
 </article>
 
                 
@@ -1651,7 +1704,7 @@
                     </div>
 
                     <div class="next-nav" style="text-align: right;">
-                        <a href="../comingsoon.html" rel="next">
+                        <a href="greedy algorithm.html" rel="next">
                            Next
                         </a>
                     </div>

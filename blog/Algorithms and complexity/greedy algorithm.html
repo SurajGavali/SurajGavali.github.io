@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
 
-    <title>Time and space complexity(A&C)</title>
+    <title>Greedy Algorithms(A&C)</title>
 
     <!--- basic page needs
     ================================================== -->
@@ -132,10 +132,78 @@
                     
                 </article>
 
+
                 <article class="s-post entry format-standard">
                     
-                    
+                    <p class="lead">Greedy is an algorithmic paradigm that builds up a 
+                        solution piece by piece, always choosing the next piece that offers 
+                        the most obvious and immediate benefit. So the problems where choosing 
+                        locally optimal also leads to global solution are best fit for Greedy.</p>
 
+                    <p class="lead" style="color: blue;">For example,</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px; color: black;">Counting Coins</h2>
+
+                    <p class="lead">The problem is to count to desired value by choosing the least possible coins And
+                        the greedy aprouch forces the algorithm to pick the largest possible coin. if we are provided coins of 
+                        1,2,5 and 10 amd we are asked to count 18 rupees the the greedy procedure will be :
+                    </p>
+                    <p class="lead">Select one coin of 10 then the remaining count is 8.
+                    </p>
+                    <p class="lead">now select one 5 rupee coin then the remaining count is 3.
+                    </p>
+                    <p class="lead">then select one 2 rupee coin now the count remaining is 1.
+                    </p>
+                    <p class="lead">And finally the selection of one 1 rupee coin solves the problem.
+                    </p>  
+                    <h2 class="s-content__title s-content__title--post">Fractional Knapsack Problem</h2>
+
+                    <p class="lead">Given weights and values of n items, we need to put these items in a 
+                        knapsack of capacity W to get the maximum total value in the knapsack.</p>
+
+                    <p class="lead" style="color: red;">we can break items for maximizing the total value of knapsack.</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (299).png" 
+                                    srcset="Screenshot (299).png 2100w, 
+                                    Screenshot (299).png 1050w, 
+                                    Screenshot (299).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+
+                    <h2 class="s-content__title s-content__title--post">0-1 Knapsack Problem</h2>
+                    <p class="lead">Given weights and values of n items, put these items in a knapsack of 
+                        capacity W to get the maximum total value in the knapsack.</p>
+                    <p class="lead">In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which 
+                        represent values and weights associated with n items respectively.</p>
+                    <p class="lead">Also given an integer W which represents knapsack capacity, find out the maximum value subset of 
+                        val[] such that sum of the weights of this subset is smaller than or equal to W.</p>
+                    <p class="lead" style="color: red;">You cannot break an item, either pick the complete item or don’t pick it
+                         (0-1 property).</p>
+
+
+                    <h2 class="s-content__title s-content__title--post">Activity Selection Problem</h2>
+                   
+                    <p class="lead" style="color: blue;">Example,</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (300).png" 
+                                    srcset="Screenshot (300).png 2100w, 
+                                    Screenshot (300).png 1050w, 
+                                    Screenshot (300).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (301).png" 
+                                    srcset="Screenshot (301).png 2100w, 
+                                    Screenshot (301).png 1050w, 
+                                    Screenshot (301).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+    
                 </article>
 
                 <div class="s-content__pagenav group">

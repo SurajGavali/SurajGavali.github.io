@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
 
-    <title>Menu(Operating System)</title>
+    <title>Processes(Operating System)</title>
 
     <!--- basic page needs
     ================================================== -->
@@ -131,56 +131,315 @@
                     
                 </article>
 
-                <article class="s-post entry format-standard" style="margin-left: 100px;">
-                    
-                    <p class="lead">
+                <article class="s-post entry format-standard">
 
-                        we have said that process is a program in execution.
-
-                        so when was a process is executed it is going to consume CPU for the instructions of that 
-                        particular process running on the CPU because the process is executing and in order to execute 
+                    <p class="lead">we have said that process is a program in execution.</p>
+                    <p class="lead">so when was a process is executed it is going to consume CPU time for the instructions of that 
+                        particular process running on the CPU because the process is executing</p>
+                    <p class="lead">in order to execute 
                         instructions on the CPU the instructions have to reside in the RAM so process will occupy 
-                        certain space in the RAM, space will be occupied not only for code but to global variables
-                        that is a data of the process, the local variables, and parameters that is going to be occupied on
-                        the stack of the process will be heap for the process some 
+                        certain space in the RAM</p>
+                    <p class="lead">space will be occupied not only for code but to global variables
+                        that is a data of the process, the local variables, and parameters(that is going to be occupied on
+                        the stack of the process will be heap for the process), some 
                         memory will also be occupied by the shared libraries.(will see the concept of
-                        shared libraries in detail when we see memory management) 
+                        shared libraries in detail when we see memory management)</p>
 
-                        A process is most typically created using fork and exec.
-                        --we have seen that fork() creates a duplicate process identical with caller process.
-                        (returns twice in parent and child)
-
-                        --and we saw that exec() superimpose the specified executable on the currently running
-                         process. so basically after exec() is over the original process which called exec() will vanish and 
-                         a new process will get institute in its place when we say a new process gets instituted I am not saying that a process
-                          id is going to change but basically the whole character of the process will change the code 
-                          itself will change the stack with change the Global data area will change and so on....
-
-                        --exec() doesn't return if its succeid
-                        --because after exec() is over the calling process has converted itself into into another program,
-                         the program which was specified as argument to exec()
-
-                         multi-programming is a system where multiple programs can reside in the Computer memory at the same time 
-                         and multitasking is necessarily multiprogramming but it also involves scheduling of the processes 
-                         one after another in a way that they share the CPU time.
-
-                         we have also discussed that multitasking is made possible with the help of a timer interrupt.
-
-                         the operating system will set a particular value in the timer register and pass on the control 
-                         to a process so the process will now start running and the process will execute on the CPU
-                         it will execute as long as the timer register is not decremented to zero with the every CPU cycle the timer 
-                         in register will keep decrementing by one and when it comes to the time it will be raised and as 
-                         a result of the timer interrupt which is the hardware interrupt we have seen that the control will jump to
-                          a predefined location at that predetermined location the operating system is already copied its code 
-                        and that code is called a scheduler in the case of a timer interrupt so scheduler which is 
-                        a part of the operating system will be invoked.
-
+                        <p class="lead">A process is most typically created using fork and exec.</p>
+                        <p class="lead">--we have seen that fork() creates a duplicate process identical with caller process.
+                            (returns twice in parent and child)</p>
+                        <p class="lead">--and we saw that exec() superimpose the specified executable on the currently running
+                            process. so basically after exec() is over the original process which called exec() will vanish and 
+                            a new process will get institute in its place</p>
+                        <p class="lead">when we say a new process gets instituted I am not saying that a process
+                            id is going to change but basically the whole character of the process will change the code 
+                            itself will change the stack with change the Global data area will change and so on....</p>
+                        <p class="lead">--exec() doesn't return if its succeid because after exec() is over the calling process has converted itself into into another program,
+                            the program which was specified as argument to exec()</p>
+                        <p class="lead">Multiprogramming and multitasking</p>
+                        <p class="lead">multi-programming is a system where multiple programs can reside in the Computer memory at the same time 
+                            and multitasking is necessarily multiprogramming but it also involves scheduling of the processes 
+                            one after another in a way that they share the CPU time.</p>
+                        <p class="lead">we have also discussed that multitasking is made possible with the help of a timer interrupt.</p>
+                        <p class="lead">the operating system will set a particular value in the timer register and pass on the control 
+                            to a process so the process will now start running and the process will execute on the CPU
+                            it will execute as long as the timer register is not decremented to zero</p>
+                        <p class="lead">with the every CPU cycle the timer 
+                            in register will keep decrementing by one and when it comes to zero the timer interrupt  will be raised which is the hardware interrupt we have seen that the control will jump to
+                             a predefined location at that predetermined location the operating system is already copied its code 
+                           and that code is called a scheduler</p>
+                        <p class="lead">scheduler(part of the operating system)</p>
+                        <p class="lead">-- invoked on timer interrupt</p>
+                        <p class="lead">--Selects the next process to execute and passes
+                            control over to it(by setting new value in timer register)</p>
 
 
+                        <p class="lead">Inter process communication using pipe()</p>
+                        <p class="lead">-- A lecture with demonstration during laboratory session</p>
+                        <p class="lead">-- Pipe() system call creates an operating system data structure, which
+                            acts as a FIFO, a queue, with two ends – a write end and a read end,
+                            both ends available as file descriptors</p>
+                        <p class="lead">-- After fork() pipe’s buffer is shared between parent and child , the Fds
+                            get inherited(Hence one can write into it and another can read from it) </p>
+                        <p class="lead">Concept of how the shell connects two processes using a pipe(in lab)</p>
 
 
 
-                    </p>
+                        <p class="lead">Calling convention</p>
+                        <p class="lead">-- The convention documented for each processor</p>
+                        <p class="lead">-- To make function calls work properly</p>
+                        <p class="lead">-- – Ensure that parameters are passed correctly, return value
+                            is returned, often using the “stack” and/or the registers </p>
+                        <p class="lead">-- – Rules for the compiler to generate additional code in the
+                            caller function and called(callee) function </p>
+                        <p class="lead">● C Compiler</p>
+                        <p class="lead">– Converts C code to machine code</p>
+                        <p class="lead">● Linker</p>
+                        <p class="lead">– Links various object code files together, essentially connecting calls of functions to the
+                            codes of function</p>
+                        <p class="lead">– Stack and Dynamic Linking</p>
+                        <p class="lead">● Loader</p>
+                        <p class="lead">– Basically code of exec(), inside OS</p>
+                        <p class="lead">– Loads the executable file from Disk into OS memory</p>
+                        <p class="lead">– Static and Dynamic Loading</p>
+                        <p class="lead">Dynamic linking and static linking is meaningless scheme although it is practically 
+                            possible</p>
+                        <p class="lead">● Memory layout of a C program</p>
+                        <p class="lead">-- when we say memory layout it means that layout which is assumed by the compiler</p>
+                        <p class="lead">-- lower address of memory contains text
+                            (i.e. machine code or instruction of the program)</p>
+                        <p class="lead">-- the c program might have global variables 
+                            (they may be of two types initialized and uninitilized variables)</p>
+                        <p class="lead">-- initialized and uninitilized variables will occupy two different regions in memory 
+                            why is it so let us see:</p>
+                        <p class="lead">while executing above piece of code, initialized varibles in main function will 
+                            occupied on to the stack and we know that stack get occupied only when the program is going 
+                            to execute.and memory alocation like malloc will happen only when the program is running and the code 
+                        like for loop and return 0 will compiled into a machine code. </p>
+
+
+                        <p class="lead">But the variables like x and y are global varibles and need to make availble throighout
+                            the life of program right from main starts executing till it returns so the the global variables made to available 
+                            in memory before the main starts executing that is why can not go on to the stack and they have located
+                            at different memory regions.
+                        </p>
+                        <p class="lead">"int y = 15" one will say that the this line can be converted to move 15 to some register
+                            but the trouble is that to execute the particular line of this code the code should be executing and here there is only 
+                            one function i.e. is main and the program will start executing from the main function 
+                        </p>
+                        <p class="lead"> so to avoid this there is particular space is created in executable file and the initializinf
+                            value is to be written out.
+                        </p>
+                        <p class="lead">so the global varibles which are initialized are actually occupy space in executable file
+                            but global varibles which are uninitilized are need not to occupy space in executable we just need to 
+                            mention that this amount of space is to be needed.
+                        </p>
+                        <p class="lead">so while loading the program what happens is that the initialized data is copied as it is 
+                            from executable and the for uninitilized varibles some memory is to be alocated
+                        </p>
+                        <p class="lead">the local variables and argc,argv varibles goes to the stack. and stack starts exapanding
+                            downwards and heap starts from where the uninitilized data over and grows upwards.
+                        </p>
+                        <p class="lead"> when you run "size" command on any object code file it will give you the memory layout of that 
+                            particular file. example, "size /bin/ls"
+                        </p>
+                        <p class="lead">● Compiler assumes that the program will be
+                            located “like this” in the RAM when the program
+                            starts executed (after exec()!) </p>
+                        <p class="lead">● Hence compiler is able to generate machine
+                            code, assuming certain addresses for variables
+                            and code in stack, heap, data, code areas </p>
+                        <p class="lead"> when the program starts running it is process and there many processes running 
+                            and the os has to manage these processes because os has to schedule them iin multitasking system
+                            one after another.
+                        </p>
+                        <p class="lead">so whta happens is that there is record which represents the processes called as PCB</p>
+                        <p class="lead">● PCB(Process COntrol Block)</p>
+                        <p class="lead">-- A record representing a
+                            process in operating system’s
+                            data structures</p>
+                        <p class="lead">-- – OS maintains a “list”of PCBs,
+                            one for each process</p>
+                        <p class="lead">-- – Called “struct task_struct” in
+                            Linux kernel code and “struct
+                            proc” in xv6 code </p>
+                        <p class="lead">● Fields in PCB</p>
+                        <p class="lead">This is structure(so it should be stored i memory) of the following mentioned fields</p>
+                        <p class="lead">– We have already discussed
+                            the array of file descriptors </p>
+                        <p class="lead">– Process ID (PID) , which is a unique number identifies particular process.</p>
+                        <p class="lead">– Copy of Program counter As we know in multi-tasking system the process is to be taken out 
+                            and again rescedule it happens so where to reschedule it? thats why the copy of program counter is also there
+                        in PCB. </p>
+                        <p class="lead">– Registers , when the process is taken out 
+                            and again resceduling happens so process has to which reg it was using so the reg 
+                        are have to be stored in PCB.</p>
+                        <p class="lead">– Memory limits of the process, how much memory is using and all</p>
+                        <p class="lead">– Accounting information, for how much time the process is running and all</p>
+                        <p class="lead">– I/O status</p>
+                        <p class="lead">– Scheduling information</p>
+                        <p class="lead">– Process State (important)</p>
+                        <p class="lead">● Process Queues/Lists inside OS</p>
+                        <p class="lead">Different types of queues/lists can be maintained by
+                            OS for the processes</p>
+                        <p class="lead">– A queue of processes which need to be scheduled
+                            </p>
+                        <p class="lead">– A queue of processes which have requested input/output
+                            to a device and hence need to be put on hold/wait </p>
+                        <p class="lead">-  List of processes currently running on multiple CPUs</p>
+                        <p class="lead">Process State</p>
+                        <p class="lead">As a process executes, it changes state. The state of a process is defined in part
+                            by the current activity of that process. A process may be in one of the following
+                            states:</p>
+
+
+                           
+
+
+
+                        <p class="lead"> • New. The process is being created.</p>
+                        <p class="lead">• Running. Instructions are being executed.
+                        </p>
+                        <p class="lead">• Waiting. The process is waiting for some event to occur (such as an I/O
+                            completion or reception of a signal).</p>
+                        <p class="lead">• Ready. The process is waiting to be assigned to a processor.</p>
+                        <p class="lead">• Terminated. The process has finished execution</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="processes.png" 
+                                        srcset="processes.png 2100w, 
+                                        processes.png 1050w, 
+                                        processes.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
+                        <p class="lead">Threads</p>
+                        <p class="lead">The process model discussed so far has implied that a process is a program that
+                            performs a single thread of execution(This single thread of control allows the process to perform only one task at
+                            a time.)</p>
+                        <p class="lead">Most modern operating systems
+                            have extended the process concept to allow a process to have multiple threads
+                            of execution and thus to perform more than one task at a time.</p>
+                        <p class="lead">PROCESS REPRESENTATION IN LINUX</p>
+                        <p class="lead">The process control block in the Linux operating system is represented by
+                            the C structure task struct, which is found in the <linux/sched.h>
+                            include file in the kernel source-code directory.</p>
+                        <p class="lead">This structure contains all the
+                            necessary information for representing a process, including the state of the
+                            process, scheduling and memory-management information, list of open files,
+                            and pointers to the process’s parent and a list of its children and siblings.</p>
+                        <p class="lead">(A
+                            process’s parent is the process that created it; its children are any processes
+                            that it creates. Its siblings are children with the same parent process.</p>
+                        <p class="lead"> Some
+                            of these fields include:
+                            </p>
+
+                            <div class="s-content__media">
+                                <div class="s-content__post-thumb"> 
+                                    <img src="Screenshot (367).png" 
+                                            srcset="Screenshot (367).png 2100w, 
+                                            Screenshot (367).png 1050w, 
+                                            Screenshot (367).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                </div>
+                            </div>
+                        <p class="lead">For example, the state of a process is represented by the field long state
+                            in this structure. </p>
+                        <p class="lead">e. Within the Linux kernel, all active processes are represented
+                            using a doubly linked list of "task_struct".</p>
+                        <p class="lead">The kernel maintains a "current"(pointer) to the process currently executing on the system, as shown below:</p>
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (368).png" 
+                                        srcset="Screenshot (368).png 2100w, 
+                                        Screenshot (368).png 1050w, 
+                                        Screenshot (368).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
+                        
+                        <p class="lead">As an illustration of how the kernel might manipulate one of the fields in
+                            the task_struct for a specified process,</p>
+                        <p class="lead">let’s assume the system would like
+                            to change the state of the process currently running to the value new_state.</p>
+                        <p class="lead">If current is a pointer to the process currently executing, its state is changed
+                            with the following:</p>
+                        <p class="lead">current->state = new state;</p>
+                        <p class="lead">• Process Scheduling</p>
+                        <p class="lead">The objective of multiprogramming is to have some process running at all
+                            times, to maximize CPU utilization.</p>
+                        <p class="lead">The objective of time sharing is to switch the
+                        CPU among processes so frequently that users can interact with each program while it is running.</p>
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (369).png" 
+                                        srcset="Screenshot (369).png 2100w, 
+                                        Screenshot (369).png 1050w, 
+                                        Screenshot (369).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>                        
+                        
+                        
+                        <p class="lead"> To meet these objectives, the process scheduler selects
+                            an available process (possibly from a set of several available processes) for
+                            program execution on the CPU.</p>
+                        <p class="lead">For a single-processor system, there will never
+                            be more than one running process. If there are more processes, the rest will
+                            have to wait until the CPU is free and can be rescheduled.</p>
+                        <p class="lead">• Scheduling Queues</p>
+                        <p class="lead">As processes enter the system, they are put into a job queue, which consists
+                            of all processes in the system.</p>
+                        <p class="lead">The processes that are residing in main memory
+                            and are ready and waiting to execute are kept on a list called the ready queue.</p>
+                        <p class="lead">The system also includes other queues.</p>
+                        <p class="lead">. When a process is allocated the
+                            CPU, it executes for a while and eventually quits, is interrupted, or waits for
+                            the occurrence of a particular event, such as the completion of an I/O request.
+                            Suppose the process makes an I/O request to a shared device, such as a disk.</p>
+                        <p class="lead">The list of processes waiting for a particular I/O device is called a
+                            device queue. Each device has its own device queue</p>
+
+
+
+                            <div class="s-content__media">
+                                <div class="s-content__post-thumb"> 
+                                    <img src="Screenshot (370).png" 
+                                            srcset="Screenshot (370).png 2100w, 
+                                            Screenshot (370).png 1050w, 
+                                            Screenshot (370).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                                </div>
+                            </div> 
+                        <p class="lead">Each rectangular box represents a queue. </p>
+                        <p class="lead">Two types
+                            of queues are present: the ready queue and a set of device queues.</p>
+                        <p class="lead"> The circles
+                            represent the resources that serve the queues, and the arrows indicate the flow
+                            of processes in the system.</p>
+                        <p class="lead">A new process is initially put in the ready queue. It waits there until it is
+                            selected for execution, or dispatched. Once the process is allocated the CPU
+                            and is executing, one of several events could occur:</p>
+                        <p class="lead">• The process could issue an I/O request and then be placed in an I/O queue.
+                            
+                            
+                        <p class="lead">• The process could create a new child process and wait for the child’s
+                            termination.</p>
+                        <p class="lead">• The process could be removed forcibly from the CPU, as a result of an
+                            interrupt, and be put back in the ready queue</p></p>
+                        <p class="lead">In the first two cases, the process eventually switches from the waiting state
+                            to the ready state and is then put back in the ready queue.</p>
+                        <p class="lead">A process continues
+                            this cycle until it terminates, at which time it is removed from all queues and
+                            has its PCB and resources deallocated.</p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
+                        <p class="lead"></p>
                     
                 </article>
 

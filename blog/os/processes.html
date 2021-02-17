@@ -429,17 +429,53 @@
                         <p class="lead">A process continues
                             this cycle until it terminates, at which time it is removed from all queues and
                             has its PCB and resources deallocated.</p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
-                        <p class="lead"></p>
+                        <p class="lead">• Schedulers</p>
+                        <p class="lead">A process migrates among the various scheduling queues throughout its
+                            lifetime.</p>
+                        <p class="lead">The operating system must select, for scheduling purposes, processes
+                            from these queues in some fashion.</p>
+                        <p class="lead">The selection process is carried out by the
+                            appropriate scheduler.</p>
+                        <p class="lead">more processes are submitted than can be executed
+                            immediately. </p>
+                        <p class="lead">These processes are spooled to a mass-storage device (typically a
+                            disk), where they are kept for later execution.</p>
+                        <p class="lead">The long-term scheduler, or job
+                            scheduler, selects processes from this pool and loads them into memory for execution.</p>
+                        <p class="lead"> The short-term scheduler, or CPU scheduler, selects from among
+                            the processes that are ready to execute and allocates the CPU to one of them.</p>
+                        <p class="lead">• Context Switch</p>
+                        <p class="lead">As we have seen "Interrupts" cause the operating system to change
+                            a CPU from its current task and to run a kernel routine.</p>
+                        <p class="lead">When an interrupt occurs, the system
+                            needs to save the current context of the process running on the CPU so that
+                            it can restore that context when its processing is done, essentially suspending
+                            the process and then resuming it. </p>
+                        <p class="lead">The context is represented in the PCB of the
+                            process. </p>
+                        <p class="lead">Context includes the value of the CPU registers, the process state,
+                             and memory-management information.</p>
+                        <p class="lead">Generically, we perform a state
+                            save of the current state of the CPU, be it in kernel or user mode, and then a
+                            state restore to resume operations.</p>
+                        <p class="lead">No useful work happenin while doing a context
+                            switch</p>
+                        <p class="lead">This “switch” is obviously not going to happen using calling convention, as no “call” is
+                            happening</p>
+                        <p class="lead">– Code for context switch must be in assembly!</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (371).png" 
+                                        srcset="Screenshot (371).png 2100w, 
+                                        Screenshot (371).png 1050w, 
+                                        Screenshot (371).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> 
+                        <p class="lead" style="text-align: center;">This above diagram shows the context switch between processes p<sub>0</sub> and p<sub>1</sub></p>
+                        <a href="xv6 code- traps,scheduler,blocking.html"><p class="lead" style="color: blue; text-align: center;">To know about How all these context switch and processes happens in XV6 code, click here</p>
+                        </a>
+                       
                     
                 </article>
 
@@ -447,13 +483,13 @@
 
                     <div class="s-content__pagenav group">
                         <div class="next-nav" style="text-align: left;">
-                            <a href="compiler and machine code generation.html" rel="next">
+                            <a href="bootloader code in xv6.html" rel="next">
                                Previous
                             </a>
                         </div>
 
                         <div class="next-nav" style="text-align: right;">
-                            <a href="bootloader code in xv6.html" rel="next">
+                            <a href="xv6 code- traps,scheduler,blocking.html" rel="next">
                                Next
                             </a>
                         </div>

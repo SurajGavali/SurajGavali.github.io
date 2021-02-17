@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>XV6 code for Traps,Scheduler and Blocking(Operating System)</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <div class="s-header__search">
+                    
+                <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="Search">
+                </form>
+
+                <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+
+            </div> <!-- end search wrap --> 
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+                    <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+
+                    
+                </article>
+
+                <article class="s-post entry format-standard">
+                    <p class="lead">● Handling traps</p>
+                    <p class="lead">--> Transition from user mode to kernel mode</p>
+                    <p class="lead">- On a system call</p>
+                    <p class="lead">- On a hardware interrupt</p>
+                    <p class="lead">- User program doing illegal work (exception)</p>
+                    <p class="lead" style="color: blue;">What is needed to be done while changing mode form
+                    user mode to kernel mode?</p>
+                    <p class="lead">- Generally most of the kernels not only have their code at this predifined location 
+                        (while executing hardware interrupt or system call) but also the stack pointer is also changed to point
+                        to a location called as kernel stack.
+
+                    </p>
+                    <p class="lead" style="color: red;">What is kernel stack?</p>
+                    <p class="lead" style="color: blue;">--> Some location in memory!</p>
+                    <p class="lead">Why there is kernel stack?</p>
+                    <p class="lead">the reason is while process is running the user code and kernel code can't run on same system stack,
+                        because if there is any user code which is cleverly written may lead to som e security problems!
+                    </p>
+                    <p class="lead">- Kernel to work with devices, if needed</p>
+                    <p class="lead">- Kernel to understand interface of device </p>
+                    <p class="lead">-- Which actions are needed on a Trap?</p>
+                    <p class="lead">- Save the processor’s registers (context) for future use</p>
+                    <p class="lead">- Set up the system to run kernel code (kernel context) on kernel
+                        stack</p>
+                    <p class="lead">- Start kernel in appropriate place (sys call, intr handler, etc)
+                    </p>
+                    <p class="lead">- Kernel to get all info related to event (which block I/O done?,
+                        which sys call called, which process did exception and what
+                        type, get arguments to system call, etc)</p>
+
+                    <p class="lead">● Privilege level</p>
+                    <p class="lead">- The x86 has 4 protection levels, numbered 0 (most
+                        privilege) to 3 (least privilege).</p>
+                    <p class="lead">- In practice, most operating systems use only 2 levels: 0
+                        and 3, which are then called kernel mode and user mode,
+                        respectively.</p>
+                    <p class="lead">- The current privilege level with which the x86 executes
+                        instructions is stored in %cs register, in the field CPL.</p>
+                    <p class="lead">- The Privilege level Changes automatically on "“int” instruction","hardware interrupt" 
+                        ,"exeception".
+                    </p>
+                    <p class="lead">- And changes back to user mode on "iret".</p>
+                    <p class="lead">- “int” 10 --> makes 10th hardware interrupt. S/w interrupt can be used
+                        to create hardware interrupt’
+                        </p>
+                    <p class="lead">- Xv6 uses “int 64” for actual system calls.</p>
+                    <p class="lead">● Interrupt Descriptor Table (IDT)</p>
+                    <p class="lead">- IDT is an array in memory.</p>
+                    <p class="lead">- This is job of OS to fill up the entris in IDT while loading itself.</p>
+                    <p class="lead">- This table defines intertupt handlers.</p>
+                    <p class="lead">- Interrupts 0-31 are defined for software exceptions, like divide
+                        errors or attempts to access invalid memory addresses.</p>
+                    <p class="lead">- Xv6 maps the 32 hardware interrupts to the range 32-63</p>
+                    <p class="lead">- and uses interrupt 64 as the system call interrupt</p>
+                    <p class="lead">--> Interrupt Descriptor Table (IDT) entries</p>
+                    <p class="lead">Each entry in the IDT array is a 64 bit structure of following form,</p>
+                    <p class="lead" style="color: chocolate;">Xv6 IDT entry structure code,</p>
+
+                    <?prettify linenums=1?>
+
+    <pre class="prettyprint">
+        // Gate descriptors for interrupts and traps
+        struct gatedesc {
+        uint off_15_0 : 16; // low 16 bits of offset in segment
+        uint cs : 16;       // code segment selector
+        uint args : 5;      // # args, 0 for interrupt/trap gates
+        uint rsv1 : 3;      // reserved(should be zero I guess)
+        uint type : 4;      // type(STS_{IG32,TG32})
+        uint s : 1;         // must be 0 (system)
+        uint dpl : 2;       // descriptor(meaning new) privilege level
+        uint p : 1;         // Present
+        uint off_31_16 : 16; // high bits of offset in segment
+        };</pre>
+                    <p class="lead">From this above code the offset at line 3 and line number 11 gives the 
+                        particular address at which the desired code is.(let us skip the another lines of code.)
+                    </p>
+                    <p class="lead">Go to entry.S there is symbol "entry"</p>
+                    <p class="lead">This is where the "Kernel code" actually begins.</p>
+                    <p class="lead">Now by skiping the first some part of code and coming to the "mov $main, %eax"
+                        and line after this, basically this part of code doing is copying value in variable $main in 
+                        register eax and jumping to address given by register eax.(basically we are moving to the code
+                        given by this main variable.)
+                    </p>
+                    <p class="lead">Go to main.c file and you will find the main function here that we are interested in 
+                        (which is given by previous main varible)
+                    </p>
+                    <p class="lead">image of main function</p>
+                    <p class="lead">In this you will see that there are lot of init function calls.</p>
+                    <p class="lead">the particular function that we are now interested in is "tvinit()"(Trap vector init)</p>
+                    <p class="lead">Now go to the tvinit() function</p>
+
+
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (372).png" 
+                                    srcset="Screenshot (372).png 2100w, 
+                                    Screenshot (372).png 1050w, 
+                                    Screenshot (372).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead">In this function there is for loop in this there is use of "SETGATE".</p>
+                    <p class="lead">What is this SETGATE?</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (373).png" 
+                                    srcset="Screenshot (373).png 2100w, 
+                                    Screenshot (373).png 1050w, 
+                                    Screenshot (373).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>
+                    <p class="lead">So this is a multiline macro which have values which are elements above defined structure.</p>
+                    <p class="lead">"gate? parameter in this macro is refering to a structure and different elements in 
+                        the structure are given values using "istrap","sel","off" and "d" these parameters.
+                    </p>
+                    <p class="lead">now coming to the tvinit() function, above you will find that there is declaration of gatedesc 
+                        which has IDT i.e. array idt[i].
+                    </p>
+                    <p class="lead">when the kernel is loaded in "bootmain.c" this idt also occupied some space in memory(since 
+                        it is an global varible remember the memory layout of global variables)</p>
+                    <p class="lead">- so in this tvinit() there is just setting of values in this IDT.</p>
+                    <p class="lead">In SETGATE the "vectors[i]" field is setting offset value to each entry in the idt array.</p>
+                    <p class="lead">what is in this vector[], you can find the defination of this below the gatedesc defination
+                    </p>
+                    <p class="lead">This is externel array which is in "vectors.S" file let see what is there in this file.</p>
+                    <p class="lead">image of vectors.S file</p>
+                    <p class="lead">So this is basically a machine code file where there is an initialized array with lables vector0,
+                        vector1,....,vector255 so what is vectors[] array contains is basically the addresses of following lables.
+                    </p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                
+                </article>
+
+                <article>
+
+                    <div class="s-content__pagenav group">
+                        <div class="next-nav" style="text-align: left;">
+                            <a href="processes.html" rel="next">
+                               Previous
+                            </a>
+                        </div>
+
+                        <div class="next-nav" style="text-align: right;">
+                            <a href="../comingsoon.html" rel="next">
+                               Next
+                            </a>
+                        </div>
+                    </div> <!-- end s-content__pagenav -->
+
+                    <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+                
+                </article>
+
+            </div>  
+        </div>                
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+
+</body>
+
+</html>

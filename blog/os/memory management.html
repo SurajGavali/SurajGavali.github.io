@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Memory Management (Operating System)</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <div class="s-header__search">
+                    
+                <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="Search">
+                </form>
+
+                <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+
+            </div> <!-- end search wrap --> 
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+                    
+                    <h2 class="s-content__title s-content__title--post">Memory Management</h2>
+									
+										<p class="lead">So we going to understand :</p>
+										<p class="lead">● Understanding how the processor architecture
+																		drives the memory management features of OS
+																		and system programs (compilers, linkers)</p>
+										<p class="lead">● Understanding how different hardware designs
+l										ead to different memory management schemes
+															by operating systems</p>
+					
+					                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">CPU job review</h2>
+
+										<p class="lead">● Fetch instruction, from location given by PC</p>
+										<p class="lead">● Decode and execute that instruction(Possibly fetching some data from memory in registers)</p>
+										<p class="lead">● Increment PC or Change PC(Depending on the instruction)</p>
+										<p class="lead">● Repeat the whole thing</p>
+										<p class="lead">● During the entire ‘on’ time of the CPU</p>
+										<p class="lead">--> Addresses are “issued” by the CPU on address bus</p>
+										<p class="lead">--> One address definitely to fetch instruction from location specified by PC</p>
+										<p class="lead">--> Zero or more addresses depending on instruction</p>
+										<p class="lead">● e.g. mov $0x300, r1 # move contents of address 0x300 to r1 --> one extra address issued on address bus</p>
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">Simple case : </h2>
+					<					p class="lead">Suppose the address issued by CPU reaches the RAM controller directly</p>
+										<div class="s-content__media">
+                        					<div class="s-content__post-thumb"> 
+                            					<img src="simple case.png" 
+                                    				srcset="simple case.png 2100w, 
+                                            				simple case.png 1050w, 
+                                            				simple case.png 525w" style="width: 100%; margin-left: 0px" alt="simple case">
+                        					</div>
+                    					</div> <!-- end s-content__media -->
+					
+										<p class="lead">Suppose that there is simple process containing instruction as shown in above picture.</p>
+										<p class="lead">● When a process is running the addresses issued by it, will reach the RAM directly</p>
+										<p class="lead">● So exact addresses of globals  addresses in “jmp” and “call” must be part the machine instructions generated</p>
+										<p class="lead" style="color:red;">How will the compiler know the addresses at compile time ?</p>
+										<p class="lead" style="color:blue;">--> compiler assumes some fixed addresses for globals, code</p>
+										<p class="lead">So now the OS loads the program exactly at the same location in the memory(Now everything works)</p>
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left; color:red;">Problem with this approuch,</h2>
+
+										<p class="lead">● Programs once loaded in RAM must stay there, can’t be moved</p>
+										
+										
+										<p class="lead">What about 2 programs?</p>
+										<p class="lead">--> Compilers being “programs”, will make same assumptions and are likely to generate same/overlapping addresses 
+											for two different programs<</p>
+										<p class="lead">--> Hence only one program can be in memory at a time !</p>
+										<p class="lead">--> No need to check for any memory boundary violations – all memory belongs to one process</p>
+										<p class="lead">● Example, DOS</p>
+					
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">Base + Limit case : </h2>
+					
+					
+										<div class="s-content__media">
+                        					<div class="s-content__post-thumb"> 
+                            					<img src="base + limit.png" 
+                                    				srcset="base + limit.png 2100w, 
+                                            				base + limit.png 1050w, 
+                                            				base + limit.png 525w" style="width: 100%; margin-left: 0px" alt="base + limit">
+                        					</div>
+                    					</div> <!-- end s-content__media -->
+										<p class="lead">● Base and Limit are two registers inside CPU’s Memory Management Unit(MMU).</p>
+										<p class="lead">● ‘base’ is added to the address generated by CPU</p>
+										<p class="lead">● The result is comparedwith base+limit and if less passed to memory, else "hardware interrupt" is raised</p>
+										<p class="lead">The address issued by CPU is call as logical address and the the address wich goes to the actual 
+											memory is called as physical address</p>
+										
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">Memory Management Unit(MMU)</h2>
+										<div class="s-content__media">
+                        					<div class="s-content__post-thumb"> 
+                            					<img src="mmu.png" 
+                                    				srcset="mmu.png 2100w, 
+                                            				mmu.png 1050w, 
+                                            				mmu.png 525w" style="width: 100%; margin-left: 0px" alt="mmu">
+                        					</div>
+                    					</div> <!-- end s-content__media -->
+										<p class="lead">● MMU is part of the CPU chip, acts on every memory address issue by execution unit of the CPU</p>
+										<p class="lead">● In the base + limit scheme, the base, limit calculation parts are part of MMU</p>
+					
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">What is the compilers work now?</h2>
+										<p class="lead">● Assume that the process is one continous whole chunk in memory, with a size limit</p>
+										<p class="lead">● Assume that the process starts at address zero (!) and calculate addresses for globals, code, etc. 
+											And accordingly generate machine code</p>
+					
+										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">What OS do now?</h2>
+										<p class="lead">● While loading the process in memory – must load as one continous segment</p>
+										<p class="lead">● Fill in the ‘base’ register with the actual address of the process in RAM</p>
+										<p class="lead">● Setup the limit to be the size of the process as set by compiler in the executable file</p>
+										<p class="lead" style="color blue">Now as a result of both compiler and OS the process can go anywhere in RAM at the time of loading i.e. “Relocatable code”</p>
+										<p class="lead">Some memory violations can be detected – a memory access beyond base+limit will raise interrupt, 
+											thus running OS in turn, which may take action against the process</p>
+										<p class="lead"></p>
+										<p class="lead"></p>
+										<p class="lead"></p>
+										<p class="lead"></p>
+										<p class="lead"></p>
+					
+                    
+                </article>
+
+            </div>  
+        </div>                
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+
+</body>
+
+</html>

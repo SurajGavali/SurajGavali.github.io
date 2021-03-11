@@ -509,6 +509,377 @@
                     <p class="lead">vfork() is an extremely
                         efficient method of process creation and is sometimes used to implement UNIX
                         command-line shell interfaces.</p>
+                    
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">2. Page Replacement</h2>
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">What if no free frame?</h2>
+
+                    <p class="lead">If we increase our degree of multiprogramming, we are "over-allocating"
+                        memory</p>
+                    <p class="lead">If we run six processes, each of which is ten pages in size but actually
+                        uses only five pages, we have higher CPU utilization and throughput, with
+                        ten frames to spare.</p>
+                    <p class="lead">It is possible, however, that each of these processes, for a
+                        particular data set, may suddenly try to use all ten of its pages, resulting in a
+                        need for sixty frames when only forty are available.</p>
+                    <p class="lead">We also need to consider that free frames are also demanded from kernel, I/O buffers, etc.</p>
+                    <p class="lead">One of the solution for allocating free frames is page replacement - find some page in 
+                        memory, but not really in use, page it out.</p>
+                    <p class="lead">● Same page may be brought into memory several times</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Strategies for performance</h2>
+
+                    <p class="lead">● Prevent over-allocation of memory by modifying page-fault service routine to
+                        include page replacement</p>
+                    <p class="lead">● Use modify (dirty) bit to reduce overhead of page transfers – only modified
+                        pages are written to disk</p>
+                    <p class="lead" style="color: blue;">Page replacement completes separation between logical memory and physical
+                        memory – large virtual memory can be provided on a smaller physical memory</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (443).png" 
+                                        srcset="Screenshot (443).png 2100w, 
+                                                Screenshot (443).png 1050w, 
+                                                Screenshot (443).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Basic Page Replacement</h2>
+
+                    <p class="lead">1) Find the location of the desired page on the disk.</p>
+                    <p class="lead">2) Find a free frame:</p>
+                    <p class="lead">--> a. If there is a free frame, use it.</p>
+                    <p class="lead">--> b. If there is no free frame, use a page-replacement algorithm to select
+                        a victim frame.</p>
+                    <p class="lead">--> c. Write the victim frame to the disk; change the page and frame tables
+                        accordingly.</p>
+                    <p class="lead" style="color: red;">Write victim frame to disk if dirty</p>
+                    <p class="lead">3) Read the desired page into the newly freed frame; change the page and
+                        frame tables.</p>
+                    <p class="lead">4) Continue the user process from where the page fault occurred.</p>
+                    <p class="lead" style="color: red;">Note now potentially 2 page transfers for page fault – increasing EAT
+                        P</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (444).png" 
+                                        srcset="Screenshot (444).png 2100w, 
+                                                Screenshot (444).png 1050w, 
+                                                Screenshot (444).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Now there are two problems 
+                        to be solved</h2>
+
+                    <p class="lead">1. Frame-allocation algorithm</p>
+                    <p class="lead">which determines how many frames to give each process and which frames to replace.</p>
+                    <p class="lead">2. Page-replacement algorithm</p>
+                    <p class="lead">Want lowest page-fault rate on both first access and reaccess.</p>
+                    <p class="lead">There are many different page-replacement algorithms. Every operating
+                        system probably has its own replacement scheme.</p>
+                    <p class="lead" style="color: red;">How do we select a
+                        particular replacement algorithm? In general, we want the one with the lowest
+                        page-fault rate.</p>
+                    <p class="lead">We evaluate an algorithm by running it on a particular string of memory
+                        references and computing the number of page faults. </p>
+                    <p class="lead">The string of memory
+                        references is called a "reference string".</p>
+                    <p class="lead">We can generate reference strings
+                        artificially (by using a random-number generator, for example), or we can trace
+                        a given system and record the address of each memory reference.</p>
+                    <p class="lead">To reduce the number of data, we use two facts.</p>
+                    <p class="lead">1. for a given page size (and the page size is generally fixed by the
+                        hardware or system), we need to consider only the page number, rather than
+                        the entire address.</p>
+                    <p class="lead">2. if we have a reference to a page p,then any references
+                        to page p that immediately follow will never cause a page fault. Page p will
+                        be in memory after the first reference, so the immediately following references
+                        will not fault.</p>
+                    <p class="lead">Obviously, as the number of frames available increases, the number
+                        of page faults decreases.</p>
+                    <p class="lead">In general, we expect a curve such as that in Figure below</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (445).png" 
+                                    srcset="Screenshot (445).png 2100w, 
+                                            Screenshot (445).png 1050w, 
+                                            Screenshot (445).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    <p class="lead">As the
+                        number of frames increases, the number of page faults drops to some minimal
+                        level. Of course, adding physical memory increases the number of frames.</p>
+                    <p class="lead" style="color: blue;">In all our examples, the reference string is</p>
+                    <p class="lead" style="color: rgb(199, 43, 63);">7,0,1,2,0,3,0,4,2,3,0,3,0,3,2,1,2,0,1,7,0,1</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">FIFO Page Replacement</h2>
+                    <p class="lead">The simplest page-replacement algorithm is a first-in, first-out (FIFO) algorithm.</p>
+                    <p class="lead">When a page must be replaced, the oldest
+                        page is chosen.</p>
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (446).png" 
+                                        srcset="Screenshot (446).png 2100w, 
+                                                Screenshot (446).png 1050w, 
+                                                Screenshot (446).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">For our example reference string, our three frames are initially empty. </p>
+                    <p class="lead">The
+                        first three references (7, 0, 1) cause page faults and are brought into these empty
+                        frames.</p>
+                    <p class="lead">The next reference (2) replaces page 7, because page 7 was brought in
+                        first. </p>
+                    <p class="lead">Since 0 is the next reference and 0 is already in memory, we have no fault
+                        for this reference.</p>
+                    <p class="lead">The first reference to 3 results in replacement of page 0, since
+                        it is now first in line.</p>
+                    <p class="lead">Because of this replacement, the next reference, to 0, will fault.</p>
+                    <p class="lead">Page 1 is then replaced by page 0. This process continues as shown in
+                        above figure</p>
+                    <p class="lead"> Every time a fault occurs, we show which pages are in our three
+                        frames. There are fifteen faults altogether.</p>
+                    <p class="lead" style="color: red;">The FIFO page-replacement algorithm is easy to understand and program.
+                        However, its performance is not always good. </p>
+                    <p class="lead">To illustrate the problems that are possible with a FIFO page-replacement
+                        algorithm, consider the following reference string: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5.
+                        </p>
+                    <p class="lead">Notice that the number of faults for four frames
+                        (ten) is greater than the number of faults for three frames (nine)! This most
+                        unexpected result is known as Belady’s anomaly see below figure.</p>
+
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (447).png" 
+                                        srcset="Screenshot (447).png 2100w, 
+                                                Screenshot (447).png 1050w, 
+                                                Screenshot (447).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Belady’s anomaly</h2>
+                    <p class="lead">for some page-replacement
+                        algorithms, the page-fault rate may increase as the number of allocated frames
+                        increases. </p>
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Optimal Page Replacement algorithm</h2>
+
+                    <p class="lead">This algorithm is not actually implemented practically but this algoritm is uased as reference to comapare the algorithm
+                        is efficient or not.
+                    </p>
+                    <p class="lead">The algorithm that has the lowest page-fault
+                        rate of all algorithms and will never suffer from Belady’s anomaly</p>
+                    <p class="lead">It is simply this:
+                        Replace the page that will not be used for the longest period of time.</p>
+                    <p class="lead">Use of this page-replacement algorithm guarantees the lowest possible pagefault rate for a fixed number of frames.</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (448).png" 
+                                    srcset="Screenshot (448).png 2100w, 
+                                            Screenshot (448).png 1050w, 
+                                            Screenshot (448).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    <p class="lead">For example, on our sample reference string, the optimal page-replacement
+                        algorithm would yield nine page faults, as shown in above figure.</p>
+                    <p class="lead">The first three
+                        references cause faults that fill the three empty frames.</p>
+                    <p class="lead">. The reference to page
+                        2 replaces page 7, because page 7 will not be used until reference 18, whereas
+                        page 0 will be used at 5, and page 1 at 14. The reference to page 3 replaces
+                        page 1, as page 1 will be the last of the three pages in memory to be referenced
+                        again.</p>
+                    <p class="lead"> With only nine page faults, optimal replacement is much better than
+                        a FIFO algorithm, which results in fifteen faults. (If we ignore the first three,
+                        which all algorithms must suffer, then optimal replacement is twice as good as
+                        FIFO replacement.) </p>
+                    <p class="lead" style="color: red;">Unfortunately, the optimal page-replacement algorithm is difficult to
+                        implement, because it requires future knowledge of the reference string.</p>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">LRU Page Replacement</h2>
+
+                    <p class="lead">If the optimal algorithm is not feasible, perhaps an approximation of the
+                        optimal algorithm is possible.</p>
+                    <p class="lead">If we use the recent
+                        past as an approximation of the near future, then we can replace the page that
+                        has not been used for the longest period of time. This approach is the least
+                        recently used (LRU) algorithm.</p>
+                    <p class="lead">The result of applying LRU replacement to our example reference string is
+                        shown in Figure below.</p>
+
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (449).png" 
+                                        srcset="Screenshot (449).png 2100w, 
+                                                Screenshot (449).png 1050w, 
+                                                Screenshot (449).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">The LRU algorithm produces twelve faults. Notice that
+                        the first five faults are the same as those for optimal replacement.</p>
+                    <p class="lead">When the
+                        reference to page 4 occurs, however, LRU replacement sees that, of the three
+                        frames in memory, page 2 was used least recently. Thus, the LRU algorithm
+                        replaces page 2, not knowing that page 2 is about to be used. </p>
+                    <p class="lead">When it then faults
+                        for page 2, the LRU algorithm replaces page 3, since it is now the least recently
+                        used of the three pages in memory. Despite these problems, LRU replacement
+                        with twelve faults is much better than FIFO replacement with fifteen.</p>
+                    <p class="lead"> An LRU page-replacement algorithm may require substantial
+                        hardware assistance. The problem is to determine an order for the frames
+                        defined by the time of last use. Two implementations are feasible:</p>
+                    <p class="lead">1. Counters</p>
+                    <p class="lead">2. Stack</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Counters</h2>
+
+                    <p class="lead">In the simplest case, we associate with each page-table entry a
+                        time-of-use field and add to the CPU a logical clock or counter.</p>
+                    <p class="lead">The clock is
+                        incremented for every memory reference. Whenever a reference to a page
+                        is made, the contents of the clock register are copied to the time-of-use
+                        field in the page-table entry for that page. </p>
+                    <p class="lead">In this way, we always have the “time” of the last reference to each page.</p>
+                    <p class="lead">We replace the page with the
+                        smallest time value. This scheme requires a search of the page table to find
+                        the LRU page and a write to memory (to the time-of-use field in the page
+                        table) for each memory access.</p>
+                    <p class="lead"> The times must also be maintained when
+                        page tables are changed (due to CPU scheduling). Overflow of the clock
+                        must be considered.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">Stack</h2>
+
+                    <p class="lead">Whenever a page is referenced, it is removed
+                        from the stack and put on the top.</p>
+                    <p class="lead"> In this way, the most recently used
+                        page is always at the top of the stack and the least recently used page is
+                        always at the bottom (Figure 9.16). Because entries must be removed from
+                        the middle of the stack, it is best to implement this approach by using a
+                        doubly linked list with a head pointer and a tail pointer.</p>
+                    <p class="lead">Removing a page
+                        and putting it on the top of the stack then requires changing six pointers
+                        at worst. Each update is a little more expensive, but there is no search for
+                        a replacement; the tail pointer points to the bottom of the stack, which is
+                        the LRU page. This approach is particularly appropriate for software or
+                        microcode implementations of LRU replacement.</p>
+                    <p class="lead" style="color: blue;"> Both optimal replacement, LRU replacement belong to a class of page-replacement algorithms, called stack
+                        algorithms</p>
+                    <p class="lead">A stack algorithm is an
+                        algorithm for which it can be shown that the set of pages in memory for n
+                        frames is always a subset of the set of pages that would be in memory with n
+                        + 1 frames.</p>
+                    <p class="lead">For LRU replacement, the set of pages in memory would be the n
+                        most recently referenced pages. If the number of frames is increased, these n
+                        pages will still be the most recently referenced and so will still be in memory</p>
+                    <p class="lead" style="text-align: center;">Use of a stack to record the most recent page references</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (450).png" 
+                                    srcset="Screenshot (450).png 2100w, 
+                                            Screenshot (450).png 1050w, 
+                                            Screenshot (450).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">LRU-Approximation Page Replacement</h2>
+
+                    <p class="lead">Many
+                        systems provide some help, however, in the form of a reference bit.</p>
+                    <p class="lead">The
+                        reference bit for a page is set by the hardware whenever that page is referenced
+                        (either a read or a write to any byte in the page). Reference bits are associated
+                        with each entry in the page table.</p>
+                    <p class="lead">Initially, all bits are cleared (to 0) by the operating system. As a user process
+                        executes, the bit associated with each page referenced is set (to 1) by the
+                        hardware.</p>
+                    <p class="lead">After some time, we can determine which pages have been used and
+                        which have not been used by examining the reference bits, although we do not
+                        know the order of use.</p>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">a)
+                             Additional-Reference-Bits Algorithm</h2>
+
+                    <p class="lead">● With each page associate a bit, initially = 0</p>
+                    <p class="lead">● When page is referenced bit set to 1</p>
+                    <p class="lead">● Replace any with reference bit = 0 (if one exists)</p>
+                    <p class="lead">● We do not know the order, however</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">a)
+                        Second-Chance Algorithm</h2>
+                    <p class="lead">When a page has been selected, however, we inspect its reference
+                        bit. If the value is 0, we proceed to replace this page; but if the reference bit
+                        is set to 1, we give the page a second chance and move on to select the next
+                        FIFO page. </p>
+
+
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (451).png" 
+                                        srcset="Screenshot (451).png 2100w, 
+                                                Screenshot (451).png 1050w, 
+                                                Screenshot (451).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">When a page gets a second chance, its reference bit is cleared, and
+                        its arrival time is reset to the current time.</p>
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">a)
+                            Enhanced Second-Chance Algorithm</h2>
+                    <p class="lead">We can enhance the second-chance algorithm by considering the reference bit
+                        and the modify bit.</p>
+                    <p class="lead">1. (0, 0) neither recently used nor modified—best page to replace</p>
+                    <p class="lead">2. (0, 1) not recently used but modified—not quite as good, because the
+                        page will need to be written out before replacement</p>
+                    <p class="lead">3. (1, 0) recently used but clean—probably will be used again soon</p>
+                    <p class="lead">4. (1, 1) recently used and modified—probably will be used again soon, and
+                        the page will be need to be written out to disk before it can be replaced</p>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Counting-Based Page Replacement
+                    </h2>
+                    <p class="lead">There are many other algorithms that can be used for page replacement. For
+                        example, we can keep a counter of the number of references that have been
+                        made to each page and develop the following two schemes.</p>
+
+                    
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">1. least frequently used (LFU)</h2>
+                    <p class="lead">replaces page with smallest count</p>
+                    <p class="lead">The reason for this selection is
+                        that an actively used page should have a large reference count. A problem
+                        arises, however, when a page is used heavily during the initial phase of
+                        a process but then is never used again. </p>
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 25px; text-align: left;">2. most frequently used (MFU)</h2>
+                    <p class="lead">page-replacement algorithm is based
+                        on the argument that the page with the smallest count was probably just
+                        brought in and has yet to be used.</p>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Page-Buffering Algorithms</h2>
+                    <p class="lead">Systems commonly keep a pool of free frames. When
+                        a page fault occurs, a victim frame is chosen as before. However, the desired
+                        page is read into a free frame from the pool before the victim is written out. </p>
+                    <p class="lead">This
+                        procedure allows the process to restart as soon as possible, without waiting
+                        for the victim page to be written out. When the victim is later written out, its
+                        frame is added to the free-frame pool.</p>
+                    <p class="lead">Another modification is to keep a pool of free frames but to remember
+                        which page was in each frame.</p>
+                    <p class="lead">Since the frame contents are not modified when
+                        a frame is written to the disk, the old page can be reused directly from the
+                        free-frame pool if it is needed before that frame is reused.</p>
+                    <p class="lead">No I/O is needed in
+                        this case. When a page fault occurs, we first check whether the desired page is
+                        in the free-frame pool. If it is not, we must select a free frame and read into it.</p>
                     <p class="lead"></p>
                     <p class="lead"></p>
                     <p class="lead"></p>
@@ -537,15 +908,7 @@
                     <p class="lead"></p>
                     <p class="lead"></p>
                     <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
+
                     
 
                     

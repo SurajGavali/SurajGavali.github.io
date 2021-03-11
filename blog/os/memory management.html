@@ -148,7 +148,7 @@ l										ead to different memory management schemes
 										<p class="lead">--> Zero or more addresses depending on instruction</p>
 										<p class="lead">● e.g. mov $0x300, r1 # move contents of address 0x300 to r1 --> one extra address issued on address bus</p>
 										<h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align : left;">Simple case : </h2>
-					<					p class="lead">Suppose the address issued by CPU reaches the RAM controller directly</p>
+					                    <p class="lead">Suppose the address issued by CPU reaches the RAM controller directly</p>
 										<div class="s-content__media">
                         					<div class="s-content__post-thumb"> 
                             					<img src="simple case.png" 
@@ -171,7 +171,7 @@ l										ead to different memory management schemes
 										
 										<p class="lead">What about 2 programs?</p>
 										<p class="lead">--> Compilers being “programs”, will make same assumptions and are likely to generate same/overlapping addresses 
-											for two different programs<</p>
+											for two different programs</p>
 										<p class="lead">--> Hence only one program can be in memory at a time !</p>
 										<p class="lead">--> No need to check for any memory boundary violations – all memory belongs to one process</p>
 										<p class="lead">● Example, DOS</p>
@@ -214,7 +214,7 @@ l										ead to different memory management schemes
 										<p class="lead">● While loading the process in memory – must load as one continous segment</p>
 										<p class="lead">● Fill in the ‘base’ register with the actual address of the process in RAM</p>
 										<p class="lead">● Setup the limit to be the size of the process as set by compiler in the executable file</p>
-										<p class="lead" style="color blue">Now as a result of both compiler and OS the process can go anywhere in RAM at the time of loading i.e. “Relocatable code”</p>
+										<p class="lead" style="color: blue">Now as a result of both compiler and OS the process can go anywhere in RAM at the time of loading i.e. “Relocatable code”</p>
 										<p class="lead">Some memory violations can be detected – a memory access beyond base+limit will raise interrupt, 
 											thus running OS in turn, which may take action against the process</p>
 										<p class="lead"></p>

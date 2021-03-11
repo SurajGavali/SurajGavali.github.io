@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Virtual Memory(Operating System)</title>
+
+    <!--- basic page needs
+    ================================================== -->
+   
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=c&amp;skin=sons-of-obsidian"></script>
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=shell&amp;skin=sons-of-obsidian"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="Homepage">
+                </a>
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="ctechnical.html">Technical</a></li>
+                            <li><a href="cart.html">Art</a></li>
+                            <li><a href="cphotography.html">Photography</a></li>
+                            <!-- <li><a href="category.html">Vacation</a></li>
+                            <li><a href="category.html">Work</a></li>
+                            <li><a href="category.html">Health</a></li>
+                            <li><a href="category.html">Family</a></li>
+                            <li><a href="category.html">Relationship</a></li> -->
+                        </ul>
+                    </li>
+                   <!--  <li class="has-children current">
+                        <a href="#0" title="">Blog</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-gallery.html">Gallery Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li><a href="styles.html" title="">Styles</a></li> -->
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+            <div class="s-header__search">
+                    
+                <form role="search" method="get" class="s-header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="s-header__search-submit" value="Search">
+                </form>
+
+                <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+
+            </div> <!-- end search wrap --> 
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+                    <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+
+                    <h2 class="s-content__title s-content__title--post">Virtual Memory</h2>
+                    
+                </article>
+
+                <article class="s-post entry format-standard">
+                    
+                    <h2 class="s-content__title s-content__title--post" style="text-align: center; font-size: 25px; color:  red;">Virtual Memory != Virtual Address</h2>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">● Virtual Memory</h2>
+                    <p class="lead">A memory management technique
+                        employed by OS (of course, with hardware support)</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">● Virtual Address</h2>
+                    <p class="lead">Address issued by CPU’s execution
+                        unit, later converted by MMU to physical address</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">Some problems with schemes
+                        discussed so far</h2>
+
+                    <p class="lead">● Code needs to be in memory to execute, but entire program rarely used.</p>
+                    <p class="lead">● Error code, unusual routines, large data structures.</p>
+                    <p class="lead">● Entire program code not needed at same time.</p>
+                    <p class="lead">● Consider ability to execute partially-loaded program.</p>
+                    <p class="lead">● Program no longer constrained by limits of physical memory i.e if processor is of 32 bit and actual 
+                        physical memory is of 2 GB condition.
+                    </p>
+                    <p class="lead">● Program and number of programs could be larger than physical memory.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 30px;">What is virtual memory?</h2>
+                    <p class="lead" style="color: blue;">The problems that we are discussed so far, the approuch of virtual memory tries to 
+                        solve these problems.</p>
+                    <p class="lead">● virtual memory is a separation of user(compiler or any program) logical memory from physical memory.</p>
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">By using virtual memory 
+                    we get following advantages :</h2>
+
+                    <p class="lead">● Only part of the program needs to be in memory for execution</p>
+                    <p class="lead">● Logical address space can therefore be much larger than physical address space</p>
+                    <p class="lead">● Allows address spaces to be shared by several processes</p>
+                    <p class="lead">● Allows for more efficient process creation</p>
+                    <p class="lead">● More programs running concurrently</p>
+                    <p class="lead">● Less I/O needed to load or swap processes</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Virtual memory can be 
+                        implemented via:
+                    </h2>
+                    <p class="lead">1. Demand paging</p>
+                    <p class="lead">2. Demand segmentation</p>
+                    <p class="lead">Nowdays only Demand paging is used heavily so we will study only Demand paging 😃.</p>
+
+                    <p class="lead">Virtual memory involves the separation of logical memory as perceived
+                        by users from physical memory. This separation allows an extremely large
+                        virtual memory to be provided for programmers when only a smaller physical
+                        memory is available (see below diagram). Virtual memory makes the task of programming much easier, because the programmer no longer needs to worry about
+                        the amount of physical memory available;</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (435).png" 
+                                    srcset="Screenshot (435).png 2100w, 
+                                            Screenshot (435).png 1050w, 
+                                            Screenshot (435).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    <p class="lead">The virtual address space of a process refers to the logical (or virtual) view
+                        of how a process is stored in memory. Typically, this view is that a process
+                        begins at a certain logical address—say, address 0—and exists in contiguous
+                        memory, as shown in below figure.though, that in fact physical memory may be organized in page frames and that the physical page
+                        frames assigned to a process may not be contiguous. It is up to the memorymanagement unit (MMU) to map logical pages to physical page frames in
+                        memory.</p>
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (436).png" 
+                                        srcset="Screenshot (436).png 2100w, 
+                                                Screenshot (436).png 1050w, 
+                                                Screenshot (436).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">The large blank
+                        space (or hole) between the heap and the stack is part of the virtual address
+                        space but will require actual physical pages only if the heap or stack grows.</p>
+                    <p class="lead" style="color: blue;">Virtual address spaces that include holes are known as sparse address spaces.</p>
+                    <p class="lead">Virtual space enables : 
+                         </p>
+                    <p class="lead">1. Address spaces
+                        with holes left for growth,
+                        dynamically linked libraries, etc.</p>
+                    <p class="lead">2. System libraries shared via
+                        mapping into virtual address space</p>
+                    <p class="lead">3. Shared memory by mapping pages
+                        read-write into virtual address
+                        space
+                        </p>
+                    <p class="lead">4. Pages can be shared during
+                        fork(), speeding process
+                        creation</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (437).png" 
+                                        srcset="Screenshot (437).png 2100w, 
+                                                Screenshot (437).png 1050w, 
+                                                Screenshot (437).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">In addition to separating logical memory from physical memory, virtual
+                        memory allows files and memory to be shared by two or more processes
+                        through page sharing (Section 8.5.4). This leads to the following benefits:</p>
+                    <p class="lead">1. System libraries can be shared by several processes through mapping of the
+                        shared object into a virtual address space. Although each process considers
+                        the libraries to be part of its virtual address space, the actual pages where
+                        the libraries reside in physical memory are shared by all the processes
+                        (Figure 9.3). Typically, a library is mapped read-only into the space of each
+                        process that is linked with it.</p>
+                    <p class="lead">Similarly, processes can share memory. Recall that two
+                        or more processes can communicate through the use of shared memory.
+                        Virtual memory allows one process to create a region of memory that it can
+                        share with another process. Processes sharing this region consider it part
+                        of their virtual address space, yet the actual physical pages of memory are
+                        shared, much as is illustrated in above figure</p>
+
+
+                    <h2 class="s-content__title s-content__title--post">Demand Paging</h2>
+
+                    <p class="lead">With demand-paged virtual memory, </p>
+                    <p class="lead">● Pages are loaded only when they are
+                        demanded during program execution. Pages that are never accessed are thus
+                        never loaded into physical memory.</p>
+                    <p class="lead">● Less I/O needed, no unnecessary I/O</p>
+                    <p class="lead">● Less memory needed </p>
+                    <p class="lead">● Faster response and more users.</p>
+                    <p class="lead">Whenever page is needed check reference to it ,</p>
+                    <p class="lead">invalid reference --> abort</p>
+                    <p class="lead">not-in-memory --> bring to memory</p>
+                    <p class="lead" style="color: rgb(142, 193, 238);">A lazy swapper never swaps a page into memory unless that page will be
+                        needed. In the context of a demand-paging system, use of the term “swapper”
+                        is technically incorrect. A swapper manipulates entire processes, whereas a
+                        pageris concerned with the individual pages of a process. We thus use “pager,”
+                        rather than “swapper,” in connection with demand paging.</p>
+
+
+                        <h2 class="s-content__title s-content__title--post" style="text-align: left; font-size: 25px;">Paging In and Paging Out</h2>
+                    
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (438).png" 
+                                        srcset="Screenshot (438).png 2100w, 
+                                                Screenshot (438).png 1050w, 
+                                                Screenshot (438).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">The valid–invalid bit scheme described previously can be used for this
+                        purpose.</p>
+                    <p class="lead">This time, however, when this bit is set to “valid,” the associated page
+                        is both legal and in memory. If the bit is set to “invalid,” the page either is not
+                        valid (that is, not in the logical address space of the process) or is valid but
+                        is currently on the disk.</p>
+
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (439).png" 
+                                        srcset="Screenshot (439).png 2100w, 
+                                                Screenshot (439).png 1050w, 
+                                                Screenshot (439).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    <p class="lead">The page-table entry for a page that is brought into
+                        memory is set as usual, but the page-table entry for a page that is not currently
+                        in memory is either simply marked invalid or contains the address of the page
+                        on disk. This situation is depicted in above Figure.</p>
+
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Page fault</h2>
+                    <p class="lead">● If there is a reference to a page, first reference to that page will trap to operating
+                        system called as "page fault".</p>
+                    <p class="lead">● Operating system looks at another table to decide:</p>
+                    <p class="lead">1. Invalid reference --> abort</p>
+                    <p class="lead">2. Just not in memory :</p>
+                    <p class="lead">--> Get empty frame</p>
+                    <p class="lead">--> Swap page into frame via scheduled disk operation</p>
+                    <p class="lead">--> Reset tables to indicate page now in memory</p>
+                    <p class="lead">--> Set validation bit = v</p>
+                    <p class="lead">--> Restart the instruction that caused the page fault</p>
+                    <p class="lead">For more understanding refer the below diagram.</p>
+
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (440).png" 
+                                    srcset="Screenshot (440).png 2100w, 
+                                            Screenshot (440).png 1050w, 
+                                            Screenshot (440).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Pure demand paging</h2>
+
+                    <p class="lead">In the extreme case, we can start executing a process with no pages in
+                        memory. </p>
+                    <p class="lead">When the operating system sets the instruction pointer to the first 
+                        instruction of the process, which is on a non-memory-resident page, the process
+                        immediately faults for the page. </p>
+                    <p class="lead">After this page is brought into memory, the
+                        process continues to execute, faulting as necessary until every page that it
+                        needs is in memory. At that point, it can execute with no more faults. This
+                        scheme is pure demand paging: never bring a page into memory until it is
+                        required.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">locality of reference</h2>
+
+                    <p class="lead">Theoretically, some programs could access several new pages of memory
+                        with each instruction execution (one page for the instruction and many for
+                        data), possibly causing multiple page faults per instruction. </p>
+                    <p class="lead">This situation
+                        would result in unacceptable system performance. Fortunately, analysis of
+                        running processes shows that this behavior is exceedingly unlikely. Programs
+                        tend to have locality of reference.</p>
+                    <p class="lead" style="color: red;">The hardware to support demand paging is the same as the hardware for
+                        paging and swapping:</p>
+                    <p class="lead">--> Page table with valid / invalid bit</p>
+                    <p class="lead">--> Secondary memory (swap device with swap space)</p>
+                    <p class="lead">--> Instruction restart</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Instruction restart</h2>
+
+                    <p class="lead">A crucial requirement for demand paging is the ability to restart any
+                        instruction after a page fault. </p>
+                    <p class="lead">Because we save the state (registers, condition
+                        code, instruction counter) of the interrupted process when the page fault
+                        occurs, we must be able to restart the process in exactly the same place and
+                        state, except that the desired page is now in memory and is accessible.</p>
+                    <p class="lead" style="color: blue;">A page fault may occur at any memory
+                        reference,</p>
+                    <p class="lead">1. If the page fault occurs on the instruction fetch, we can restart by
+                        fetching the instruction again.</p>
+                    <p class="lead">2. If a page fault occurs while we are fetching an
+                        operand, we must fetch and decode the instruction again and then fetch the
+                        operand.</p>
+                    <p class="lead">As a worst-case example, consider a three-address instruction such as ADD
+                        the content of A to B, placing the result in C.</p>
+                    <p class="lead">These are the steps to execute this
+                        instruction : (1. Fetch and decode the instruction (ADD).
+                        2. Fetch A.
+                        3. Fetch B.
+                        4. Add A and B.
+                        5. Store the sum in C.)</p>
+                    <p class="lead">If we fault when we try to store in C (because C is in a page not currently
+                        in memory), we will have to get the desired page, bring it in, correct the
+                        page table, and restart the instruction.</p>
+                    <p class="lead">The restart will require fetching the
+                        instruction again, decoding it again, fetching the two operands again, and
+                        then adding again.</p>
+                    <p class="lead">The major difficulty arises when one instruction may modify several
+                        different locations. For example, consider the IBM System 360/370 MVC (move
+                        character) instruction, which can move up to 256 bytes from one location to
+                        another (possibly overlapping) location. If either block (source or destination)
+                        straddles a page boundary, a page fault might occur after the move is partially
+                        done. In addition, if the source and destination blocks overlap, the source
+                        block may have been modified, in which case we cannot simply restart the
+                        instruction.</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Page fault handling</h2>
+
+                    <p class="lead">1) Trap to the operating system</p>
+                    <p class="lead">2) Save the user registers and process state
+                    </p>
+                    <p class="lead">3) Determine that the interrupt was a page fault</p>
+                    <p class="lead">4) Check that the page reference was legal and determine the location of the
+                        page on the disk</p>
+                    <p class="lead">5) Issue a read from the disk to a free frame:</p>
+                    <p class="lead">--> Wait in a queue for this device until the read request is serviced
+                    </p>
+                    <p class="lead">--> Wait for the device seek and/or latency time
+                    </p>
+                    <p class="lead">--> Begin the transfer of the page to a free frame</p>
+                    <p class="lead">6) While waiting, allocate the CPU to some other user</p>
+                    <p class="lead">7) Receive an interrupt from the disk I/O subsystem (I/O completed)
+                    </p>
+                    <p class="lead">8) Save the registers and process state for the other user
+                    </p>
+                    <p class="lead">9) Determine that the interrupt was from the disk</p>
+                    <p class="lead">10)Correct the page table and other tables to show page is now in memory</p>
+                    <p class="lead">11)Wait for the CPU to be allocated to this process again
+                    </p>
+                    <p class="lead">12)Restore the user registers, process state, and new page table, and then
+                        resume the interrupted instruction</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Performance of demand paging</h2>
+
+                    <p class="lead" style="color: red;">Page Fault Rate 0 <= p <= 1</p>
+                    <p class="lead">● if p = 0 no page faults </p>
+                    <p class="lead">● if p = 1, every reference is a fault
+                    </p>
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Effective Access Time (EAT)</h2>
+
+                    <p class="lead">EAT = (1 – p) x memory access + p x (page fault overhead + swap page out + swap page in + restart overhead)</p>
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">Example,</h2>
+
+                    <p class="lead">1. Memory access time = 200 nanoseconds and Average page-fault service time = 8 milliseconds</p>
+                    <p class="lead">--> EAT = (1 – p) x 200 + p (8 milliseconds) </p>
+                    <p class="lead">= (1 – p) x 200 + p x 8,000,000</p>
+                    <p class="lead">= 200 + p x 7,999,800</p>
+                    <p class="lead">If one access out of 1,000 causes a page fault, then
+                    </p>
+                    <p class="lead">EAT = 8.2 microseconds.(This is a slowdown by a factor of 40!!)</p>
+                    <p class="lead" style="color: red;">If want performance degradation < 10 percent</p>
+                    <p class="lead">--> 220 > 200 + 7,999,800 x p</p>
+                    <p class="lead">20 > 7,999,800 x p</p>
+                    <p class="lead">p < 0.0000025</p>
+                    <p class="lead">< one page fault in every 400,000 memory accesses</p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    
+
+                    
+                    
+
+                </article>
+
+                <div class="s-content__pagenav group">
+                    <div class="next-nav" style="text-align: left;">
+                        <a href="xv6 code- traps,scheduler,blocking.html" rel="next">
+                           Previous
+                        </a>
+                    </div>
+
+                    <div class="next-nav" style="text-align: right;">
+                        <a href="../comingsoon.html" rel="next">
+                           Next
+                        </a>
+                    </div>
+                </div> <!-- end s-content__pagenav -->
+
+                <a href="menu.html"><h3 class="s-content__title s-content__title--post" style="font-size: 20px;">Go to index page</h3></a>
+
+            </div>  
+        </div>                
+
+    </section> <!-- end s-content -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Suraj 2021</span> 
+                        <span>Course by <a href="../index.html">Suraj</a></span>                 
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="../js/jquery-3.2.1.min.js"></script>
+   <script src="../js/plugins.js"></script>
+   <script src="../js/main.js"></script>
+
+</body>
+
+</html>

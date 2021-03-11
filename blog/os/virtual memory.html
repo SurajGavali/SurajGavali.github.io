@@ -440,6 +440,98 @@
                     <p class="lead">20 > 7,999,800 x p</p>
                     <p class="lead">p < 0.0000025</p>
                     <p class="lead">< one page fault in every 400,000 memory accesses</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 40px; text-align: left;">Optimization methods</h2>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">1. Copy On Write(COW)</h2>
+
+                    <p class="lead">This technique
+                        provides rapid process creation and minimizes the number of new pages that
+                        must be allocated to the newly created process.</p>
+                    <p class="lead">In this the parent and child processes initially to share the
+                        same pages.</p>
+                    <p class="lead">These shared pages are marked as copy-on-write pages, meaning
+                        that if either process writes to a shared page, a copy of the shared page is
+                        created. see below diagram.</p>
+                        <p class="lead" style="text-align: center;">Before process 1 modifies page C.</p>
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot (441).png" 
+                                        srcset="Screenshot (441).png 2100w, 
+                                                Screenshot (441).png 1050w, 
+                                                Screenshot (441).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div> <!-- end s-content__media -->
+                    
+                    <p class="lead" style="text-align: center;">After process 1 modifies page C.</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot (442).png" 
+                                    srcset="Screenshot (442).png 2100w, 
+                                            Screenshot (442).png 1050w, 
+                                            Screenshot (442).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+                    
+                    <p class="lead" style="color: brown;">For example, assume that the child process attempts to modify a page
+                        containing portions of the stack, with the pages set to be copy-on-write.</p>
+                    <p class="lead" style="color: brown;">The
+                        operating system will create a copy of this page, mapping it to the address space
+                        of the child process.</p>
+                    <p class="lead">The child process will then modify its copied page and not
+                        the page belonging to the parent process. Obviously, when the copy-on-write
+                        technique is used, only the pages that are modified by either process are copied;
+                        all unmodified pages can be shared by the parent and child processes. </p>
+                    <p class="lead" style="color: red;"> Note,
+                        that only pages that can be modified need be marked as copy-on-write. Pages
+                        that cannot be modified (pages containing executable code) can be shared by
+                        the parent and child. </p>
+                    <p class="lead">When it is determined that a page is going to be duplicated using 
+                        copyon-write, it is important to note the location from which the free page will
+                        be allocated.</p>
+                    <p class="lead">Many operating systems provide a "pool" of free pages for such
+                        requests. </p>
+                    <p class="lead">These free pages are typically allocated when the stack or heap for a
+                        process must expand or when there are copy-on-write pages to be managed.</p>
+                    <p class="lead">Operating systems typically allocate these pages using a technique known as
+                        "zero-fill-on-demand". Zero-fill-on-demand pages have been zeroed-out before
+                        being allocated, thus erasing the previous contents.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px; text-align: left;">vfork()</h2>
+
+                    <p class="lead">which operates
+                        differently from fork() with copy-on-write. </p>
+                    <p class="lead">With vfork(), the parent process
+                        is suspended, and the child process uses the address space of the parent.
+                        Because vfork() does not use copy-on-write, if the child process changes
+                        any pages of the parent’s address space, the altered pages will be visible to the
+                        parent once it resumes.</p>
+                    <p class="lead">vfork() is an extremely
+                        efficient method of process creation and is sometimes used to implement UNIX
+                        command-line shell interfaces.</p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
                     <p class="lead"></p>
                     <p class="lead"></p>
                     <p class="lead"></p>

@@ -269,7 +269,7 @@
                         programmer to enable either paging, segmentation or both together)</p>
 
                     <p class="lead">• Right now we will just go with the fact that there is something called paging and segmentation in the "hardware"
-                        which to be configured by OS code therefore it has to to configured by bootloader (otherwise you can not execute 
+                        which to be configured by OS code therefore it has to be configured by bootloader (otherwise you can not execute 
                         any code!)</p>
                     <p class="lead">• xv6 configures the segmentation hardware to translate logical to linear addresses without change so that 
                         they are always equal.(Segmenatation is practically off)</p>
@@ -325,7 +325,7 @@
                         </div>
                     </div> <!-- end s-content__media -->
                     <p class="lead" style="text-align: left;color: red;">What is it in this gdt?, It is an sequence of three numbers (Refer below image)</p>
-                    <p class="lead" style="text-align: left;">when you open "asm.h" file you will the definations of these numbers. refer the above image.</p>
+                    <p class="lead" style="text-align: left;">when you open "asm.h" file you will find the definations of these numbers. refer the above image.</p>
                     <p class="lead" style="text-align: left;color: darkred;">asm.h</p>
                     <div class="s-content__media">
                         <div class="s-content__post-thumb"> 
@@ -372,9 +372,9 @@
                     <p class="lead" style="text-align: left;">• "gdt" is an array of base,limit and flags.</p>
                     <p class="lead" style="text-align: left;">• The way in which the memory addresses are calculated by processor is like this, 
                         the value in the segments register is used as index in this gdt from there it will take base value and base value is added 
-                        to offset to finally calculate addresse that goes to the RAM. the base value in this array is "zero" and and limit is 4gb
+                        to offset to finally calculate address that goes to the RAM. the base value in this array is "zero" and and limit is 4gb
                         (so when you add zero to offset you will get offset itself). so we are doing memory management setup where in every address 
-                        issued by the CPU when it goes to memory management of CPU will basically remains the "same" because the segements are ineffevtive.</p>
+                        issued by the CPU when it goes to memory management unit of CPU will basically remains the "same" because the segements are ineffevtive.</p>
 
                     <p class="lead" style="text-align: left; color: red;">So what has happened till now?</p>
 
@@ -413,7 +413,7 @@
 
                     <p class="lead" style="color: red;">so i.e. "2 'left shifted by' 3"!</p>
                     <p class="lead">After this the next three lines simply copies this value to all segments.. as a result of these three lines 
-                        the ds,es and ss are pointed value 2..</p>
+                        the ds,es and ss are pointed value 2 << 3.</p>
 
                     <p class="lead">And we are setting %fs and %gs to zero which we are not using right now!</p>
 
@@ -425,7 +425,7 @@
                         that is bootmain.c is followed by bootasm.S)</p>
 
                     <p class="lead" style="text-align: left;color: darkred;">bootmain.c</p>
-                    <div class="s-content__media">
+                    <div class="s-content__media" id="bootmain">
                         <div class="s-content__post-thumb"> 
                             <img src="12.png" 
                                     srcset="12.png 2100w, 
@@ -480,7 +480,7 @@
                                             15.png 525w" style="width: 100%; margin-left: 0px" alt="outb">
                         </div>
                     </div> <!-- end s-content__media -->
-                    <p class="lead">This is a basically c-function which has assebly code called "out".we know that in and out are 
+                    <p class="lead">This is a basically c-function which has assembly code called "out".we know that in and out are 
                         io instructions they are used to write instruction into particaular location for the hardware controllers.
                         they basically act as a bridge now between the software and hardware world. when you run in or out instr
                          you are basically writing into the hardware controller and accessing the hardware devices.
@@ -498,9 +498,9 @@
                         1MB(why 1 MB beacuse we have declared elf as 1 MB).</p>
 
                     <p class="lead"> so 1 MB location in the memory will contain 4k data from the first 4k byets of the hard-disk
-                        and outof the 4k first 512 were the bootloader and the next code was kernel.</p>
+                        and outof the 4k first 512 were the bootloader and the next code will kernel.</p>
 
-                    <p class="lead" style="color: red;">now in the bootmain function there is call to entry() function which 
+                    <p class="lead" style="color: red;">now in the <a href="#bootmain">bootmain function</a> there is call to entry() function which 
                         enters into kernel code now.</p>
 
                     <p class="lead" style="text-align: left;color: darkred;"></p>

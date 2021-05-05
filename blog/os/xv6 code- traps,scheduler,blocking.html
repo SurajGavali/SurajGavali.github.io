@@ -131,27 +131,29 @@
                 </article>
 
                 <article class="s-post entry format-standard">
-                    <p class="lead">● Handling traps</p>
-                    <p class="lead">--> Transition from user mode to kernel mode</p>
-                    <p class="lead">- On a system call</p>
-                    <p class="lead">- On a hardware interrupt</p>
-                    <p class="lead">- User program doing illegal work (exception)</p>
+                    
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Handling traps</h2>
+
+                    <p class="lead" style="text-align: center; color: blue">Transition from user mode to kernel mode</p>
+                    <p class="lead">• On a system call</p>
+                    <p class="lead">• On a hardware interrupt</p>
+                    <p class="lead">• User program doing illegal work (exception)</p>
                     <p class="lead" style="color: blue;">What is needed to be done while changing mode form
                     user mode to kernel mode?</p>
-                    <p class="lead">- Generally most of the kernels not only have their code at this predifined location 
+                    <p class="lead">> Generally most of the kernels not only have their code at this predifined location 
                         (while executing hardware interrupt or system call) but also the stack pointer is also changed to point
                         to a location called as kernel stack.
 
                     </p>
                     <p class="lead" style="color: red;">What is kernel stack?</p>
-                    <p class="lead" style="color: blue;">--> Some location in memory!</p>
+                    <p class="lead" style="color: blue;">> Some location in memory!</p>
                     <p class="lead">Why there is kernel stack?</p>
-                    <p class="lead">the reason is while process is running the user code and kernel code can't run on same system stack,
-                        because if there is any user code which is cleverly written may lead to som e security problems!
+                    <p class="lead">> The reason is while process is running the user code and kernel code can't run on same system stack,
+                        because if there is any user code which is cleverly written may lead to some security problems!
                     </p>
-                    <p class="lead">- Kernel to work with devices, if needed</p>
-                    <p class="lead">- Kernel to understand interface of device </p>
-                    <p class="lead">-- Which actions are needed on a Trap?</p>
+                    <p class="lead">• Kernel to work with devices, if needed</p>
+                    <p class="lead">• Kernel to understand interface of device </p>
+                    <p class="lead" style="color: red;">Which actions are needed on a Trap?</p>
                     <p class="lead">- Save the processor’s registers (context) for future use</p>
                     <p class="lead">- Set up the system to run kernel code (kernel context) on kernel
                         stack</p>
@@ -161,7 +163,9 @@
                         which sys call called, which process did exception and what
                         type, get arguments to system call, etc)</p>
 
-                    <p class="lead">● Privilege level</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Privilege level</h2>
+
                     <p class="lead">- The x86 has 4 protection levels, numbered 0 (most
                         privilege) to 3 (least privilege).</p>
                     <p class="lead">- In practice, most operating systems use only 2 levels: 0
@@ -177,7 +181,10 @@
                         to create hardware interrupt’
                         </p>
                     <p class="lead">- Xv6 uses “int 64” for actual system calls.</p>
-                    <p class="lead">● Interrupt Descriptor Table (IDT)</p>
+
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">Interrupt Descriptor Table (IDT)</h2>
+
                     <p class="lead">- IDT is an array in memory.</p>
                     <p class="lead">- This is job of OS to fill up the entris in IDT while loading itself.</p>
                     <p class="lead">- This table defines intertupt handlers.</p>
@@ -208,6 +215,16 @@
                         particular address at which the desired code is.(let us skip the another lines of code.)
                     </p>
                     <p class="lead">Go to entry.S there is symbol "entry"</p>
+
+                    <p class="lead" style="text-align: left;color: darkred;">entry.S</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="16.png" 
+                                    srcset="16.png 2100w, 
+                                            16.png 1050w, 
+                                            16.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
                     <p class="lead">This is where the "Kernel code" actually begins.</p>
                     <p class="lead">Now by skiping the first some part of code and coming to the "mov $main, %eax"
                         and line after this, basically this part of code doing is copying value in variable $main in 
@@ -215,31 +232,43 @@
                         given by this main variable.)
                     </p>
                     <p class="lead">Go to main.c file and you will find the main function here that we are interested in 
-                        (which is given by previous main varible)
+                        (which is given by previous main variable)
                     </p>
-                    <p class="lead">image of main function</p>
+
+                    <p class="lead" style="color: brown">main.c</p>
+                    <div class="s-content__media" id="main">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot from 2021-05-05 00-06-40.png" 
+                                    srcset="Screenshot from 2021-05-05 00-06-40.png 2100w, 
+                                    Screenshot from 2021-05-05 00-06-40.png 1050w, 
+                                    Screenshot from 2021-05-05 00-06-40.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->                    
+                    
                     <p class="lead">In this you will see that there are lot of init function calls.</p>
                     <p class="lead">the particular function that we are now interested in is "tvinit()"(Trap vector init)</p>
                     <p class="lead">Now go to the tvinit() function</p>
 
 
-
+                    <p class="lead" style="color: brown">trap.c</p>
                     <div class="s-content__media">
                         <div class="s-content__post-thumb"> 
-                            <img src="Screenshot (372).png" 
-                                    srcset="Screenshot (372).png 2100w, 
-                                    Screenshot (372).png 1050w, 
-                                    Screenshot (372).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            <img src="Screenshot from 2021-05-05 00-11-31.png" 
+                                    srcset="Screenshot from 2021-05-05 00-11-31.png 2100w, 
+                                    Screenshot from 2021-05-05 00-11-31.png 1050w, 
+                                    Screenshot from 2021-05-05 00-11-31.png 525w" style="width: 100%; margin-left: 0px" alt="">
                         </div>
-                    </div>
+                    </div> <!-- end s-content__media -->
                     <p class="lead">In this function there is for loop in this there is use of "SETGATE".</p>
                     <p class="lead">What is this SETGATE?</p>
+
+                    <p class="lead" style="color: brown">mmu.h</p>
                     <div class="s-content__media">
                         <div class="s-content__post-thumb"> 
-                            <img src="Screenshot (373).png" 
-                                    srcset="Screenshot (373).png 2100w, 
-                                    Screenshot (373).png 1050w, 
-                                    Screenshot (373).png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            <img src="Screenshot from 2021-05-05 00-17-20.png" 
+                                    srcset="Screenshot from 2021-05-05 00-17-20.png 2100w, 
+                                    Screenshot from 2021-05-05 00-17-20.png 1050w, 
+                                    Screenshot from 2021-05-05 00-17-20.png 525w" style="width: 100%; margin-left: 0px" alt="">
                         </div>
                     </div>
                     <p class="lead">So this is a multiline macro which have values which are elements above defined structure.</p>
@@ -256,44 +285,91 @@
                     <p class="lead">what is in this vector[], you can find the defination of this below the gatedesc defination
                     </p>
                     <p class="lead">This is externel array which is in "vectors.S" file let see what is there in this file.</p>
-                    <p class="lead">image of vectors.S file</p>
-                    <p class="lead">So this is basically a machine code file where there is an initialized array with lables vector0,
+                    
+                    
+                    <p class="lead" style="color: brown">vectors.S</p>
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb"> 
+                            <img src="Screenshot from 2021-05-05 16-15-51.png" 
+                                    srcset="Screenshot from 2021-05-05 16-15-51.png 2100w, 
+                                    Screenshot from 2021-05-05 16-15-51.png 1050w, 
+                                    Screenshot from 2021-05-05 16-15-51.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                        </div>
+                    </div>                    <p class="lead">So this is basically a machine code file where there is an initialized array with lables vector0,
                         vector1,....,vector255 so what is vectors[] array contains is basically the addresses of following lables.
                     </p>
                     <p class="lead">So with this the the idt[] array is just initialized with value(address) given by vectors array to point to locations</p>
                     <p class="lead">Now outside of the "for" loop there is another call to SETGATE which sets the index T_SYSCALL.</p>
-                    <p class="lead">What is T_SYSCALL?</p>
-                    <p class="lead">--> open the trap.h file you will find the declaratio of it here which is a number i.e. "64"(Remember that we seen that number 64 is used for software interrupts)</p>
+                    <p class="lead" style="color: red;">What is T_SYSCALL?</p>
+                    <p class="lead">Ans. Open the trap.h file you will find the declaration of it here which is a number i.e. "64"(Remember that we seen that number 64 is used for software interrupts)</p>
                     <p class="lead">interesting thing here is the same IDT is used for software interrupts, hardware interrupts and exception.</p>
                     <p class="lead">The only difference between above SETGATE and this SETGATE is that instead of zero here one and instead of last zero there is "DPL_USER"(In mmu.h file) i.e. 3.</p>
-                    <p class="lead">Afterwards in main.c there is call to mpmain(). and here mpmain() calls idtinit()[in trap.c] and idtinit() calls lidt()[in x86.h file] and the 
+                    <p class="lead">Afterwards in <a href="#main">main.c</a> there is call to mpmain(). and here mpmain() calls idtinit()[in trap.c] and idtinit() calls lidt()[in x86.h file] and the 
                         lidt basically runs lidt machine instruction in it has passed the address of 
                         the idt[] array i.e. it loads the address of idt array in the idt register</p>
+
+                        
+
+                        <p class="lead" style="color: brown">main.c</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot from 2021-05-05 16-27-57.png" 
+                                        srcset="Screenshot from 2021-05-05 16-27-57.png 2100w, 
+                                        Screenshot from 2021-05-05 16-27-57.png 1050w, 
+                                        Screenshot from 2021-05-05 16-27-57.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
+
+                        <p class="lead" style="color: brown">trap.c</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="idtinit.png" 
+                                        srcset="idtinit.png 2100w, 
+                                        idtinit.png 1050w, 
+                                        idtinit.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
+
+                        <p class="lead" style="color: brown">x86.h</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="lidt.png" 
+                                        srcset="lidt.png 2100w, 
+                                        lidt.png 1050w, 
+                                        lidt.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
                     <p class="lead" style="color: red;">mpmain() --> idtinit() --> lidt().</p>
-                    <p class="lead">So the idt register in CPU srores the address of idt[] array.</p>
-                    <p class="lead">● How will interrupts be handled?</p>
+                    <p class="lead">So the idt register in CPU stores the address of idt[] array.</p>
+
+                    <h2 class="s-content__title s-content__title--post" style="font-size: 30px;">How will interrupts be handled?</h2>
+
                     <p class="lead">Suppose there is an Hardware interrupt...</p>
                     <p class="lead">now we know that there is idtr register in memory pointing to the idt[] array(table)</p>
                     <p class="lead">Now suppose the key board key is pressed and that will corresponds to some interrupt number let us say interrupt number 21.</p>
                     <p class="lead" style="color: red;">No matter which interrupt number it was or user code did int 64 instruction or there is division by 
                         zero or there is exception , normal execution of CPU is gets interrupted and CPU consults the idtr register
-                    and CPu know the which interrupt number it was and use that number as index in IDT array(Remember there is no 
+                    and CPU know the which interrupt number it was and use that number as index in IDT array(Remember there is no 
                     instruction is running while happening this.)</p>
                     <p class="lead">From the IDT array now CPU will take particular entry with known index number and from that
                         entry it will take value of Code segment(CS) and instruction pointer(IP) put it into a cs and ip registers in CPU.
 
                     </p>
-                    <p class="lead">What is the content ip?</p>
+                    <p class="lead" style="color: red;">What is the content of ip?</p>
                     <p class="lead">values specified by vector0, vector1,... vector255.</p>
-                    <p class="lead">now see vector.S file there under vector0 and all lables commomn instructions called 
-                        i.e. pushing zero and the pushing number with respect to lable number and goes to "alltraps".
+                    <p class="lead">now see vector.S file there under vector0 and all lables common instructions called 
+                        i.e. pushing zero and then pushing number with respect to lable number and goes to "alltraps".
                     </p>
                     
                     <p class="lead"></p>
                     <p class="lead"></p>
                     <p class="lead">● On intinstruction/interrupt the CPU does this:</p>
-                    <p class="lead">--> 1. Fetch the n’th descriptor from the IDT, where n is the argument of int.</p>
-                    <p class="lead">--> 2. Check that CPL(Current Privilege Level) in %cs is <= DPL, where DPL is the privilege level in the descriptor. (For software interrupt 
+                    <p class="lead">1. Fetch the n’th descriptor from the IDT, where n is the argument of int.</p>
+                    <p class="lead">2. Check that CPL(Current Privilege Level) in %cs is <= DPL, where DPL is the privilege level in the descriptor. (For software interrupt 
                         DPL is 3 and for all other instruction it is 0). so what the CPU does is if CPL is 0 then it can change it to user mode</p>
                     <p class="lead">Save %esp and %ss in CPU-internal registers, but only if the target segment selector’s PL < CPL.
                     (Switching from user mode to kernel mode. Hence save user code’s SS and ESP).</p>
@@ -321,7 +397,19 @@
                     <p class="lead">So now stack has ss, esp,eflags, cs, eip, 0 (for error code), 64(obiviously for identify the interrupt)</p>
                     <p class="lead">Then jump to the code of "alltraps".</p>
                     <p class="lead">Let's go to alltraps(In trapasm.S file)</p>
-                    <p class="lead">image of alltraps</p>
+
+
+                    
+                    <p class="lead" style="color: brown">trapasm.S</p>
+
+                        <div class="s-content__media">
+                            <div class="s-content__post-thumb"> 
+                                <img src="Screenshot from 2021-05-05 16-57-42.png" 
+                                        srcset="Screenshot from 2021-05-05 16-57-42.png 2100w, 
+                                        Screenshot from 2021-05-05 16-57-42.png 1050w, 
+                                        Screenshot from 2021-05-05 16-57-42.png 525w" style="width: 100%; margin-left: 0px" alt="">
+                            </div>
+                        </div>
                     <p class="lead">here pushing of ds, es, fs, gs happens and after that there is instruction "pushal"
                          which push all general purpose regs</p>
                     <p class="lead">Now stack contains : ss, esp,eflags, cs, eip, 0 (for error code), 64, ds, es, fs, gs, 
@@ -339,6 +427,90 @@
                     <p class="lead">And there is call to trap now. now we know that the return value of next statement to call instruction 
                         is pushed on to the stack</p>
                     <p class="lead">Now let us go to the finction trap(In file trap.c)</p>
+
+                    <?prettify linenums=1?>
+
+    <pre class="prettyprint" style="height: 500px;">
+        //PAGEBREAK: 41
+void
+trap(struct trapframe *tf)
+{
+  if(tf->trapno == T_SYSCALL){
+    if(myproc()->killed)
+      exit();
+    myproc()->tf = tf;
+    syscall();
+    if(myproc()->killed)
+      exit();
+    return;
+  }
+
+  switch(tf->trapno){
+  case T_IRQ0 + IRQ_TIMER:
+    if(cpuid() == 0){
+      acquire(&tickslock);
+      ticks++;
+      wakeup(&ticks);
+      release(&tickslock);
+    }
+    lapiceoi();
+    break;
+  case T_IRQ0 + IRQ_IDE:
+    ideintr();
+    lapiceoi();
+    break;
+  case T_IRQ0 + IRQ_IDE+1:
+    // Bochs generates spurious IDE1 interrupts.
+    break;
+  case T_IRQ0 + IRQ_KBD:
+    kbdintr();
+    lapiceoi();
+    break;
+  case T_IRQ0 + IRQ_COM1:
+    uartintr();
+    lapiceoi();
+    break;
+  case T_IRQ0 + 7:
+  case T_IRQ0 + IRQ_SPURIOUS:
+    cprintf("cpu%d: spurious interrupt at %x:%x\n",
+            cpuid(), tf->cs, tf->eip);
+    lapiceoi();
+    break;
+
+  //PAGEBREAK: 13
+  default:
+    if(myproc() == 0 || (tf->cs&3) == 0){
+      // In kernel, it must be our mistake.
+      cprintf("unexpected trap %d from cpu %d eip %x (cr2=0x%x)\n",
+              tf->trapno, cpuid(), tf->eip, rcr2());
+      panic("trap");
+    }
+    // In user space, assume process misbehaved.
+    cprintf("pid %d %s: trap %d err %d on cpu %d "
+            "eip 0x%x addr 0x%x--kill proc\n",
+            myproc()->pid, myproc()->name, tf->trapno,
+            tf->err, cpuid(), tf->eip, rcr2());
+    myproc()->killed = 1;
+  }
+
+  // Force process exit if it has been killed and is in user space.
+  // (If it is still executing in the kernel, let it keep running
+  // until it gets to the regular system call return.)
+  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
+    exit();
+
+  // Force process to give up CPU on clock tick.
+  // If interrupts were on while locks held, would need to check nlock.
+  if(myproc() && myproc()->state == RUNNING &&
+     tf->trapno == T_IRQ0+IRQ_TIMER)
+    yield();
+
+  // Check if the process has been killed since we yielded
+  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
+    exit();
+}</pre>
+
+                    
                     <p class="lead">Argument to trap() is trapframe</p>
                     <p class="lead">In alltraps, Before “call trap”, there was “push %esp” and stack had the trapframe</p>
                     <p class="lead">Remember calling convention --> when a function is called, the stack contains the arguments
